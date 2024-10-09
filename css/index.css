@@ -4193,7 +4193,13 @@ figure.highlight pre .javascript .function {
   -ms-transform: translate(100%, 0);
   transform: translate(100%, 0);
 }
-.loading-body {
+#loading-box.loaded .longfazers {
+  display: none;
+}
+#loading-box.loaded .body {
+  display: none;
+}
+.body {
   background-color: #44414d;
   overflow: hidden;
 }
