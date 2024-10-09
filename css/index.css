@@ -4193,10 +4193,10 @@ figure.highlight pre .javascript .function {
   -ms-transform: translate(100%, 0);
   transform: translate(100%, 0);
 }
-#loading-box.loaded .loading-right-bg .longfazers {
+#loading-box.loaded .longfazers {
   display: none;
 }
-#loading-box.loaded .loading-right-bg .body {
+#loading-box.loaded .body {
   display: none;
 }
 .body {
