@@ -1336,7 +1336,7 @@ canvas:not(#ribbon-canvas),
   --search-bg: #f6f8fa;
   --search-input-color: #4c4948;
   --search-a-color: #4c4948;
-  --preloader-bg: #37474f;
+  --preloader-bg: #404249;
   --preloader-color: #fff;
   --tab-border-color: #f0f0f0;
   --tab-botton-bg: #f0f0f0;
@@ -4196,25 +4196,12 @@ figure.highlight pre .javascript .function {
 #loading-box.loaded .longfazers {
   display: none;
 }
-#loading-box.loaded .loading-text {
-  display: none;
-}
 #loading-box.loaded .loading-body {
   display: none;
 }
 .loading-body {
   background-color: #44414d;
   overflow: hidden;
-}
-.loading-text {
-  position: absolute;
-  font-family: "Open Sans";
-  font-weight: 600;
-  font-size: 12px;
-  text-transform: uppercase;
-  left: 50%;
-  top: 58%;
-  margin-left: -20px;
 }
 .body {
   position: absolute;
