@@ -4196,17 +4196,17 @@ figure.highlight pre .javascript .function {
 #loading-box.loaded .longfazers {
   display: none;
 }
-#loading-box.loaded h1 {
+#loading-box.loaded .loading-text {
   display: none;
 }
-#loading-box.loaded .body {
+#loading-box.loaded .loading-body {
   display: none;
 }
-body {
+.loading-body {
   background-color: #44414d;
   overflow: hidden;
 }
-h1 {
+.loading-text {
   position: absolute;
   font-family: "Open Sans";
   font-weight: 600;
