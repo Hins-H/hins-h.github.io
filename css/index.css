@@ -4200,10 +4200,6 @@ figure.highlight pre .javascript .function {
   display: none;
 }
 .body {
-  background-color: #44414d;
-  overflow: hidden;
-}
-.body {
   position: absolute;
   top: 50%;
   margin-left: -50px;
