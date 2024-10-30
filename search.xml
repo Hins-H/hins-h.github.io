@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>SLAM估计理论</title>
+      <link href="/2024/09/03/SLAM%E4%BC%B0%E8%AE%A1%E7%90%86%E8%AE%BA/"/>
+      <url>/2024/09/03/SLAM%E4%BC%B0%E8%AE%A1%E7%90%86%E8%AE%BA/</url>
+      
+        <content type="html"><![CDATA[<p>SLAM估计理论</p><p>​不管是用贝叶斯网络还是因子图，SLAN问题用概率图模型得到表示后，接下来就是用<strong>可观测量推理不可观测量</strong>，也就是说SLAM问题求解过程是一个<strong>状态估计</strong>。</p><h2 id="估计量的性质">估计量的性质</h2><h3 id="一致性">一致性</h3><p>从强到弱：</p><ul class="lvl-0"><li class="lvl-2"><p>依概率1收敛（几乎处处收敛）：<img src="/img/SLAM估计理论/image-20241030224245858.png" alt="image-20241030224245858" style="zoom: 33%;" /></p></li><li class="lvl-2"><p>依概率收敛（测度收敛）：<img src="/img/SLAM估计理论/image-20241030224335156.png" alt="image-20241030224335156" style="zoom: 33%;" /></p></li><li class="lvl-2"><p>依分布收敛：<img src="/img/SLAM估计理论/image-20241030224412417.png" alt="image-20241030224412417" style="zoom:33%;" /></p></li><li class="lvl-2"><p>依范数收敛：<img src="/img/SLAM估计理论/image-20241030224432552.png" alt="image-20241030224432552" style="zoom:33%;" /></p></li></ul><h3 id="偏差性">偏差性</h3><ul class="lvl-0"><li class="lvl-2"><p>无偏估计：<img src="/img/SLAM估计理论/image-20241030224533324.png" alt="image-20241030224533324" style="zoom: 50%;" /></p></li><li class="lvl-2"><p>最小方差估计，方差越小估计不确定性越小</p></li></ul><h2 id="估计量的构建">估计量的构建</h2><p>​ 实际情况，观测到的样本数量不可能无穷多，因此一致性只是理论上需要满足的条件。在样本数量有限时，讨论估计值与实际值之间的偏差将更有意义，也就是偏差性。所以估计策略的目标是让估计量的偏差量尽量小，最小方差无偏估计无疑是一个理想的估计量。然而，最小方差无偏估计实现非常困难，因此需要寻找近似策略.</p><h3 id="最大似然估计（MLE）">最大似然估计（MLE）</h3><p>​<img src="/img/SLAM估计理论/image-20241030224644697.png" alt="image-20241030224644697" style="zoom:50%;" /></p><p>​ 最大似然估计假设概率分布模型是知道的，只是概率分布模型中的参数θ未知。尝试θ的不同取值，看模型是否能输出与观测结果一样的数据。当某个θ取值能让模型输出与观测结果一样的数据的概率最大，那么这个θ取值就是最适合的估计参数。</p><h3 id="最小二乘估计（LSE）">最小二乘估计（LSE）</h3><p>​<img src="/img/SLAM估计理论/image-20241030224724912.png" alt="image-20241030224724912" style="zoom:50%;" /></p><p>​最小二乘估计是计算观测样本点与模型实际点之间的平方误差，求使得该平方误差最小的参数值θ，求出来的这个参数值θ就是估计参数.</p><h3 id="贝叶斯估计（Bayes）">贝叶斯估计（Bayes）</h3><p>​<img src="/img/SLAM估计理论/image-20241030224804930.png" alt="image-20241030224804930" style="zoom:50%;" /></p><p>​贝叶斯估计首先也是构建关于误差的代价函数，然后最小化代价函数在概率密度下的期望.</p><p>​可以看出，贝叶斯估计中的C(e)是关于误差e的抽象函数，也就是说贝叶斯估计是一个通用的形式，具体的估计量形式与函数C(e)的具体实现有关。最小均方误差估计和最大后验估计，就是贝叶斯估计的常见形式。</p><h4 id="最小均方误差估计（MMSE）">最小均方误差估计（MMSE）</h4><p>​<img src="/img/SLAM估计理论/image-20241030225040542.png" alt="image-20241030225040542" style="zoom:50%;" /></p><p>​化简后：</p><p>​<img src="/img/SLAM估计理论/image-20241030225104190.png" alt="image-20241030225104190" style="zoom:50%;" /></p><h4 id="最大后验估计（MAP）">最大后验估计（MAP）</h4><p>​<img src="/img/SLAM估计理论/image-20241030225127421.png" alt="image-20241030225127421" style="zoom:50%;" /></p><p>​化简后：</p><p>​<img src="/img/SLAM估计理论/image-20241030225212080.png" alt="image-20241030225212080" style="zoom: 50%;" /></p><h2 id="各估计量等价转换关系">各估计量等价转换关系</h2><img src="/img/SLAM估计理论/image-20241030225531570.png" alt="image-20241030225531570" style="zoom:67%;" />]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SLAM概率理论</title>
       <link href="/2024/09/02/SLAM%E6%A6%82%E7%8E%87%E7%90%86%E8%AE%BA/"/>
       <url>/2024/09/02/SLAM%E6%A6%82%E7%8E%87%E7%90%86%E8%AE%BA/</url>
