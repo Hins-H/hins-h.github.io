@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>基于因子图的状态估计</title>
+      <link href="/2024/09/08/%E5%9F%BA%E4%BA%8E%E5%9B%A0%E5%AD%90%E5%9B%BE%E7%9A%84%E7%8A%B6%E6%80%81%E4%BC%B0%E8%AE%A1/"/>
+      <url>/2024/09/08/%E5%9F%BA%E4%BA%8E%E5%9B%A0%E5%AD%90%E5%9B%BE%E7%9A%84%E7%8A%B6%E6%80%81%E4%BC%B0%E8%AE%A1/</url>
+      
+        <content type="html"><![CDATA[<h1>基于因子图的状态估计</h1><p>​虽然完全 SLAM 系统可以用滤波方法求解，比如著名的  Fast-SLAM  框架，但是贝叶斯网络表示下的完全 SLAM 系统能很方便地转换成因子图表示，这样贝叶斯网络中的最大后验估计就等效为因子图中的最小二乘估计。本节主要讨论的就是如何求解最小二乘问题（通常为非线性最小二乘问题）。</p><p>​求解非线性最小二乘问题的方法大致有两种：</p><ul class="lvl-0"><li class="lvl-2"><p>先对非线性问题进行线性化近似处理，然后直接求解线性方程来得到待估计量</p></li><li class="lvl-2"><p>不直接求解，通过迭代策略，让目标函数快速下降到最值处，对应的估计量也就求出来了</p></li></ul><p><img src="/img/%E5%9F%BA%E4%BA%8E%E5%9B%A0%E5%AD%90%E5%9B%BE%E7%9A%84%E7%8A%B6%E6%80%81%E4%BC%B0%E8%AE%A1/image-20241111122640547.png" alt="image-20241111122640547"></p><h2 id="直接求解方法">直接求解方法</h2><p>​非线性最小二乘问题表示为：</p><p>​<img src="/img/基于因子图的状态估计/image-20241112164844980.png" alt="image-20241112164844980" style="zoom: 67%;" /></p><p>​对 ***f(x)***泰勒展开进行线性化近似，</p><p>​<img src="/img/基于因子图的状态估计/image-20241112165040661.png" alt="image-20241112165040661" style="zoom: 67%;" /></p><p>​<img src="/img/基于因子图的状态估计/image-20241112165052384.png" alt="image-20241112165052384" style="zoom:67%;" /></p><p>​最小二乘问题可以变为</p><p>​<img src="/img/基于因子图的状态估计/image-20241112165202146.png" alt="image-20241112165202146" style="zoom:67%;" /></p><p>​上式在理想情况下可以取到0，即</p><p>​<img src="/img/基于因子图的状态估计/image-20241112165257965.png" alt="image-20241112165257965" style="zoom:67%;" /></p><p>​对上面线性方程求解即可。求解上面线性方程有两种方法：Cholesky分解、QR分解。</p><ul class="lvl-0"><li class="lvl-2"><p>Cholesky分解</p></li></ul><p>​<img src="/img/基于因子图的状态估计/image-20241112165443865.png" alt="image-20241112165443865" style="zoom:67%;" /></p><ul class="lvl-0"><li class="lvl-2"><p>QR分解</p></li></ul><p>​<img src="/img/基于因子图的状态估计/image-20241112165500639.png" alt="image-20241112165500639" style="zoom:67%;" /></p><h2 id="优化方法">优化方法</h2><p>​ 由于实际 SLAM 问题的非线性最小二乘中，很难找到合适的线性化方法，初值也比较难确定，并且代价函数的误差往往不能最小化到0值，所以上面介绍的直接求解方法很难利用在实际问题中。实际工程中，通常采用优化方法进行迭代求解。</p><p>​ 迭代策略主要有以下几种方法：</p><ul class="lvl-0"><li class="lvl-2"><p>梯度下降算法</p></li><li class="lvl-2"><p>最速下降算法</p></li><li class="lvl-2"><p>高斯-牛顿算法</p></li><li class="lvl-2"><p>列文伯格-马夸尔特算法</p></li><li class="lvl-2"><p>狗腿算法</p></li></ul><p>​具体如下：</p><p>​<img src="/img/%E5%9F%BA%E4%BA%8E%E5%9B%A0%E5%AD%90%E5%9B%BE%E7%9A%84%E7%8A%B6%E6%80%81%E4%BC%B0%E8%AE%A1/image-20241112165814701.png" alt="image-20241112165814701"></p><p>​可以发现，每一种方法都是前一种的改进，下降速度越来越好，但是每一步迭代的计算代价越来越高。</p><p>​因此，在实际应用中要结合实际问题合理选择。比如Dogleg算法虽然每步迭代下降效果是最好的，但是每步迭代付出的计算代价也最昂贵，站在整个迭代过程看，迭代效率并不一定比最普通的梯度下降法好。</p><h2 id="常用的优化工具">常用的优化工具</h2><ul class="lvl-0"><li class="lvl-2"><p>图优化工具 g2o （轻量级）</p></li><li class="lvl-2"><p>非线性优化工具 Ceres-Solver （复杂但性能强）</p></li><li class="lvl-2"><p>增量优化工具 GTSAM （精度稍低但支持增量优化）</p></li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>基于贝叶斯网络的状态估计</title>
       <link href="/2024/09/06/%E5%9F%BA%E4%BA%8E%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E7%9A%84%E7%8A%B6%E6%80%81%E4%BC%B0%E8%AE%A1/"/>
       <url>/2024/09/06/%E5%9F%BA%E4%BA%8E%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E7%9A%84%E7%8A%B6%E6%80%81%E4%BC%B0%E8%AE%A1/</url>
