@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>激光SLAM Gmapping</title>
+      <link href="/2024/09/20/%E6%BF%80%E5%85%89SLAM%20GMapping/"/>
+      <url>/2024/09/20/%E6%BF%80%E5%85%89SLAM%20GMapping/</url>
+      
+        <content type="html"><![CDATA[<h1>激光SLAM Gmapping</h1><h2 id="Gmapping原理分析">Gmapping原理分析</h2><p>​首先回顾一下SLAM问题的表示：</p><ul class="lvl-0"><li class="lvl-2"><p>贝叶斯网络表示（条件概率） ，求解：卡尔曼滤波、粒子滤波</p></li><li class="lvl-2"><p>因子图表示（最小二乘），求解：梯度下降法、高斯牛顿法</p></li><li class="lvl-2"><p>机器学习表示（神经网课），求解：神经网络训练</p></li></ul><p>​而Gmapping是一种基于粒子滤波的算法。不过在Gmapping算法中，对 RBPF（Rao-BlackwellizationParticleFilte）的建议分布和重采样进行了改进。</p><h3 id="RBPF-的滤波过程">RBPF 的滤波过程</h3><p>​RBPF 的思想就是将 SLAM 中的定位和建图问题分开来处理，先利用$P(x_{1:t} \mid z_{1:t},u_{1:t-1} )$$估计出机器人的轨迹$$x_{1:t}$$，然后在轨迹已知的情况下很容易估计出地图 <em><strong>m</strong></em>。公式如下：<br>$$<br>P\left(x_{1:t},m \mid z_{1:t}, u_{1:t} \right)=P\left( m \mid x_{1:t},z_{1:t} \right) \cdot P\left( x_{1:t} \mid z_{1:t},u_{1:t-1}\right)<br>$$​在给定机器人位资的情况下，利用$P( m \mid x_{1:t},z_{1:t} )$ 建图很简单。RBPF 讨论的重点是$P( x_{1:t} \mid z_{1:t},u_{1:t-1})$ 定位问题的具体求解过程，一种流行的粒子滤波算法是 SIR（sampling importance resampling）滤波器。下面介绍基于 SIR 的RBPF 滤波过程。</p><h4 id="采样">采样</h4><p>​新的粒子点集 ${x_{1:t}^{(i)} }$ 由上一个时刻粒子点集${x_{1:t-1}^{(i)} }$ 在建议分布 $\pi$ 里采样得到。通常把机器人概率运动模型作为建议分布，这样新的粒子点集  ${x_{t}^{(i)} }$ 的生成过程就可以表示成 $x_{t}^{(i)} \sim P ( x_{1:t} \mid x_{t-1}^{(i)},u_{t-1})$。</p><h4 id="重要性权重">重要性权重</h4><p>​考虑整个运动过程，机器人每条可能得轨迹都可以用一个粒子点$x_{1:t}^{(i)}$ 表示，那么每条轨迹对应粒子点的重要性权重可以表示为<br>$$<br>w_{i}^{(i)} = \frac{ P\left( x_{1:t}^{(i)} \mid z_{1:t},u_{1:t-1} \right)}{ \pi\left( x_{1:t}^{(i)} \mid z_{1:t},u_{1:t-1} \right)}<br>$$​其中分子是目标分布，分母是建议分布，重要性权重反应了建议分布和目标分布的差异性。</p><h4 id="重采样">重采样</h4><p>​新生成的粒子点需要利用重要性权重进行替换，这就是重采样。由于粒子点总量保持不变，当权重比较小的粒子点被删除后，权重大的粒子点需要进行复制以保持粒子总量不变。经过重采样后粒子点的权重都变成一样，接着进行下一轮采样和重采样。</p><h4 id="地图估计">地图估计</h4><p>​在每条轨迹对用粒子点$x_{1:t}^{(i)}$ 的条件下，都可以用$P( m^{(i)} \mid x_{1:t}^{(i)},z_{1:t} )$ 计算出一幅地图$m^{(i)}$，然后将每个轨迹计算出的地图整合就得到最终地图 $m$。</p><p>​从重要性权重的公式中会发现一个明显的问题，不管当前获取的观测$z_i$ 是否有效，都要计算一次整个轨迹的权重，而且随着时间的推移，轨迹将变得很长，计算整个轨迹的权重的计算量会越来越大。将原来的重要性权重公式进行适当推导，得到权重的递归计算方法：<br>$$<br>\begin{align*}<br>w_t^{(i)} &amp;= \frac{P(x_{1:t}^{(i)} \mid z_{1:t}, u_{1:t-1})}{\pi(x_{1:t}^{(i)} \mid z_{1:t}, u_{1:t-1})} \<br>&amp;= \frac{P(z_t \mid x_{1:t}^{(i)}, z_{1:t-1}) P(x_{1:t}^{(i)} \mid z_{1:t-1}, u_{1:t-1}) / P(z_t \mid z_{1:t-1}, u_{1:t-1})}{\pi(x_{1:t}^{(i)} \mid x_{1:t-1}^{(i)}, z_{1:t}, u_{1:t-1}) \pi(x_{1:t-1}^{(i)} \mid z_{1:t-1}, u_{1:t-2})} \<br>&amp;= \frac{P(z_t \mid x_{1:t}^{(i)}, z_{1:t-1}) P(x_t^{(i)} \mid x_{1:t-1}^{(i)}, u_{1:t-1}) P(x_{1:t-1}^{(i)} \mid z_{1:t-1}, u_{1:t-2}) \eta}{\pi(x_t^{(i)} \mid x_{1:t-1}^{(i)}, z_{1:t}, u_{1:t-1}) \pi(x_{1:t-1}^{(i)} \mid z_{1:t-1}, u_{1:t-2})} \<br>&amp;\propto \frac{P(z_t \mid m_{t-1}^{(i)}, x_t^{(i)}) P(x_t^{(i)} \mid x_{t-1}^{(i)}, u_{t-1})}{\pi(x_t^{(i)} \mid x_{1:t-1}^{(i)}, z_{1:t}, u_{1:t-1})} \cdot w_{t-1}^{(i)}<br>\end{align*}<br>$$​其中，$η=1/P(z_t∣z_{1:t−1},u_{1:t−1})$。</p><h3 id="RBPF-的建议分布改进">RBPF 的建议分布改进</h3>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>基于因子图的状态估计</title>
       <link href="/2024/09/08/%E5%9F%BA%E4%BA%8E%E5%9B%A0%E5%AD%90%E5%9B%BE%E7%9A%84%E7%8A%B6%E6%80%81%E4%BC%B0%E8%AE%A1/"/>
       <url>/2024/09/08/%E5%9F%BA%E4%BA%8E%E5%9B%A0%E5%AD%90%E5%9B%BE%E7%9A%84%E7%8A%B6%E6%80%81%E4%BC%B0%E8%AE%A1/</url>
