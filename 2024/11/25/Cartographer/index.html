@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/AE86.jpg">
 <meta property="article:published_time" content="2024-11-25T03:23:25.000Z">
-<meta property="article:modified_time" content="2024-12-20T08:20:35.770Z">
+<meta property="article:modified_time" content="2024-12-20T13:14:18.713Z">
 <meta property="article:author" content="Hins">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/img/AE86.jpg"><link rel="shortcut icon" href="/img/R.jpg"><link rel="canonical" href="http://example.com/2024/11/25/Cartographer/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
@@ -146,7 +146,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-12-20 16:20:35'
+  postUpdate: '2024-12-20 21:14:18'
 }</script><link rel="stylesheet" href="/css/transpancy.css"><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
@@ -190,7 +190,7 @@
 <img src="https://pic.imgdb.cn/item/67614d72d0e0a243d4e56cdd.jpg" alt="地图结构" style="zoom: 33%;" />
 <p>  无论是雷达扫描帧、局部子图还是全局地图，它们之间都是通过位姿关系进行关联的。这里只考虑 2D SLAM 建图，位姿表示为 $\xi=(\xi_x,\xi_y,\xi_{\theta})$ 。</p>
 <p>  假设机器人初始位姿为 $\xi_1=(0,0,0)$，该位姿处雷达扫描帧为 $scan(1)$，并利用 $scan(1)$ 来初始化第一个局部子图 $submap(1)$ 。利用 Scan-to-map matching 方法计算 $scan(2)$ 相应的位姿 $\xi_2$ ，并基于 $\xi_2$ 将 $scan(2)$ 加入 $submap(1)$ 中。不断执行 Scan-to-map matching 方法添加新得到的雷达帧，直到新雷达帧观测不到 $submap(1)$ 之外的新信息，就完成了 $submap(1)$ 的创建。然后重复上面步骤构建新的局部子图 $submap(2)$ ，而所有局部子图就构成最终的全局地图 $submaps$ 。</p>
-<p>  可以发现，每个雷达扫描帧都对应着一个全局地图坐标系下的全局坐标，同时在对应的局部子图坐标系下也有一个局部坐标。而每个局部子图以第一个插入的雷达扫描帧为起始，该起始雷达扫描帧的全局坐标也就是该局部子图的全局坐标。这样的话，所有雷达扫描帧对应的全局位姿 $\Xi<sup>s={\xi_j</sup>s}(j=1,2,\cdots,n)$ ，以及所有局部子图对应的全局位姿 $\Xi<sup>m={\xi_i</sup>m}(i=1,2,\cdots,m)$ 通过 Scan-to-map matching 产生的局部位姿 $\xi_{ij}$ 进行关联，这些约束实际上就构成了位姿图。当检测到闭环时，对整个位姿图中所有的位姿量进行全局优化，那么 $\Xi<sup>s、\Xi</sup>m$ 中的所有位姿都会得到修正，每个位姿上对应的地图点也得到修正，这就是全局建图。</p>
+<p>  可以发现，每个雷达扫描帧都对应着一个全局地图坐标系下的全局坐标，同时在对应的局部子图坐标系下也有一个局部坐标。而每个局部子图以第一个插入的雷达扫描帧为起始，该起始雷达扫描帧的全局坐标也就是该局部子图的全局坐标。这样的话，所有雷达扫描帧对应的全局位姿 $\Xi<sup>s={\xi_j</sup>s}(j=1,2,\cdots,n)$ ，以及所有局部子图对应的全局位姿 $\Xi<sup>m={\xi_i</sup>m}(i=1,2,\cdots,m)$ 通过 Scan-to-map matching 产生的局部位姿 $\xi_{ij}$ 进行关联，这些约束实际上就构成了位姿图。当检测到闭环时，对整个位姿图中所有的位姿量进行全局优化，那么 $\Xi<sup>s\text{和}\Xi</sup>m$ 中的所有位姿都会得到修正，每个位姿上对应的地图点也得到修正，这就是全局建图。</p>
 <h3 id="利用-Scan-to-map-matching-方法构建局部子图过程">利用 Scan-to-map matching 方法构建局部子图过程</h3>
 <p>  局部子图构建过程涉及很多坐标系变换的内容。首先雷达扫描一周得到的距离点 ${h_k},k=1,2,\cdots,K$ 是以雷达旋转中心为坐标系进行取值，那么在一个局部子图中，以第一帧雷达位姿为参考，后加入的雷达帧位姿用相对转移矩阵 $T_{\xi} = (R_{\xi},t_{\xi})$ 表示。这样的话，雷达帧中的数据点 $h_k$ 就可以用式 $(1)$ 所示的公式转换成局部子图坐标系来表示。</p>
 <p><img src="https://pic.imgdb.cn/item/67616150d0e0a243d4e57dc6.png" alt="1"></p>
@@ -198,28 +198,28 @@
 <p>  接下来考虑新雷达数据加入子图，先按式 $(1)$ 将雷达数据转换到子图坐标系，这时雷达数据点会覆盖子图的一些栅格 ${M_{old}}$ ，每个栅格存在3种状态：未知、非占据（miss）、占据（hit）。如下图所示，雷达扫描点所覆盖的栅格就应为占据状态（hit）；而雷达扫描光束起点和终点之间肯定就没有障碍物，该区域的栅格应为非占据状态（miss）；而未被雷达扫到的点的栅格就应该为未知状态。</p>
 <img src="https://pic.imgdb.cn/item/67615b44d0e0a243d4e57cb6.jpg" alt="雷达数据点栅格化" style="zoom: 33%;" />
 <p>  因为子图中的栅格可能不只被一帧雷达扫描点所覆盖，所以需要对栅格的状态进行迭代更新，具体分两种情况处理。</p>
-<p>  情况1： 在当前帧的 ${M_{old}}$ 中，如果该栅格之前未被扫到（未知状态），那么直接用式 $(2)$ 进行更新。其中 $P_{hit},P_{miss}$ 由雷达概率观测模型给出。<br>
+<p>  情况1： 在当前帧的 ${M_{old}}$ 中，如果该栅格之前未被扫到（未知状态），那么直接用式 $(2-1)$ 进行更新。其中 $P_{hit},P_{miss}$ 由雷达概率观测模型给出。<br>
 $$<br>
 M_{\text{new}}(x) =<br>
 \begin{cases}<br>
 P_{\text{hit}}, &amp; \text{当 } \text{state}(x) = \text{hit} \text{ 时} \<br>
 P_{\text{miss}}, &amp; \text{当 } \text{state}(x) = \text{miss} \text{ 时}<br>
 \end{cases}<br>
-\tag{2}<br>
+\tag{2-1}<br>
 $$<br>
-  情况2：在当前帧的 ${M_{old}}$ 中。如果该栅格之前已经被扫到，也就是已经有取值 $M_{old}$ ，那就用式 $(2)$ 更新。其中 $odds$ 是一个反比例函数，$clamp$ 是一个区间限定函数。<br>
+  情况2：在当前帧的 ${M_{old}}$ 中。如果该栅格之前已经被扫到，也就是已经有取值 $M_{old}$ ，那就用式 $(2-2)$ 更新。其中 $odds$ 是一个反比例函数，$clamp$ 是一个区间限定函数。<br>
 $$<br>
 M_{\text{new}}(x) =<br>
 \begin{cases}<br>
 {clamp(odds}^{-1}({odds}(M_{\text{old}}(x)) \cdot {odds}(P_{\text{hit}}))), &amp; \text{当 } {state}(x) = \text{hit} \text{ 时} \<br>
 {clamp(odds}^{-1}({odds}(M_{\text{old}}(x)) \cdot {odds}(P_{\text{miss}}))), &amp; \text{当 } \text{state}(x) = \text{miss} \text{ 时}<br>
 \end{cases}<br>
-\tag{2}<br>
+\tag{2-2}<br>
 $$<br>
 其中，$odds(prob) = \frac{prob}{1 - prob}$。</p>
 <p>  Cartographer采用这种栅格更新机制，可以有效降低环境中动态障碍物的干扰。例如建图过程中存在一个移动物体，物体被雷达扫描的位置每次都不同，假如前一个栅格 $x$ 出现了物体，$M_{old}$ 会被$P_{hit}$ 赋予初值，而下一时刻物体移出了该栅格，该栅格会被标志为非占据状态，用 $P_{miss}$ 来更新，概率取值就变小了。随着次数越来越多，概率趋于0，动态障碍物就被清除了。</p>
 <p>  上面讨论的操作是基于雷达位姿误差较小的前提。由于从运动观测模型获得的机器人位姿存在较大误差，所以需要先用观测数据对这个观测位姿做进一步更新，以更新后的位姿为基准将观测加入地图。 Cartographer 采用了 Scan-to-map matching 方法对雷达位姿进行局部优化，具体过程如下。</p>
-<p>  在将新雷达数据加入子图前，现在运动预测出的雷达位姿附近窗口内进行搜索匹配，如式 $(3)$ 。其实就是一个非线性最小二乘问题，Cartographer 采用了自家的 Ceres 非线性优化工具来求解。而式中的约束量有函数 $M_\text{smooth}$ 构建， $M_\text{smooth}$ 是一个双立方差值，也叫平滑，其实就是用来确定雷达扫描轮廓  $$  与局部子图之间的匹配度的，取值在 0 到 1 之间。<br>
+<p>  在将新雷达数据加入子图前，现在运动预测出的雷达位姿附近窗口内进行搜索匹配，如式 $(3)$ 。其实就是一个非线性最小二乘问题，Cartographer 采用了自家的 Ceres 非线性优化工具来求解。而式中的约束量有函数 $M_\text{smooth}$ 构建， $M_\text{smooth}$ 是一个双立方差值，也叫平滑，其实就是用来确定雷达扫描轮廓与局部子图之间的匹配度的，取值在 0 到 1 之间。<br>
 $$<br>
 \underset{\xi}{\text{argmin}} \sum_{k=1}^K(1-M_\text{smooth} (T_{\xi}\cdot h_k))^2 \tag{3}<br>
 $$</p>
