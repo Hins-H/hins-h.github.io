@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/AE86.jpg">
 <meta property="article:published_time" content="2024-11-20T14:13:46.000Z">
-<meta property="article:modified_time" content="2025-02-17T18:10:26.009Z">
+<meta property="article:modified_time" content="2025-02-17T18:12:28.372Z">
 <meta property="article:author" content="Hins">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/img/AE86.jpg"><link rel="shortcut icon" href="/img/R.jpg"><link rel="canonical" href="http://example.com/2024/11/20/GMapping/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
@@ -146,7 +146,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2025-02-18 02:10:26'
+  postUpdate: '2025-02-18 02:12:28'
 }</script><link rel="stylesheet" href="/css/transpancy.css"><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
@@ -229,11 +229,11 @@ $$</p>
 <p>但直接采用运动模型作为建议分布存在一些问题。如图 a）、图 b）所示，当观测数据可靠性比较低时（即观测分布的区间$L<sup>{(i)}$比较大），利用运动模型采样生成的新粒子落在区间$L</sup>{(i)}$内的数量比较多（即可采用的新粒子比较多）；而当观测数据可靠性比较高时（即观测分布的区间$L<sup>{(i)}$比较小），采样生成的新粒子落在区间$L</sup>{(i)}$内的数量比较少。由于粒子滤波是采用有限个粒子点近似表示连续空间的分布情况，因此观测分布区间内粒子点较少时，会降低观测更新过程的精度。</p>
 <p><img src="https://pic.imgdb.cn/item/6760f64fd0e0a243d4e51071.jpg" alt="观测可靠性"></p>
 <p>因此，观测更新过程可以分为 2 种情况来处理，当观测可靠性较低时，采用式 $(4)$ 所示的默认运动模型生成新粒子点集 ${x_{t}^{(i)} }$  及对应权重；当观测可靠性较高时，就直接从观测分布区间 $L^{(i)}$ 内采样，并将采样点集 ${x_k }$ 的分布近似为高斯分布，利用 ${x_k}$ 可以计算出该高斯分布的参数  $\mu_t^{(i)}$ 和 $\sum_t^{(i)}$ ，最后采用该高斯分布 $x_t^{(i)} \sim N(\mu_t<sup>{(i)},\sum_t</sup>{(i)})$ 采样生成新粒子点集及对应权重。</p>
-<p>判断观测更新过程采用哪种方式很简单，首先利用运动模型推算出粒子点的新位姿 $x_t^{’(i)}$ ，然后在 $x_t^{’(i)}$ 附近区域搜索，计算观测 $z_i$ 与已有地图 $m_{t-1}^{(i)}$ 的匹配度，当搜索区域存在 $\hat{x}<em>t^{(i)}$ 使得匹配度很高时，即可认为观测可靠性高，具体如下：<br>
+<p>判断观测更新过程采用哪种方式很简单，首先利用运动模型推算出粒子点的新位姿 $x_t^{\prime(i)}$ ，然后在 $x_t^{\prime(i)}$ 附近区域搜索，计算观测 $z_i$ 与已有地图 $m_{t-1}^{(i)}$ 的匹配度，当搜索区域存在 $\hat{x}<em>t^{(i)}$ 使得匹配度很高时，即可认为观测可靠性高，具体如下：<br>
 $$<br>
 \begin{align*}<br>
-&amp;x_t^{’(i)} = x</em>{t-1}^{(i)} \oplus u_{t-1} \<br>
-&amp;\hat{x}<em>t^{(i)} = \arg\max_x P(x \mid m</em>{t-1}^{(i)}, z_t, x_t^{’(i)}) \tag{6}<br>
+&amp;x_t^{\prime(i)} = x</em>{t-1}^{(i)} \oplus u_{t-1} \<br>
+&amp;\hat{x}<em>t^{(i)} = \arg\max_x P(x \mid m</em>{t-1}^{(i)}, z_t, x_t^{\prime(i)}) \tag{6}<br>
 \end{align*}<br>
 $$<br>
 下面就具体讨论观测可靠性高的情况。观测分布的区间 $L^{(i)}$ 的范围可以定义为 $L^{(i)}={x \mid P(z_t \mid m_{t-1}^{(i)},x)&gt;\varepsilon}$ ，搜索出的匹配度最高的位姿点 $\hat{x}<em>t^{(i)}$ 其实就是区间 $L^{(i)}$  概率峰值区域。以 $\hat{x}<em>t^{(i)}$ 为中心、以 $\Delta$ 为半径的区域内随机采固定数量的 $K$ 个点 ${x_k}$ ，其中每个点的采样如下：<br>
@@ -255,7 +255,7 @@ $$<br>
 w_t^{(i)} &amp;\propto \frac{P(z_t \mid m_{t-1}^{(i)}, x_t^{(i)}) P(x_t^{(i)} \mid x_{t-1}^{(i)}, u_{t-1})}{P(x_t^{(i)} \mid m_{t-1}^{(i)}, x_{t-1}^{(i)}, z_t, u_{t-1})}\cdot w_{t-1}^{(i)}\<br>
 &amp;= \frac{P(z_t \mid m_{t-1}^{(i)}, x_t^{(i)}) P(x_t^{(i)} \mid x_{t-1}^{(i)}, u_{t-1})}{P(z_t \mid m_{t-1}^{(i)}, x_t^{(i)}) P(x_t^{(i)} \mid x_{t-1}^{(i)}, u_{t-1}) / P(z_t \mid m_{t-1}^{(i)}, x_{t-1}^{(i)},u_{t-1})}\cdot w_{t-1}^{(i)}\ \tag{9}<br>
 &amp;=w_{t-1}^{(i)}\cdot P(z_t\mid m_{t-1}<sup>{(i)},x_{t-1}</sup>{(i)},u_{t-1}) \<br>
-&amp;= w_{t-1}^{(i)} \cdot \int P(z_t \mid x’) P(x’ \mid x_{t-1}^{(i)}, u_{t-1}) dx’ \<br>
+&amp;= w_{t-1}^{(i)} \cdot \int P(z_t \mid x\prime) P(x\prime \mid x_{t-1}^{(i)}, u_{t-1}) dx\prime \<br>
 &amp;\approx w_{t-1}^{(i)} \cdot \sum_{j=1}^{K} P(z_t \mid m_{t-1}^{(i)}, x_j) P(x_j \mid x_{t-1}^{(i)}, u_{t-1})\<br>
 &amp;= w_{t-1}^{(i)} \cdot \eta^{(i)}<br>
 \end{align*}<br>
