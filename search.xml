@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>激光的帧间匹配</title>
+      <link href="/2025/01/02/%E6%BF%80%E5%85%89%E5%B8%A7%E9%97%B4%E5%8C%B9%E9%85%8D/"/>
+      <url>/2025/01/02/%E6%BF%80%E5%85%89%E5%B8%A7%E9%97%B4%E5%8C%B9%E9%85%8D/</url>
+      
+        <content type="html"><![CDATA[<h1>激光的帧间匹配</h1><h2 id="ICP-匹配方法">ICP 匹配方法</h2><p>具体数学描述和求解方法请看 <a href="https://hins-h.github.io/2024/12/20/%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE%E8%BF%90%E5%8A%A8%E7%95%B8%E5%8F%98%E5%8E%BB%E9%99%A4/">激光雷达运动畸变去除</a>。这里主要添加求解方法的证明。<br>$$<br>E(R,t)=\frac{1}{N_p}\sum_{i=1}<sup>{N_p}||x_i-Rp_i-t||</sup>2\<br>\begin{align}<br>E(R,t)&amp;=\frac{1}{N_p}\sum_{i=1}<sup>{N_p}||x_i-Rp_i-t-u_x+Ru_p+u_x-Ru_p||</sup>2\<br>&amp;=\frac{1}{N_p}\sum_{i=1}<sup>{N_p}||x_i-u_x-R(p_i-u_p)+(u_x-Ru_p-t)||</sup>2\<br>&amp;=\frac{1}{N_p}\sum_{i=1}<sup>{N_p}||x_i-u_x-R(p_i-u_p)||</sup>2+||u_x-Ru_p-t||<sup>2+2(x_i-u_x-R(p_i-u_p))</sup>T(u_x-Ru_p-t)\<br>&amp;=\frac{1}{N_p}\sum_{i=1}<sup>{N_p}||x_i-u_x-R(p_i-u_p)||</sup>2+||u_x-Ru_p-t||^2\<br>\end{align}<br>\<br>$$<br>其中$ ||x_i-u_x-R(p_i-u_p)||^2$ 只和 $R$ 有关，当已知 $R$ 时可以通过 $u_x-Ru_p-t=0$ 求解出 $t$。故转换为最小化函数：<br>$$<br>\begin{align}<br>E(R,t)&amp;=\frac{1}{N_p}\sum_{i=1}<sup>{N_p}||x_i-u_x-R(p_i-u_p)||</sup>2\<br>&amp;=\frac{1}{N_p}\sum_{i=1}<sup>{N_p}||x_i</sup>{‘}-Rp_i<sup>{'}||</sup>2\<br>&amp;=\frac{1}{N_p}\sum_{i=1}<sup>{N_p}{x_i</sup>{’}}<sup>Tx_i</sup>{‘}+{p_i<sup>{'}}</sup>TR<sup>TRp_i</sup>{’}-2{x_i<sup>{'}}</sup>TRp_i^{‘}\<br>\end{align}<br>$$<br>其中 ${x_i<sup>{'}}</sup>Tx_i^{’}$ 和变量无关，是常数值，而 $R$ 是正交矩阵，$R<sup>TR=I$，${p_i</sup>{‘}}<sup>TR</sup>TRp_i<sup>{'}={p_i</sup>{’}}<sup>Tp_i</sup>{‘}$，也是常数值，因此求 $E(R,t)$ 最小值最后可以转化为求 ${x_i<sup>{'}}</sup>TRp_i^{’}$ 的最大值。<br>$$<br>\sum_{i=1}<sup>{N_p}{x_i</sup>{‘}}<sup>TRp_i</sup>{’}=\sum_{i=1}<sup>{N_p}Trace(Rx_i</sup>{‘}{p_i<sup>{'}}</sup>T)=Trace(RH)<br>\H=\sum_{i=1}<sup>{N_p}x_i</sup>{’}{p_i<sup>{'}}</sup>T<br>$$</p><ul class="lvl-0"><li class="lvl-2"><p>定理：假设矩阵 A 为正定对称矩阵，则对于任意的正交矩阵 B，都有：$Trace(A)≥Trace(BA)$。</p></li></ul><p>$$<br>H=U\Lambda V^T\<br>X=VU^T – 正交矩阵\<br>XH=VU^TU\Lambda V^T=V\Lambda V^T  – 正定对称\<br>\Rightarrow Trace(XH) ≥ Trace(BXH)\<br>\Rightarrow R=X=VU^T<br>$$</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> SLAM 学习 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>激光雷达运动畸变去除</title>
       <link href="/2024/12/20/%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE%E8%BF%90%E5%8A%A8%E7%95%B8%E5%8F%98%E5%8E%BB%E9%99%A4/"/>
       <url>/2024/12/20/%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE%E8%BF%90%E5%8A%A8%E7%95%B8%E5%8F%98%E5%8E%BB%E9%99%A4/</url>
