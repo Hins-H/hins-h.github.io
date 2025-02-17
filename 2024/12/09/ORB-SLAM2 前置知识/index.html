@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ORB-SLAM2 前置知识 | Racing</title><meta name="author" content="Hins"><meta name="copyright" content="Hins"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ORB-SLAM2 前置知识 ORB-SLAM2 算法是视觉 SLAM 特征点法的典型代表。特征点法中除了最基本的特征提取和特征匹配外，还涉及相机在三维空间运动时位姿的表示，以及帧与帧之间配对特征点、环境地图点、相机位姿等共同形成的多视图几何关系。 特征点法 特征提取 在 SLAM 中，处于运动状态的相机拍摄出的图像旋转和尺度都很敏感，算法实时性要求很高，而 ORB 特征具有很好的旋转和尺度不变性">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ORB-SLAM2 前置知识 | Racing</title><meta name="author" content="Hins"><meta name="copyright" content="Hins"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ORB-SLAM2 前置知识ORB-SLAM2 算法是视觉 SLAM 特征点法的典型代表。特征点法中除了最基本的特征提取和特征匹配外，还涉及相机在三维空间运动时位姿的表示，以及帧与帧之间配对特征点、环境地图点、相机位姿等共同形成的多视图几何关系。 特征点法特征提取在 SLAM 中，处于运动状态的相机拍摄出的图像旋转和尺度都很敏感，算法实时性要求很高，而 ORB 特征具有很好的旋转和尺度不变性，并且">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ORB-SLAM2 前置知识">
 <meta property="og:url" content="http://example.com/2024/12/09/ORB-SLAM2%20%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="Racing">
-<meta property="og:description" content="ORB-SLAM2 前置知识 ORB-SLAM2 算法是视觉 SLAM 特征点法的典型代表。特征点法中除了最基本的特征提取和特征匹配外，还涉及相机在三维空间运动时位姿的表示，以及帧与帧之间配对特征点、环境地图点、相机位姿等共同形成的多视图几何关系。 特征点法 特征提取 在 SLAM 中，处于运动状态的相机拍摄出的图像旋转和尺度都很敏感，算法实时性要求很高，而 ORB 特征具有很好的旋转和尺度不变性">
+<meta property="og:description" content="ORB-SLAM2 前置知识ORB-SLAM2 算法是视觉 SLAM 特征点法的典型代表。特征点法中除了最基本的特征提取和特征匹配外，还涉及相机在三维空间运动时位姿的表示，以及帧与帧之间配对特征点、环境地图点、相机位姿等共同形成的多视图几何关系。 特征点法特征提取在 SLAM 中，处于运动状态的相机拍摄出的图像旋转和尺度都很敏感，算法实时性要求很高，而 ORB 特征具有很好的旋转和尺度不变性，并且">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/AE86.jpg">
 <meta property="article:published_time" content="2024-12-09T08:11:02.000Z">
@@ -172,213 +172,153 @@
     btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
     btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
   }
-})()</script><div id="web_bg" style="background-image: url(/img/AE86.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/AE86.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Racing</span></a><a class="nav-page-title" href="/"><span class="site-name">ORB-SLAM2 前置知识</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">ORB-SLAM2 前置知识</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2024-12-09T08:11:02.000Z" title="发表于 2024-12-09 16:11:02">2024-12-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SLAM-%E5%AD%A6%E4%B9%A0/">SLAM 学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>ORB-SLAM2 前置知识</h1>
-<p>ORB-SLAM2 算法是视觉 SLAM 特征点法的典型代表。特征点法中除了最基本的特征提取和特征匹配外，还涉及相机在三维空间运动时位姿的表示，以及帧与帧之间配对特征点、环境地图点、相机位姿等共同形成的多视图几何关系。</p>
-<h2 id="特征点法">特征点法</h2>
-<h3 id="特征提取">特征提取</h3>
-<p>在 SLAM 中，处于运动状态的相机拍摄出的图像旋转和尺度都很敏感，算法实时性要求很高，而 ORB 特征具有很好的旋转和尺度不变性，并且提取耗时很短，在 ORB-SLAM2 中使用的就是 ORB 特征。</p>
+})()</script><div id="web_bg" style="background-image: url(/img/AE86.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/AE86.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Racing</span></a><a class="nav-page-title" href="/"><span class="site-name">ORB-SLAM2 前置知识</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">ORB-SLAM2 前置知识</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2024-12-09T08:11:02.000Z" title="发表于 2024-12-09 16:11:02">2024-12-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SLAM-%E5%AD%A6%E4%B9%A0/">SLAM 学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="ORB-SLAM2-前置知识"><a href="#ORB-SLAM2-前置知识" class="headerlink" title="ORB-SLAM2 前置知识"></a>ORB-SLAM2 前置知识</h1><p>ORB-SLAM2 算法是视觉 SLAM 特征点法的典型代表。特征点法中除了最基本的特征提取和特征匹配外，还涉及相机在三维空间运动时位姿的表示，以及帧与帧之间配对特征点、环境地图点、相机位姿等共同形成的多视图几何关系。</p>
+<h2 id="特征点法"><a href="#特征点法" class="headerlink" title="特征点法"></a>特征点法</h2><h3 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h3><p>在 SLAM 中，处于运动状态的相机拍摄出的图像旋转和尺度都很敏感，算法实时性要求很高，而 ORB 特征具有很好的旋转和尺度不变性，并且提取耗时很短，在 ORB-SLAM2 中使用的就是 ORB 特征。</p>
 <p>如下图所示，在图像中提取到3个 ORB 特征点，每个特征点包含两个信息：像素坐标和描述子。描述子用来表示特征点的身份，ORB 特征的描述子由二进制序列构成，描述子主要为了方便后续特征匹配，如果两个特征点的描述子相似度很高，就可以认为这两个特征点是一对匹配点。</p>
-<p><img src="https://pic1.imgdb.cn/item/677f9082d0e0a243d4f28afc.jpg" alt="特征提取"></p>
-<h3 id="特征匹配">特征匹配</h3>
-<p>特征匹配是解决特征点法 SLAM 中数据关联问题的关键，也就是找到那些在不同角度拍摄的图像中都出现的特征点。假设相机在两个视角拍摄到两幅图像，如下图。先从图像 A 中提取到 $A={P_A^1, P_A^2, P_A^3}$ 特征点，在从 B 提取到 $B={P_B^1, P_B^2, P_B^3, P_B^4}$ ，那匹配过程就是找出 $A,B$ 两个集合中各点的对应关系。</p>
+<p><img src="https://pic1.imgdb.cn/item/677f9082d0e0a243d4f28afc.jpg" alt="特征提取">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         </p>
+<h3 id="特征匹配"><a href="#特征匹配" class="headerlink" title="特征匹配"></a>特征匹配</h3><p>特征匹配是解决特征点法 SLAM 中数据关联问题的关键，也就是找到那些在不同角度拍摄的图像中都出现的特征点。假设相机在两个视角拍摄到两幅图像，如下图。先从图像 A 中提取到 $A={P_A^1, P_A^2, P_A^3}$ 特征点，在从 B 提取到 $B={P_B^1, P_B^2, P_B^3, P_B^4}$ ，那匹配过程就是找出 $A,B$ 两个集合中各点的对应关系。</p>
 <p><img src="https://pic1.imgdb.cn/item/677f9272d0e0a243d4f28e15.jpg" alt="特征匹配"></p>
 <p>ORB 特征点的匹配度由两个特征点描述子的海明距离计算，海明距离越小匹配度越高。最简单的匹配方法就是暴力匹配，但特征点数量很大时工作效率低下。实际工程中，一般使用 K 最近邻匹配（KNN）、快速近似最近邻匹配（FLANN）等匹配算法。</p>
 <p>需要注意的是，当环境场景为白墙、地面等重复单一场景时，极易出现误匹配。如果误匹配点过多，会使得后续位姿和地图点估计出错，严重时整个 SLAM 系统将会崩溃。</p>
-<h3 id="模型构建">模型构建</h3>
-<p>特征提取和特征匹配后，就可以构建相应模型用于相机位姿和地图点的求解。帧与帧之间配对特征点、环境地图点、相机位姿等都可以用多视图几何关系来建模，如下图。</p>
-<img src="https://pic1.imgdb.cn/item/677f97b8d0e0a243d4f29634.jpg" alt="多视图几何" style="zoom:50%;" />
-<h2 id="三维空间运动">三维空间运动</h2>
-<p>相机运动过程可以看成三维空间的刚体运动。相机位姿由 3 自由度旋转量和 3 自由度平移量共同表示。旋转量表示相机在空间中的朝向，具体表达方式包括欧拉角、旋转矩阵、四元数等；平移量表示相机在空间中的位置，即 x、y、z 坐标值。</p>
-<h3 id="欧拉角">欧拉角</h3>
-<p>用欧拉角描述旋转姿态的两种最常见形式：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>旋转角度为 $(\alpha,\beta,\gamma)$，旋转顺序为 $(z-y-x)$，旋转方式为内旋，也就是 yaw-pitch-roll 顺序。</p>
-</li>
-<li class="lvl-2">
-<p>旋转角度为 $(\alpha,\beta,\gamma)$，旋转顺序为 $(x-y-z)$，旋转方式为外旋，也就是 roll -pitch-yaw 顺序。</p>
-</li>
+<h3 id="模型构建"><a href="#模型构建" class="headerlink" title="模型构建"></a>模型构建</h3><p>特征提取和特征匹配后，就可以构建相应模型用于相机位姿和地图点的求解。帧与帧之间配对特征点、环境地图点、相机位姿等都可以用多视图几何关系来建模，如下图。</p>
+<p><img src="https://pic1.imgdb.cn/item/677f97b8d0e0a243d4f29634.jpg" alt="多视图几何" style="zoom:50%;" /></p>
+<h2 id="三维空间运动"><a href="#三维空间运动" class="headerlink" title="三维空间运动"></a>三维空间运动</h2><p>相机运动过程可以看成三维空间的刚体运动。相机位姿由 3 自由度旋转量和 3 自由度平移量共同表示。旋转量表示相机在空间中的朝向，具体表达方式包括欧拉角、旋转矩阵、四元数等；平移量表示相机在空间中的位置，即 x、y、z 坐标值。</p>
+<h3 id="欧拉角"><a href="#欧拉角" class="headerlink" title="欧拉角"></a>欧拉角</h3><p>用欧拉角描述旋转姿态的两种最常见形式：</p>
+<ul>
+<li>旋转角度为 $(\alpha,\beta,\gamma)$，旋转顺序为 $(z-y-x)$，旋转方式为内旋，也就是 yaw-pitch-roll 顺序。</li>
+<li>旋转角度为 $(\alpha,\beta,\gamma)$，旋转顺序为 $(x-y-z)$，旋转方式为外旋，也就是 roll -pitch-yaw 顺序。</li>
 </ul>
 <p>欧拉角表示看起来直观，但存在万向锁死锁问题（Gimbal Lock）。例如 $(z-y-x)$ 旋转规则下，首先绕 $z_0$ 轴旋转 yaw 角度，再绕新的 $y_1$ 轴旋转 pitch 角度，如果 pitch 角度为 $+90^{\circ}$ 或 $-90^{\circ}$ ，那么新的 $x_2$ 轴将和 $z_0$ 轴重合，最后绕新的 $x_2$ 轴旋转 roll 角度，其实就是绕 $z_0$ 轴旋转。上面这种情况，具有 3 个自由度的欧拉角旋转过程就退化成 2 个自由度的旋转过程了，这种丢失自由度的情况就是欧拉角中所谓的奇异性。因此，欧拉角只适用绝对姿态的直观表示，不适用于需要相对姿态表示（比如姿态插值计算、姿态增量计算）。这就引出了旋转矩阵。</p>
-<h3 id="旋转矩阵">旋转矩阵</h3>
-<p>$z -y-x$ 内旋规则的欧拉角对应的旋转矩阵如式 $(1)$ 所示，$x-y-z$ 外旋规则的欧拉角对应的旋转矩阵如式 $(2)$ 所示。可以看出两种方式旋转得到的结果是等价的。</p>
+<h3 id="旋转矩阵"><a href="#旋转矩阵" class="headerlink" title="旋转矩阵"></a>旋转矩阵</h3><p> $z -y-x$ 内旋规则的欧拉角对应的旋转矩阵如式 $(1)$ 所示，$x-y-z$ 外旋规则的欧拉角对应的旋转矩阵如式 $(2)$ 所示。可以看出两种方式旋转得到的结果是等价的。</p>
 <p><img src="https://pic1.imgdb.cn/item/677fbefdd0e0a243d4f2c9ad.png" alt="1"></p>
 <p>用 9 个量的旋转矩阵表示三维空间的旋转虽然避免了奇异性，但具有很大冗余性。三维旋转式一个三维流形，用 4 个量表示就能避免奇异性，这就引出了四元数。</p>
-<h3 id="四元数">四元数</h3>
-<p>下面讨论的是 Hamilton 四元数，定义如式 $(3)$ 所示。<br>
-$$<br>
-\begin{align*}<br>
-\boldsymbol{q} &amp;= q_0+q_1\cdot i+q_2\cdot j+q_3\cdot k \<br>
-&amp;= [q_0,(q_1,q_2,q_3)]^T = [q_0,q_1,q_2,q_3]^T \tag{3}<br>
-\end{align*}<br>
-$$<br>
-其中，$i<sup>2=j</sup>2=k^2=-1,ij=k,ji=-k,jk=i,kj=-i,ki=j,ik=-j$ 。</p>
+<h3 id="四元数"><a href="#四元数" class="headerlink" title="四元数"></a>四元数</h3><p>下面讨论的是 Hamilton 四元数，定义如式 $(3)$ 所示。</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\boldsymbol{q} &= q_0+q_1\cdot i+q_2\cdot j+q_3\cdot k \\
+&= [q_0,(q_1,q_2,q_3)]^T = [q_0,q_1,q_2,q_3]^T \tag{3}
+\end{align*}</script><p>其中，$i^2=j^2=k^2=-1,ij=k,ji=-k,jk=i,kj=-i,ki=j,ik=-j$ 。</p>
 <p>模长为 1 的四元数都是单位四元数，实际应用上一般使用的四元数都是指单位四元数。利用式 $(4)$ 和 $(1)、(2)$ 可以得到对应的四元数。</p>
 <p><img src="https://pic1.imgdb.cn/item/677fcd40d0e0a243d4f2cc6f.png" alt="2"></p>
 <p>这样就可以得到欧拉角、旋转矩阵、四元数的相互转换方法。三者的比较可以参考下表。</p>
 <p><img src="https://pic1.imgdb.cn/item/677fca9ad0e0a243d4f2cbd3.jpg" alt="欧拉角、旋转矩阵、四元数比较"></p>
-<h3 id="转移矩阵">转移矩阵</h3>
-<p>上面讨论了表示旋转的方法，再加上表示平移的方法，就能描述物体在三维空间的转移关系了。</p>
+<h3 id="转移矩阵"><a href="#转移矩阵" class="headerlink" title="转移矩阵"></a>转移矩阵</h3><p>上面讨论了表示旋转的方法，再加上表示平移的方法，就能描述物体在三维空间的转移关系了。</p>
 <p>假设有一个点 $P$，该点在相机坐标系 $o_{camera}$ 中的坐标为 $P_c=[x_c,y_c,z_c]^T$ ，现在让该点随相机坐标系一起进行旋转和平移运动，旋转矩阵用 $R$ 描述，平移用 $t=[t_x,t_y,t_z]^T$ 描述，那此时该点在世界坐标系 $o_{world}$ 中的坐标 $P_w=[x_w,y_w,z_w]^T$ 可表示为式 $(5)$ 。</p>
 <p><img src="https://pic1.imgdb.cn/item/677fce3bd0e0a243d4f2ccad.png" alt="3"></p>
 <p>可以设</p>
 <p><img src="https://pic1.imgdb.cn/item/677fd140d0e0a243d4f2cd0e.png" alt="4"></p>
 <p>那么式 $(5)$ 可以写成齐次坐标形式，如式 $(6)$ 所示，$T$ 也称为转移矩阵。利用式 $(6)$ ，已知点 $P$ 在两个不同坐标系下的坐标为 $P_c$ 和 $P_w$，则很容易求出两个坐标系间的转移关系 $T$。同理，知道转移矩阵也很容易实现两个不同坐标系下的坐标转换。</p>
 <p><img src="https://pic1.imgdb.cn/item/677fd266d0e0a243d4f2cd4a.png" alt="5"></p>
-<h3 id="李群、李代数">李群、李代数</h3>
-<p>旋转矩阵内的各元素取值受到内在约束，即旋转矩阵为正交且旋转矩阵行列式为1。在采用优化方法进行 SLAM 位姿估计时，这种内在约束让优化求解变得很困难。因此这里引入李群、李代数概念，通过李群-李代数的转换可以去除这种内在约束，简化优化求解过程。李群李代数具体讨论可浏览此文章：<a target="_blank" rel="noopener" href="https://hins-h.github.io/2025/12/10/%E6%9D%8E%E7%BE%A4%E3%80%81%E6%9D%8E%E4%BB%A3%E6%95%B0/">李群、李代数</a></p>
-<h2 id="多视图几何">多视图几何</h2>
-<p>有了用转移矩阵 $T$ 描述相机运动的知识，可以详细讨论多视图几何模型了。按照模型的已知条件不同，可以分为 2D-2D、3D-2D、3D-3D 三种情况。</p>
-<h3 id="2D-2D-模型">2D-2D 模型</h3>
-<p>如果不同视角拍摄到的两帧图像为已知量，就可以利用这两帧图像的匹配点对来求解地图点及相机位姿这些未知量。这个模型中，给定的已知条件是从一张 2D 图像到另一张 2D 图像的匹配信息，所以称为 2D-2D 模型。例如在单目 SLAM 初始化新地图点时就会用到这种模型。</p>
+<h3 id="李群、李代数"><a href="#李群、李代数" class="headerlink" title="李群、李代数"></a>李群、李代数</h3><p>旋转矩阵内的各元素取值受到内在约束，即旋转矩阵为正交且旋转矩阵行列式为1。在采用优化方法进行 SLAM 位姿估计时，这种内在约束让优化求解变得很困难。因此这里引入李群、李代数概念，通过李群-李代数的转换可以去除这种内在约束，简化优化求解过程。李群李代数具体讨论可浏览此文章：<a target="_blank" rel="noopener" href="https://hins-h.github.io/2025/12/10/李群、李代数/">李群、李代数</a></p>
+<h2 id="多视图几何"><a href="#多视图几何" class="headerlink" title="多视图几何"></a>多视图几何</h2><p>有了用转移矩阵 $T$ 描述相机运动的知识，可以详细讨论多视图几何模型了。按照模型的已知条件不同，可以分为 2D-2D、3D-2D、3D-3D 三种情况。</p>
+<h3 id="2D-2D-模型"><a href="#2D-2D-模型" class="headerlink" title="2D-2D 模型"></a>2D-2D 模型</h3><p>如果不同视角拍摄到的两帧图像为已知量，就可以利用这两帧图像的匹配点对来求解地图点及相机位姿这些未知量。这个模型中，给定的已知条件是从一张 2D 图像到另一张 2D 图像的匹配信息，所以称为 2D-2D 模型。例如在单目 SLAM 初始化新地图点时就会用到这种模型。</p>
 <p>如下图，假设环境中有一个点 $P$，相机在光心为 $O_1$ 和 $O_2$ 处观测点 $P$ 得到图像点 $p_1$ 和 $p_2$ ，相机从 $O_1$ 经旋转平移运动到 $O_2$，该运动过程可以用转移矩阵 $T$ 表示。</p>
-<img src="https://pic1.imgdb.cn/item/6780e3c9d0e0a243d4f30988.jpg" style="zoom:33%;" />
-<p>这里假设相机使用无畸变内参模型。假设环境点 $P$ 在相机 $O_1$ 和 $O_2$ 坐标系下的坐标为 $P_{O_1}$ 和 $P_{O_2}$，对应像素点 $p_1、p_2$ 的坐标由式 $(7)、(8)$ 得到。式中 $z_1$ 和 $z_2$ 参数是像素点 $p_1、p_2$ 的深度，也叫尺度因子（无约束）。<br>
-$$<br>
-p_1=\frac{1}{z_1}K \cdot P_{O_1} \tag{7}<br>
-$$</p>
-<p>$$<br>
-p_2=\frac{1}{z_2}K \cdot P_{O_2} \tag{8}<br>
-$$</p>
-<p>而 $P_{O_1}$ 和 $P_{O_2}$ 很容易由转移关系进行转换，如式 $(9)$。<br>
-$$<br>
-P_{O_2} = R \cdot P_{O_1} + t \tag{9}<br>
-$$<br>
-联立式 $(7)\sim(9)$ ，推导过程如式 $(10)$ 所示。由于 $z_1$ 和 $z_2$ 是无约束的，推导过程中可以直接消掉。<br>
-$$<br>
-\begin{align*}<br>
-&amp; z_{2} \boldsymbol{K}^{-1} \boldsymbol{p}<em>{2} = \boldsymbol{R} \cdot (z</em>{1} \boldsymbol{K}^{-1} \boldsymbol{p}<em>{1}) + \boldsymbol{t}<br>
-\<br>
-&amp; \Updownarrow \text{左叉乘} \boldsymbol{t},\boldsymbol{t} \times \boldsymbol{t}=0<br>
-\<br>
-&amp; \boldsymbol{t} \times z</em>{2} \boldsymbol{K}^{-1} \boldsymbol{p}<em>{2} = \boldsymbol{t} \times \boldsymbol{R} \cdot (z</em>{1} \boldsymbol{K}^{-1} \boldsymbol{p}<em>{1})<br>
-\<br>
-&amp; \Updownarrow \text{左乘} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{2})^T,  (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^T \cdot (\boldsymbol{t} \times z</em>{2} \boldsymbol{K}^{-1} \boldsymbol{p}<em>{2}) = 0 \tag{10}<br>
-\<br>
-&amp; 0 = z</em>{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^T \boldsymbol{t} \times \boldsymbol{R} \boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}<br>
-\<br>
-&amp; = \boldsymbol{p}<em>{2}^T \boldsymbol{K}^{-T} \underbrace{\boldsymbol{t}^{\wedge} \boldsymbol{R}}</em>{\boldsymbol{E}} \boldsymbol{K}^{-1} \boldsymbol{p}<em>{1}<br>
-\<br>
-&amp; = \boldsymbol{p}</em>{2}^T  \underbrace{\boldsymbol{K}^{-T}\boldsymbol{E} \boldsymbol{K}^{-1}}<em>{\boldsymbol{F}} \boldsymbol{p}</em>{1}<br>
-\<br>
-&amp; = \boldsymbol{p}<em>{2}^T\boldsymbol{F} \boldsymbol{p}</em>{1}<br>
-\end{align*}<br>
-$$</p>
-<p>（1）本质矩阵 $\boldsymbol{E}$ 和基础矩阵 $\boldsymbol{F}$</p>
-<p>上面情况的对极几何关系可以用公式 $0= \boldsymbol{p}<em>{2}^T \boldsymbol{K}^{-T}\boldsymbol{E} \boldsymbol{K}^{-1} \boldsymbol{p}</em>{1} = \boldsymbol{p}<em>{2}^T\boldsymbol{F} \boldsymbol{p}</em>{1}$ 描述，这个公式也叫对极约束。式中定义本质矩阵 $\boldsymbol{E}=\boldsymbol{t}^{\wedge} \boldsymbol{R}$ ，基础矩阵 $\boldsymbol{F}=\boldsymbol{K}^{-T}\boldsymbol{E} \boldsymbol{K}^{-1}$ 。由于本质矩阵和基础矩阵只相差相机内参，所以两者在研究中其实是等价的，实际应用中通常使用更简洁的本质矩阵。</p>
+<p><img src="https://pic1.imgdb.cn/item/6780e3c9d0e0a243d4f30988.jpg" style="zoom:33%;" /></p>
+<p>这里假设相机使用无畸变内参模型。假设环境点 $P$ 在相机 $O_1$ 和 $O_2$ 坐标系下的坐标为 $P_{O_1}$ 和 $P_{O_2}$，对应像素点 $p_1、p_2$ 的坐标由式 $(7)、(8)$ 得到。式中 $z_1$ 和 $z_2$ 参数是像素点 $p_1、p_2$ 的深度，也叫尺度因子（无约束）。</p>
+<script type="math/tex; mode=display">
+p_1=\frac{1}{z_1}K \cdot P_{O_1} \tag{7}</script><script type="math/tex; mode=display">
+p_2=\frac{1}{z_2}K \cdot P_{O_2} \tag{8}</script><p>而 $P_{O_1}$ 和 $P_{O_2}$ 很容易由转移关系进行转换，如式 $(9)$。</p>
+<script type="math/tex; mode=display">
+P_{O_2} = R \cdot P_{O_1} + t \tag{9}</script><p>联立式 $(7)\sim(9)$ ，推导过程如式 $(10)$ 所示。由于 $z_1$ 和 $z_2$ 是无约束的，推导过程中可以直接消掉。</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+& z_{2} \boldsymbol{K}^{-1} \boldsymbol{p}_{2} = \boldsymbol{R} \cdot (z_{1} \boldsymbol{K}^{-1} \boldsymbol{p}_{1}) + \boldsymbol{t}
+\\
+& \Updownarrow \text{左叉乘} \boldsymbol{t},\boldsymbol{t} \times \boldsymbol{t}=0
+\\
+& \boldsymbol{t} \times z_{2} \boldsymbol{K}^{-1} \boldsymbol{p}_{2} = \boldsymbol{t} \times \boldsymbol{R} \cdot (z_{1} \boldsymbol{K}^{-1} \boldsymbol{p}_{1})
+\\
+& \Updownarrow \text{左乘} (\boldsymbol{K}^{-1} \boldsymbol{p}_{2})^T,  (\boldsymbol{K}^{-1} \boldsymbol{p}_{2})^T \cdot (\boldsymbol{t} \times z_{2} \boldsymbol{K}^{-1} \boldsymbol{p}_{2}) = 0 \tag{10}
+\\
+& 0 = z_{1} (\boldsymbol{K}^{-1} \boldsymbol{p}_{2})^T \boldsymbol{t} \times \boldsymbol{R} \boldsymbol{K}^{-1} \boldsymbol{p}_{1}
+\\
+& = \boldsymbol{p}_{2}^T \boldsymbol{K}^{-T} \underbrace{\boldsymbol{t}^{\wedge} \boldsymbol{R}}_{\boldsymbol{E}} \boldsymbol{K}^{-1} \boldsymbol{p}_{1}
+\\
+& = \boldsymbol{p}_{2}^T  \underbrace{\boldsymbol{K}^{-T}\boldsymbol{E} \boldsymbol{K}^{-1}}_{\boldsymbol{F}} \boldsymbol{p}_{1}
+\\
+& = \boldsymbol{p}_{2}^T\boldsymbol{F} \boldsymbol{p}_{1}
+\end{align*}</script><p>（1）本质矩阵 $\boldsymbol{E}$ 和基础矩阵 $\boldsymbol{F}$</p>
+<p>上面情况的对极几何关系可以用公式 $0= \boldsymbol{p}_{2}^T \boldsymbol{K}^{-T}\boldsymbol{E} \boldsymbol{K}^{-1} \boldsymbol{p}_{1} = \boldsymbol{p}_{2}^T\boldsymbol{F} \boldsymbol{p}_{1}$ 描述，这个公式也叫对极约束。式中定义本质矩阵 $\boldsymbol{E}=\boldsymbol{t}^{\wedge} \boldsymbol{R}$ ，基础矩阵 $\boldsymbol{F}=\boldsymbol{K}^{-T}\boldsymbol{E} \boldsymbol{K}^{-1}$ 。由于本质矩阵和基础矩阵只相差相机内参，所以两者在研究中其实是等价的，实际应用中通常使用更简洁的本质矩阵。</p>
 <p>也就是图像中每个匹配点对都可以代入对极约束公式中构建出一个方程，如果有多对匹配点，就可以得到一个方程组，通过解方程组就可以求出本质矩阵。有研究表明，只需要 8 对匹配点就可以很好地解出本质矩阵（8 点法）。求出本质矩阵后，通过奇异值分解（SVD）方法，容易解算出相机位姿运动的 $\boldsymbol{R}$ 和 $\boldsymbol{t}$ 。整个过程如下图所示。</p>
 <p><img src="https://pic1.imgdb.cn/item/6780e3c9d0e0a243d4f30987.jpg" alt="相机位姿运动解算"></p>
 <p>（2）单应矩阵 $\boldsymbol{H}$</p>
 <p>当被观测的环境点都在同一个平面上，那么相应图像中的匹配点对就满足单应关系。这其实就是对极约束的一种特殊情况。单应关系由 $\boldsymbol{p}_2=\boldsymbol{H} \cdot \boldsymbol{p}_1$ 描述，$\boldsymbol{H}$ 就是单应矩阵。解算过程与本质矩阵一样。</p>
 <p>（3）三角化重建地图点</p>
-<p>所谓三角化，就是观测点 $P$ 和两个相机位置 $O_1、O_2$ 构成的三角形，在已知边 $O_1O_2$ 、底角 $\angle PO_1O_2$、$\angle PO_2O_1$ 时，利用三角形关系就可以求解出环境点 $P$ 的深度。联立式 $(7)\sim(9)$ 并做适当推导，就得到了关于点 $P$ 的深度 $z_1$ 的方程，推导过程如式 $(11)$ 所示。<br>
-$$<br>
-\begin{align*}<br>
-&amp; z_{2} \boldsymbol{K}^{-1} \boldsymbol{p}<em>{2} = \boldsymbol{R} \cdot (z</em>{1} \boldsymbol{K}^{-1} \boldsymbol{p}<em>{1}) + \boldsymbol{t}<br>
-\<br>
-&amp; \Updownarrow \text{左叉乘} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{2}),(\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2}) \times (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{2})=0 \tag{11}<br>
-\<br>
-&amp; 0 = z_{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2}) \times \boldsymbol{R} \cdot (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2}) \times t<br>
-\<br>
-&amp; 0 = z</em>{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} t<br>
-\end{align*}<br>
-$$<br>
-将 $p_1、p_2$ 和 $(R,t) $ 代入就可以求出 $z_1$ 了，这样就完成了对地图点 $P$ 的三角化重建了。理想情况下直接求解就可以得出 $z_1$ 了，但实际情况中 $p_1、p_2$ 的像素坐标携带测量噪声，解算出的 $(R,t) $ 也不一定完全准确，这就导致了 $0 \neq z</em>{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} t$，而是约等于0。那么构建最小二乘问题 $\text{arg } \underset{z_1}{\text{min}} || z</em>{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}_{2})^{\wedge} t ||^2$，很容易求出 $z_1$。</p>
+<p>所谓三角化，就是观测点 $P$ 和两个相机位置 $O_1、O_2$ 构成的三角形，在已知边 $O_1O_2$ 、底角 $\angle PO_1O_2$、$\angle PO_2O_1$ 时，利用三角形关系就可以求解出环境点 $P$ 的深度。联立式 $(7)\sim(9)$ 并做适当推导，就得到了关于点 $P$ 的深度 $z_1$ 的方程，推导过程如式 $(11)$ 所示。</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+& z_{2} \boldsymbol{K}^{-1} \boldsymbol{p}_{2} = \boldsymbol{R} \cdot (z_{1} \boldsymbol{K}^{-1} \boldsymbol{p}_{1}) + \boldsymbol{t}
+\\
+& \Updownarrow \text{左叉乘} (\boldsymbol{K}^{-1} \boldsymbol{p}_{2}),(\boldsymbol{K}^{-1} \boldsymbol{p}_{2}) \times (\boldsymbol{K}^{-1} \boldsymbol{p}_{2})=0 \tag{11}
+\\
+& 0 = z_{1} (\boldsymbol{K}^{-1} \boldsymbol{p}_{2}) \times \boldsymbol{R} \cdot (\boldsymbol{K}^{-1} \boldsymbol{p}_{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}_{2}) \times t
+\\
+& 0 = z_{1} (\boldsymbol{K}^{-1} \boldsymbol{p}_{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}_{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}_{2})^{\wedge} t
+\end{align*}</script><p>将 $p_1、p_2$ 和 $(R,t) $ 代入就可以求出 $z_1$ 了，这样就完成了对地图点 $P$ 的三角化重建了。理想情况下直接求解就可以得出 $z_1$ 了，但实际情况中 $p_1、p_2$ 的像素坐标携带测量噪声，解算出的 $(R,t) $ 也不一定完全准确，这就导致了 $0 \neq z_{1} (\boldsymbol{K}^{-1} \boldsymbol{p}_{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}_{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}_{2})^{\wedge} t$，而是约等于0。那么构建最小二乘问题 $\text{arg } \underset{z_1}{\text{min}} || z_{1} (\boldsymbol{K}^{-1} \boldsymbol{p}_{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}_{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}_{2})^{\wedge} t ||^2$，很容易求出 $z_1$。</p>
 <p>（4）对地图点和相机位姿做 BA 优化</p>
-<p>理论上，通过本质矩阵和单应矩阵解出 $(R,t) $ ，再进行三角化重建地图点 $P$，模型解析就完成了。但实际情况是求解出的 $(R,t) $ 和地图点 $P$ 都存在误差，误差有测量噪声、计算误差、匹配误差等因素引入。</p>
-<p>那么，可以将解算出的地图点和相机位姿放入 BA 做优化，通过优化尽量减少误差。这里需要用到重投影误差 $e_i$，定义如式 $(12)$ 所示考虑所有地图点，通过最小化重投影误差的方式构建目标方式，描述如式 $(13)$ 所示。<br>
-$$<br>
-\boldsymbol{e}_i=\boldsymbol{p}<em>2^i-\frac{1}{z_2} \boldsymbol{K} \cdot \boldsymbol{T} \cdot \boldsymbol{P}</em>{O_1}^i \tag{12}<br>
-$$</p>
-<p>$$<br>
-\boldsymbol{T},\boldsymbol{P}<em>{O_1} = \text{arg } \underset{T,P</em>{O_1}}{min} \sum_i||e_i||^2 \tag{13}<br>
-$$</p>
-<h3 id="3D-2D-模型">3D-2D 模型</h3>
-<p>如果已经得到一些地图点，并且当前帧图像中的特征点通过某种途径可以与地图中的已知点建立关联，根据这个模型可以求出相机位姿。这个模型中，给定的已知条件是从 3D 地图点到 2D 图像特征点的关联信息，所以称为 3D-2D 模型。比如，单目 SLAM 初始化完成后就可以得到一些已知地图点，或者双目/RGB-D 能直接给出 3D 环境观测点。这些情况下，当前帧图像对应的相机位姿解算就可以使用这个模型。</p>
+<p> 理论上，通过本质矩阵和单应矩阵解出 $(R,t) $ ，再进行三角化重建地图点 $P$，模型解析就完成了。但实际情况是求解出的 $(R,t) $ 和地图点 $P$ 都存在误差，误差有测量噪声、计算误差、匹配误差等因素引入。</p>
+<p>那么，可以将解算出的地图点和相机位姿放入 BA 做优化，通过优化尽量减少误差。这里需要用到重投影误差 $e_i$，定义如式 $(12)$ 所示考虑所有地图点，通过最小化重投影误差的方式构建目标方式，描述如式 $(13)$ 所示。</p>
+<script type="math/tex; mode=display">
+\boldsymbol{e}_i=\boldsymbol{p}_2^i-\frac{1}{z_2} \boldsymbol{K} \cdot \boldsymbol{T} \cdot \boldsymbol{P}_{O_1}^i \tag{12}</script><script type="math/tex; mode=display">
+\boldsymbol{T},\boldsymbol{P}_{O_1} = \text{arg } \underset{T,P_{O_1}}{min} \sum_i||e_i||^2 \tag{13}</script><h3 id="3D-2D-模型"><a href="#3D-2D-模型" class="headerlink" title="3D-2D 模型"></a>3D-2D 模型</h3><p>如果已经得到一些地图点，并且当前帧图像中的特征点通过某种途径可以与地图中的已知点建立关联，根据这个模型可以求出相机位姿。这个模型中，给定的已知条件是从 3D 地图点到 2D 图像特征点的关联信息，所以称为 3D-2D 模型。比如，单目 SLAM 初始化完成后就可以得到一些已知地图点，或者双目/RGB-D 能直接给出 3D 环境观测点。这些情况下，当前帧图像对应的相机位姿解算就可以使用这个模型。</p>
 <p>如下图，现在假设已知构建出很多地图点，此时相机从 $O_{k-1}$ 运动到 $O_K$，相机当前帧提取出很多特征点，其中 $p_j、p_{j+1}$ 特征点与上一帧图像中的特征点能匹配上，而上一帧图像的特征点已经知道和哪些地图点对应，也就是说当前帧图像 2D 特征点与 3D 地图点相关联。进一步根据这些信息可以求出相机运动 $(R,t)$ 。</p>
-<img src="https://pic1.imgdb.cn/item/67811b60d0e0a243d4f31c36.jpg" alt="3D-2D模型" style="zoom:50%;" />
+<p><img src="https://pic1.imgdb.cn/item/67811b60d0e0a243d4f31c36.jpg" alt="3D-2D模型" style="zoom:50%;" /></p>
 <p>可以发现，上图中最典型的关系就是多组一一对应的 3D 地图点和 2D 特征点。为了讨论方便，将每对点记为 ${P_i,p_i}$ ，因此这个问题也被称为 PnP（Perspective-n-Point，n点透视）问题。求解 PnP 问题的方法有很多，比如 DLT、P3P、EPnP、BA优化等。</p>
-<h4 id="DLT">DLT</h4>
-<p>DLT（Direct Linear Transform）顾名思义就是直接解线性方程的方法来求解 PnP 问题。</p>
-<p>现在假设 $O_{k-1}$ 坐标系下地图坐标点 $P_i=[x_i,y_i,z_i,1]^T$，$O_k$ 中的像素点 $p_i=[u_i,v_i,1]^T$ 与 $P_i$ 对应，那两者的投影关系如式 $(14)$ 所示。<br>
-$$<br>
-z_ip_i=K[R|t]P_i \tag{14}<br>
-$$<br>
-可以分情况来求解上面式子，一种情况是在相机内参 $K$ 未知时，DLT算法可以同时将相机内参 $K$ 和外参 $[R|t]$ 都求出来，也就是这个算法实现了相机内参自标定过程；另一种情况是 $K$ 已知，只求 $[R|t]$ ，下面讨论算法具体步骤。先将式 $(14)$ 展开成方程组，如式 $(15)$ 所示。</p>
+<h4 id="DLT"><a href="#DLT" class="headerlink" title="DLT"></a>DLT</h4><p>DLT（Direct Linear Transform）顾名思义就是直接解线性方程的方法来求解 PnP 问题。</p>
+<p>现在假设 $O_{k-1}$ 坐标系下地图坐标点 $P_i=[x_i,y_i,z_i,1]^T$，$O_k$ 中的像素点 $p_i=[u_i,v_i,1]^T$ 与 $P_i$ 对应，那两者的投影关系如式 $(14)$ 所示。</p>
+<script type="math/tex; mode=display">
+z_ip_i=K[R|t]P_i \tag{14}</script><p>可以分情况来求解上面式子，一种情况是在相机内参 $K$ 未知时，DLT算法可以同时将相机内参 $K$ 和外参 $[R|t]$ 都求出来，也就是这个算法实现了相机内参自标定过程；另一种情况是 $K$ 已知，只求 $[R|t]$ ，下面讨论算法具体步骤。先将式 $(14)$ 展开成方程组，如式 $(15)$ 所示。</p>
 <p><img src="https://pic1.imgdb.cn/item/67812797d0e0a243d4f31fbc.png" alt="1"></p>
-<p>也就是说，一对投影点可以构造出一个线性方程，那么 n 对就可以构造出 $ \boldsymbol{A}<em>{2n\times 12}\cdot \boldsymbol{m}</em>{12\times 1}=\boldsymbol{0} $ ，方程中的向量 $\boldsymbol{m}<em>{12\times 1}$ 是由投影矩阵 $Pr=K[R|t]$ 中的元素顺序排列构造，系数矩阵 $\boldsymbol{A}</em>{2n\times 12}$ 由 n 对投影点构造。理想情况下，只需求解线性方程得出 $\boldsymbol{m}$ ，然后用 $\boldsymbol{m}$ 构造出投影矩阵 $Pr$ ，分解投影矩阵就能得到内参和外参。实际情况中国，噪声和误差等因素会导致线性方程不严格等于0，那么可以构建最小二乘问题来解方程，如式 $(16) $ 所示。<br>
-$$<br>
-\begin{align*}<br>
-\boldsymbol{m} &amp;=\text{arg } \underset{\boldsymbol{m}}{min}||\boldsymbol{A}\cdot \boldsymbol{m}||^2<br>
-\<br>
-&amp;=\text{arg } \underset{\boldsymbol{m}}{min}(\boldsymbol{m}^T\cdot \boldsymbol{A}^T\cdot \boldsymbol{A} \cdot \boldsymbol{m})<br>
-\<br>
-&amp; \text{令}|\boldsymbol{m}|=1,SVD(A)=\boldsymbol{U}\boldsymbol{S}\boldsymbol{V}<sup>T=\sum_{i=1}</sup>{12}s_iu_iv_i^T<br>
-\<br>
-&amp;=\text{arg } \underset{\boldsymbol{m}}{min}(\boldsymbol{m}^T\cdot \boldsymbol{V}\boldsymbol{S}\boldsymbol{U}^T\cdot \boldsymbol{U}\boldsymbol{S}\boldsymbol{V}^T \cdot \boldsymbol{m}) \tag{16}<br>
-\<br>
-&amp;=\text{arg } \underset{\boldsymbol{m}}{min}(\boldsymbol{m}^T\cdot \boldsymbol{V}\boldsymbol{S}<sup>2\boldsymbol{V}</sup>T \cdot \boldsymbol{m})<br>
-\<br>
-&amp;=\text{arg } \underset{\boldsymbol{m}}{min}(\boldsymbol{m}^T\cdot \sum_{i=1}<sup>{12}s_i</sup>2v_iv_i^T \cdot \boldsymbol{m})<br>
-\end{align*}<br>
-$$<br>
-系数矩阵 $A$ 通过 SVD 分解，如果取待求向量 $m$ 为正交矩阵 $V$ 的某个列向量，那么选择最小奇异值 $s_{12}$ 对应的特征向量 $v_{12}$ 为待求向量 $m$ 的取值，就可以使上式取最小值。这样 $m$ 能求出来，投影矩阵也就求出来了。那么分解投影矩阵为  $[B,b]$，并根据 $Pr$ 内部结构很容易求出内参和外参，如果内参已知，求外参就更容易了，如式 $(17)$ 所示。<br>
-$$<br>
-Pr=K[R|t]=KR[I|-t]=[KR|-KRt]=[B,b] \tag{17}<br>
-$$</p>
-<h4 id="P3P">P3P</h4>
-<p>另一种求解 PnP 问题的方法是 P3P 算法。P3P 算法的思路是通过不共线的 3 个 3D 地图点 $P_1、P_2、P_3$ 和 3 个 2D 像素点 $p_1、p_2、p_3$ 以及相机光心 $O$ 构成的三角形关系，求解 $(R,t)$ 。如下图，给定的地图点  $P_1、P_2、P_3$ 是前一帧相机坐标系下的坐标值，所给定的像素点 $p_1、p_2、p_3$，是当前帧相机坐标系下的坐标值。虽然 $P_1、P_2、P_3$ 坐标值不能直接在当前帧相机坐标系下使用，但从中可以得到三角形的边长 $P_1P_2、P_1P_3、P_2P_3$ 。而同样可以确定三角形 $p_1p_2p_3$  的边长 $p_1p_2、p_1p_3、p_2p_3$ 以及对应的三个夹角。基于上面数据可以求出 $OP_1、OP_2、OP_3$ 的长度，再结合夹角就可以求出 $P_1、P_2、P_3$ 在当前帧相机坐标系下的坐标值。利用 $P_1、P_2、P_3$ 在当前帧和上一帧的坐标值，通过 ICP 算法（后面 3D-3D 模型中会介绍）很容易求出 $(R,t)$ 。</p>
-<img src="https://pic1.imgdb.cn/item/67826953d0e0a243d4f36cd2.jpg" style="zoom: 33%;" />
-<h4 id="EPnP">EPnP</h4>
-<p>相对于 DLT 和 P3P，EPnP 算法在求解 PnP 问题上表现更稳定、高效。EPnP 算法的关键在于从地图点钟选出的四个控制点 $c_1、c_2、c_3、c_4$ 以及一个对应的参考点 $p_i$，四个控制点和一个参考点通过加权和的方式关联，如下图。</p>
-<img src="https://pic1.imgdb.cn/item/67826953d0e0a243d4f36cd3.jpg" style="zoom: 33%;" />
-<p>可以从世界坐标系中选取 n 个已知地图点 $p_i$ 为参考点，而从世界坐标系中选取 4 个已知地图点 $c_j$ 为控制点。控制点只有 4 个，是选好就固定的，而参考点可以有很多个。每个参考点都通过加权参数与 4 个固定控制点基于加权和方式联系，如式 $(18)$。对于相机坐标系下 $p_i^c$ 和 $c_j^c$ 的关系，由于只是坐标系取值不同，各点之间的空间相对位置不变，所以加权和关系一样成立，如式 $(19)$。<br>
-$$<br>
-p_i<sup>w=\sum_{j=1}</sup>4 \alpha_{ij}c_j<sup>w，其中\sum_{j=1}</sup>4 \alpha_{ij}=1 \tag{18}<br>
-$$</p>
-<p>$$<br>
-p_i<sup>c=\sum_{j=1}</sup>4 \alpha_{ij}c_j<sup>c，其中\sum_{j=1}</sup>4 \alpha_{ij}=1 \tag{19}<br>
-$$</p>
-<p>那么在相机坐标系下，参考点 $p_i^c$ 与对应的像素点 $u_i$ 可以用投影方程描述，如式 $(20)$。式子化简过程与 DLT 类似，系数矩阵 $A_{2\times 12}$ 由参考点的加权系数、像素坐标和相机内参来构造，$h_{12\times 1}$ 由 4 个控制点在相机坐标系的 12 个坐标值构造。</p>
+<p>也就是说，一对投影点可以构造出一个线性方程，那么 n 对就可以构造出 $ \boldsymbol{A}_{2n\times 12}\cdot \boldsymbol{m}_{12\times 1}=\boldsymbol{0} $ ，方程中的向量 $\boldsymbol{m}_{12\times 1}$ 是由投影矩阵 $Pr=K[R|t]$ 中的元素顺序排列构造，系数矩阵 $\boldsymbol{A}_{2n\times 12}$ 由 n 对投影点构造。理想情况下，只需求解线性方程得出 $\boldsymbol{m}$ ，然后用 $\boldsymbol{m}$ 构造出投影矩阵 $Pr$ ，分解投影矩阵就能得到内参和外参。实际情况中国，噪声和误差等因素会导致线性方程不严格等于0，那么可以构建最小二乘问题来解方程，如式 $(16) $ 所示。</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\boldsymbol{m} &=\text{arg } \underset{\boldsymbol{m}}{min}||\boldsymbol{A}\cdot \boldsymbol{m}||^2
+\\
+&=\text{arg } \underset{\boldsymbol{m}}{min}(\boldsymbol{m}^T\cdot \boldsymbol{A}^T\cdot \boldsymbol{A} \cdot \boldsymbol{m})
+\\
+& \text{令}|\boldsymbol{m}|=1,SVD(A)=\boldsymbol{U}\boldsymbol{S}\boldsymbol{V}^T=\sum_{i=1}^{12}s_iu_iv_i^T
+\\
+&=\text{arg } \underset{\boldsymbol{m}}{min}(\boldsymbol{m}^T\cdot \boldsymbol{V}\boldsymbol{S}\boldsymbol{U}^T\cdot \boldsymbol{U}\boldsymbol{S}\boldsymbol{V}^T \cdot \boldsymbol{m}) \tag{16}
+\\
+&=\text{arg } \underset{\boldsymbol{m}}{min}(\boldsymbol{m}^T\cdot \boldsymbol{V}\boldsymbol{S}^2\boldsymbol{V}^T \cdot \boldsymbol{m})
+\\
+&=\text{arg } \underset{\boldsymbol{m}}{min}(\boldsymbol{m}^T\cdot \sum_{i=1}^{12}s_i^2v_iv_i^T \cdot \boldsymbol{m})
+\end{align*}</script><p>系数矩阵 $A$ 通过 SVD 分解，如果取待求向量 $m$ 为正交矩阵 $V$ 的某个列向量，那么选择最小奇异值 $s_{12}$ 对应的特征向量 $v_{12}$ 为待求向量 $m$ 的取值，就可以使上式取最小值。这样 $m$ 能求出来，投影矩阵也就求出来了。那么分解投影矩阵为  $[B,b]$，并根据 $Pr$ 内部结构很容易求出内参和外参，如果内参已知，求外参就更容易了，如式 $(17)$ 所示。</p>
+<script type="math/tex; mode=display">
+Pr=K[R|t]=KR[I|-t]=[KR|-KRt]=[B,b] \tag{17}</script><h4 id="P3P"><a href="#P3P" class="headerlink" title="P3P"></a>P3P</h4><p>另一种求解 PnP 问题的方法是 P3P 算法。P3P 算法的思路是通过不共线的 3 个 3D 地图点 $P_1、P_2、P_3$ 和 3 个 2D 像素点 $p_1、p_2、p_3$ 以及相机光心 $O$ 构成的三角形关系，求解 $(R,t)$ 。如下图，给定的地图点  $P_1、P_2、P_3$ 是前一帧相机坐标系下的坐标值，所给定的像素点 $p_1、p_2、p_3$，是当前帧相机坐标系下的坐标值。虽然 $P_1、P_2、P_3$ 坐标值不能直接在当前帧相机坐标系下使用，但从中可以得到三角形的边长 $P_1P_2、P_1P_3、P_2P_3$ 。而同样可以确定三角形 $p_1p_2p_3$  的边长 $p_1p_2、p_1p_3、p_2p_3$ 以及对应的三个夹角。基于上面数据可以求出 $OP_1、OP_2、OP_3$ 的长度，再结合夹角就可以求出 $P_1、P_2、P_3$ 在当前帧相机坐标系下的坐标值。利用 $P_1、P_2、P_3$ 在当前帧和上一帧的坐标值，通过 ICP 算法（后面 3D-3D 模型中会介绍）很容易求出 $(R,t)$ 。</p>
+<p><img src="https://pic1.imgdb.cn/item/67826953d0e0a243d4f36cd2.jpg" style="zoom: 33%;" /></p>
+<h4 id="EPnP"><a href="#EPnP" class="headerlink" title="EPnP"></a>EPnP</h4><p>相对于 DLT 和 P3P，EPnP 算法在求解 PnP 问题上表现更稳定、高效。EPnP 算法的关键在于从地图点钟选出的四个控制点 $c_1、c_2、c_3、c_4$ 以及一个对应的参考点 $p_i$，四个控制点和一个参考点通过加权和的方式关联，如下图。</p>
+<p><img src="https://pic1.imgdb.cn/item/67826953d0e0a243d4f36cd3.jpg" style="zoom: 33%;" /></p>
+<p>可以从世界坐标系中选取 n 个已知地图点 $p_i$ 为参考点，而从世界坐标系中选取 4 个已知地图点 $c_j$ 为控制点。控制点只有 4 个，是选好就固定的，而参考点可以有很多个。每个参考点都通过加权参数与 4 个固定控制点基于加权和方式联系，如式 $(18)$。对于相机坐标系下 $p_i^c$ 和 $c_j^c$ 的关系，由于只是坐标系取值不同，各点之间的空间相对位置不变，所以加权和关系一样成立，如式 $(19)$。</p>
+<script type="math/tex; mode=display">
+p_i^w=\sum_{j=1}^4 \alpha_{ij}c_j^w，其中\sum_{j=1}^4 \alpha_{ij}=1 \tag{18}</script><script type="math/tex; mode=display">
+p_i^c=\sum_{j=1}^4 \alpha_{ij}c_j^c，其中\sum_{j=1}^4 \alpha_{ij}=1 \tag{19}</script><p>那么在相机坐标系下，参考点 $p_i^c$ 与对应的像素点 $u_i$ 可以用投影方程描述，如式 $(20)$。式子化简过程与 DLT 类似，系数矩阵 $A_{2\times 12}$ 由参考点的加权系数、像素坐标和相机内参来构造，$h_{12\times 1}$ 由 4 个控制点在相机坐标系的 12 个坐标值构造。</p>
 <p><img src="https://pic1.imgdb.cn/item/6782b10ad0e0a243d4f37d2b.png" alt="6"></p>
 <p>对于上面的方程，和 DLT 算法的解法一样采用最小二乘和 SVD 等方法求解。解出上面方程，实际上是求出来 4 个控制点在相机坐标系的坐标值，结合 4 个点在世界坐标系下的坐标值，用 ICP 算法就可以找到控制点在两个坐标系间的变换关系，即 $(R,t)$。</p>
 <p>总结一下，EPnP 算法实际是利用了控制点与参考点的加权关系在世界坐标系和相机坐标系中不变的性质，通过构造参考点的投影方程，但方程又不直接求参考点的坐标，而是巧妙运用参考点与控制点的加权和关系间接求出来控制点的坐标。EPnP 算法也是结合了 DLT 和 P3P 中的很多思想。</p>
-<h3 id="3D-3D-模型">3D-3D 模型</h3>
-<p>如果前后两帧图像中都能获得地图点信息，直接根据这个模型就可以求出相机位姿。该模型中，给定已知条件是从 3D 地图点到 3D 地图点的关联信息。</p>
-<p>现在假设相机在 $O_{k-1}$ 处得到地图点 $P_1<sup>{k-1}、P_2</sup>{k-1}、P_3^{k-1}$，在 $O_{k}$ 处得到地图点 $P_1<sup>{k}、P_2</sup>{k}、P_3^{k}$ 。通过图像特征匹配等数据关联方式，已经知道对应的地图点。只要找出对应 3D 点的变换关系，就可以求出相机位姿。下面讨论 ICP 和 BA 优化。</p>
-<h4 id="ICP">ICP</h4>
-<p>ICP 算法用于求解两组点云之间的位姿变换，具体分为点云数据关联已知的解法和点云数据关联为止的解法。3D-3D 模型中的 ICP 属于点云数据关联已知的情况。</p>
-<p>假设给定了两组点云 $p={p_1,\dots,p_n}$ 和 $p<sup>{\prime}={p_1</sup>{\prime},\dots,p_n^{\prime}}$ ，并且点云中的每个点通过下标一一匹配。在考虑噪声的情况下，构建最小二乘问题，求解出 $(R,t)$，如式 $(21)$ 所示。<br>
-$$<br>
-\text{arg }\underset{R,t}{min}\sum_{i=1}^n ||p_i^{\prime}-(R\cdot p_i+t)||^2 \tag{21}<br>
-$$<br>
-可以将两个点云去质心后再构建最小二乘问题，如式 $(22)$ 所示。<br>
-$$<br>
-q_i=p_i-\bar{p}, \bar{p}=\frac{1}{n}\sum_{i=1}^np_i<br>
-\<br>
-q_i<sup>{\prime}=p_i</sup>{\prime}-\bar{p^{\prime}}, \bar{p<sup>{\prime}}=\frac{1}{n}\sum_{i=1}</sup>np_i^{\prime}<br>
-\<br>
-\text{arg }\underset{R,t}{min}\sum_{i=1}^n ||p_i^{\prime}-(R\cdot p_i+t)||^2=\text{arg }\underset{R,t}{min}\sum_{i=1}^n \bigg{\big|\big|q_i^{\prime}-R\cdot q_i\big|\big|<sup>2+\big|\big|\bar{p</sup>{\prime}}-R\cdot \bar{p}-t\big|\big|^2\bigg} \tag{22}<br>
-$$<br>
-首先将第一个加法项展开化简，然后利用 SVD 就能求出 $R$ ，如式 $(23)$ 所示。<br>
-$$<br>
-\text{arg }\underset{R,t}{min}\sum_{i=1}^n \big|\big|q_i^{\prime}-R\cdot q_i\big|\big|^2=<br>
-\text{arg }\underset{R,t}{min}\sum_{i=1}^n \big( q_i^{\prime T} q_i<sup>{\prime}-2q_i</sup>{\prime T}Rq_i+q_i<sup>TR</sup>TRq_i\big)<br>
-\<br>
-\Leftrightarrow<br>
-\text{arg }\underset{R,t}{min}\sum_{i=1}<sup>n-q_i</sup>{\prime}Rq_i=\text{arg }\underset{R,t}{min}\bigg( -tr(R\sum_{i=1}<sup>nq_i</sup>{\prime T}q_i) \bigg) \tag{23}<br>
-$$<br>
-令 $M=\sum\limits_{i=1}<sup>nq_i</sup>{\prime T}q_i$ ，利用 SVD 进行分解得到 $SVD(M)=USV^T$，从而求得 $R=UV^T$。然后将求出的 $R$ 代入第二个加法项，很容易得到 $t=p^{\prime T}-R\cdot p^{\prime}$。</p>
-<h4 id="BA-优化">BA 优化</h4>
-<p>另一种求解方法就是对式 $(21)$ 问题直接进行 BA 优化求解。BA 优化中，优化变量一般写成变换矩阵 $T$ 的形式，优化过程既可以对位姿 $T$ 进行优化，也可以同时对点云 $P$ 进行优化，如式 $(24)、(25)$  所示。<br>
-$$<br>
-T=\text{arg }\underset{T}{min}\sum_{i=1}^n \big|\big|p_i^{\prime}-T\cdot p_i\big|\big|^2 \tag{24}<br>
-$$</p>
-<p>$$<br>
-T,p=\text{arg }\underset{T,p}{min}\sum_{i=1}^n \big|\big|p_i^{\prime}-T\cdot p_i\big|\big|^2 \tag{25}<br>
-$$</p>
-<p>在 3D-3D 模型中，BA 优化过程对位姿 $T$ 的初值不敏感，鲁棒性较强。但由于其强依赖于点云 3D 坐标，因此计算出来的位姿精度会比 3D-2D 模型中的低。</p>
-</article><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/AE86.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="prev-post pull-left" href="/2024/12/10/ORB-SLAM2%20%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6/" title="ORB-SLAM2 系统框架"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">ORB-SLAM2 系统框架</div></div></a><a class="next-post pull-right" href="/2024/11/27/LOAM%20%E7%AE%97%E6%B3%95/" title="LOAM"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">LOAM</div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/AE86.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Hins</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Hins-H"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome to my blog!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">ORB-SLAM2 前置知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E7%82%B9%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">特征点法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="toc-number">1.1.1.</span> <span class="toc-text">特征提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%8C%B9%E9%85%8D"><span class="toc-number">1.1.2.</span> <span class="toc-text">特征匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E6%9E%84%E5%BB%BA"><span class="toc-number">1.1.3.</span> <span class="toc-text">模型构建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%BF%90%E5%8A%A8"><span class="toc-number">1.2.</span> <span class="toc-text">三维空间运动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A7%E6%8B%89%E8%A7%92"><span class="toc-number">1.2.1.</span> <span class="toc-text">欧拉角</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5"><span class="toc-number">1.2.2.</span> <span class="toc-text">旋转矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E5%85%83%E6%95%B0"><span class="toc-number">1.2.3.</span> <span class="toc-text">四元数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E7%A7%BB%E7%9F%A9%E9%98%B5"><span class="toc-number">1.2.4.</span> <span class="toc-text">转移矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%8E%E7%BE%A4%E3%80%81%E6%9D%8E%E4%BB%A3%E6%95%B0"><span class="toc-number">1.2.5.</span> <span class="toc-text">李群、李代数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E8%A7%86%E5%9B%BE%E5%87%A0%E4%BD%95"><span class="toc-number">1.3.</span> <span class="toc-text">多视图几何</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2D-2D-%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text">2D-2D 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3D-2D-%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.3.2.</span> <span class="toc-text">3D-2D 模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DLT"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">DLT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#P3P"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">P3P</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EPnP"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">EPnP</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3D-3D-%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.3.3.</span> <span class="toc-text">3D-3D 模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ICP"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">ICP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BA-%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">BA 优化</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/02/%E6%BF%80%E5%85%89%E5%B8%A7%E9%97%B4%E5%8C%B9%E9%85%8D/" title="激光的帧间匹配">激光的帧间匹配</a><time datetime="2025-01-02T04:19:26.000Z" title="发表于 2025-01-02 12:19:26">2025-01-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/20/%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE%E8%BF%90%E5%8A%A8%E7%95%B8%E5%8F%98%E5%8E%BB%E9%99%A4/" title="激光雷达运动畸变去除">激光雷达运动畸变去除</a><time datetime="2024-12-20T09:04:46.000Z" title="发表于 2024-12-20 17:04:46">2024-12-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/10/ORB-SLAM2%20%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6/" title="ORB-SLAM2 系统框架">ORB-SLAM2 系统框架</a><time datetime="2024-12-10T14:03:40.000Z" title="发表于 2024-12-10 22:03:40">2024-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/ORB-SLAM2%20%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/" title="ORB-SLAM2 前置知识">ORB-SLAM2 前置知识</a><time datetime="2024-12-09T08:11:02.000Z" title="发表于 2024-12-09 16:11:02">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/27/LOAM%20%E7%AE%97%E6%B3%95/" title="LOAM">LOAM</a><time datetime="2024-11-27T08:11:54.000Z" title="发表于 2024-11-27 16:11:54">2024-11-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+<h3 id="3D-3D-模型"><a href="#3D-3D-模型" class="headerlink" title="3D-3D 模型"></a>3D-3D 模型</h3><p>如果前后两帧图像中都能获得地图点信息，直接根据这个模型就可以求出相机位姿。该模型中，给定已知条件是从 3D 地图点到 3D 地图点的关联信息。</p>
+<p>现在假设相机在 $O_{k-1}$ 处得到地图点 $P_1^{k-1}、P_2^{k-1}、P_3^{k-1}$，在 $O_{k}$ 处得到地图点 $P_1^{k}、P_2^{k}、P_3^{k}$ 。通过图像特征匹配等数据关联方式，已经知道对应的地图点。只要找出对应 3D 点的变换关系，就可以求出相机位姿。下面讨论 ICP 和 BA 优化。</p>
+<h4 id="ICP"><a href="#ICP" class="headerlink" title="ICP"></a>ICP</h4><p>ICP 算法用于求解两组点云之间的位姿变换，具体分为点云数据关联已知的解法和点云数据关联为止的解法。3D-3D 模型中的 ICP 属于点云数据关联已知的情况。</p>
+<p>假设给定了两组点云 $p={p_1,\dots,p_n}$ 和 $p^{\prime}={p_1^{\prime},\dots,p_n^{\prime}}$ ，并且点云中的每个点通过下标一一匹配。在考虑噪声的情况下，构建最小二乘问题，求解出 $(R,t)$，如式 $(21)$ 所示。</p>
+<script type="math/tex; mode=display">
+\text{arg }\underset{R,t}{min}\sum_{i=1}^n ||p_i^{\prime}-(R\cdot p_i+t)||^2 \tag{21}</script><p>可以将两个点云去质心后再构建最小二乘问题，如式 $(22)$ 所示。</p>
+<script type="math/tex; mode=display">
+q_i=p_i-\bar{p}, \bar{p}=\frac{1}{n}\sum_{i=1}^np_i
+\\
+q_i^{\prime}=p_i^{\prime}-\bar{p^{\prime}}, \bar{p^{\prime}}=\frac{1}{n}\sum_{i=1}^np_i^{\prime}
+\\
+\text{arg }\underset{R,t}{min}\sum_{i=1}^n ||p_i^{\prime}-(R\cdot p_i+t)||^2=\text{arg }\underset{R,t}{min}\sum_{i=1}^n \bigg\{\big|\big|q_i^{\prime}-R\cdot q_i\big|\big|^2+\big|\big|\bar{p^{\prime}}-R\cdot \bar{p}-t\big|\big|^2\bigg\} \tag{22}</script><p>首先将第一个加法项展开化简，然后利用 SVD 就能求出 $R$ ，如式 $(23)$ 所示。</p>
+<script type="math/tex; mode=display">
+\text{arg }\underset{R,t}{min}\sum_{i=1}^n \big|\big|q_i^{\prime}-R\cdot q_i\big|\big|^2=
+\text{arg }\underset{R,t}{min}\sum_{i=1}^n \big( q_i^{\prime T} q_i^{\prime}-2q_i^{\prime T}Rq_i+q_i^TR^TRq_i\big)
+\\
+\Leftrightarrow
+\text{arg }\underset{R,t}{min}\sum_{i=1}^n-q_i^{\prime}Rq_i=\text{arg }\underset{R,t}{min}\bigg( -tr(R\sum_{i=1}^nq_i^{\prime T}q_i) \bigg) \tag{23}</script><p>令 $M=\sum\limits_{i=1}^nq_i^{\prime T}q_i$ ，利用 SVD 进行分解得到 $SVD(M)=USV^T$，从而求得 $R=UV^T$。然后将求出的 $R$ 代入第二个加法项，很容易得到 $t=p^{\prime T}-R\cdot p^{\prime}$。</p>
+<h4 id="BA-优化"><a href="#BA-优化" class="headerlink" title="BA 优化"></a>BA 优化</h4><p>另一种求解方法就是对式 $(21)$ 问题直接进行 BA 优化求解。BA 优化中，优化变量一般写成变换矩阵 $T$ 的形式，优化过程既可以对位姿 $T$ 进行优化，也可以同时对点云 $P$ 进行优化，如式 $(24)、(25)$  所示。</p>
+<script type="math/tex; mode=display">
+T=\text{arg }\underset{T}{min}\sum_{i=1}^n \big|\big|p_i^{\prime}-T\cdot p_i\big|\big|^2 \tag{24}</script><script type="math/tex; mode=display">
+T,p=\text{arg }\underset{T,p}{min}\sum_{i=1}^n \big|\big|p_i^{\prime}-T\cdot p_i\big|\big|^2 \tag{25}</script><p>在 3D-3D 模型中，BA 优化过程对位姿 $T$ 的初值不敏感，鲁棒性较强。但由于其强依赖于点云 3D 坐标，因此计算出来的位姿精度会比 3D-2D 模型中的低。</p>
+</article><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/AE86.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="prev-post pull-left" href="/2024/12/10/ORB-SLAM2%20%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6/" title="ORB-SLAM2 系统框架"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">ORB-SLAM2 系统框架</div></div></a><a class="next-post pull-right" href="/2024/11/27/LOAM%20%E7%AE%97%E6%B3%95/" title="LOAM"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">LOAM</div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/AE86.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Hins</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Hins-H"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome to my blog!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ORB-SLAM2-%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">ORB-SLAM2 前置知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E7%82%B9%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">特征点法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="toc-number">1.1.1.</span> <span class="toc-text">特征提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%8C%B9%E9%85%8D"><span class="toc-number">1.1.2.</span> <span class="toc-text">特征匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E6%9E%84%E5%BB%BA"><span class="toc-number">1.1.3.</span> <span class="toc-text">模型构建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%BF%90%E5%8A%A8"><span class="toc-number">1.2.</span> <span class="toc-text">三维空间运动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A7%E6%8B%89%E8%A7%92"><span class="toc-number">1.2.1.</span> <span class="toc-text">欧拉角</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5"><span class="toc-number">1.2.2.</span> <span class="toc-text">旋转矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E5%85%83%E6%95%B0"><span class="toc-number">1.2.3.</span> <span class="toc-text">四元数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E7%A7%BB%E7%9F%A9%E9%98%B5"><span class="toc-number">1.2.4.</span> <span class="toc-text">转移矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%8E%E7%BE%A4%E3%80%81%E6%9D%8E%E4%BB%A3%E6%95%B0"><span class="toc-number">1.2.5.</span> <span class="toc-text">李群、李代数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E8%A7%86%E5%9B%BE%E5%87%A0%E4%BD%95"><span class="toc-number">1.3.</span> <span class="toc-text">多视图几何</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2D-2D-%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text">2D-2D 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3D-2D-%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.3.2.</span> <span class="toc-text">3D-2D 模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DLT"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">DLT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#P3P"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">P3P</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EPnP"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">EPnP</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3D-3D-%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.3.3.</span> <span class="toc-text">3D-3D 模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ICP"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">ICP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BA-%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">BA 优化</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/02/%E6%BF%80%E5%85%89%E5%B8%A7%E9%97%B4%E5%8C%B9%E9%85%8D/" title="激光的帧间匹配">激光的帧间匹配</a><time datetime="2025-01-02T04:19:26.000Z" title="发表于 2025-01-02 12:19:26">2025-01-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/20/%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE%E8%BF%90%E5%8A%A8%E7%95%B8%E5%8F%98%E5%8E%BB%E9%99%A4/" title="激光雷达运动畸变去除">激光雷达运动畸变去除</a><time datetime="2024-12-20T09:04:46.000Z" title="发表于 2024-12-20 17:04:46">2024-12-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/10/ORB-SLAM2%20%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6/" title="ORB-SLAM2 系统框架">ORB-SLAM2 系统框架</a><time datetime="2024-12-10T14:03:40.000Z" title="发表于 2024-12-10 22:03:40">2024-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/ORB-SLAM2%20%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/" title="ORB-SLAM2 前置知识">ORB-SLAM2 前置知识</a><time datetime="2024-12-09T08:11:02.000Z" title="发表于 2024-12-09 16:11:02">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/27/LOAM%20%E7%AE%97%E6%B3%95/" title="LOAM">LOAM</a><time datetime="2024-11-27T08:11:54.000Z" title="发表于 2024-11-27 16:11:54">2024-11-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {
     if (!window.MathJax) {
       window.MathJax = {
