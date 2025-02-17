@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>激光的帧间匹配 | Racing</title><meta name="author" content="Hins"><meta name="copyright" content="Hins"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="激光的帧间匹配ICP具体数学描述和求解方法请看 。这里主要添加求解方法的证明。  \begin{align} E(R,t)&amp;&#x3D;\frac{1}{N_p}\sum_{i&#x3D;1}^{N_p}||x_i-Rp_i-t||^2\\ &amp;&#x3D;\frac{1}{N_p}\sum_{i&#x3D;1}^{N_p}||x_i-Rp_i-t-u_x+Ru_p+u_x-Ru_p||^2\\ &amp;&#x3D;\frac{1}{N_p}\sum_{">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>激光的帧间匹配 | Racing</title><meta name="author" content="Hins"><meta name="copyright" content="Hins"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="激光的帧间匹配 ICP 具体数学描述和求解方法请看 。这里主要添加求解方法的证明。 $$ \begin{align} E(R,t)&amp;&#x3D;\frac{1}{N_p}\sum_{i&#x3D;1}{N_p}||x_i-Rp_i-t||2\ &amp;&#x3D;\frac{1}{N_p}\sum_{i&#x3D;1}{N_p}||x_i-Rp_i-t-u_x+Ru_p+u_x-Ru_p||2\ &amp;&#x3D;\frac{1}{">
 <meta property="og:type" content="article">
 <meta property="og:title" content="激光的帧间匹配">
 <meta property="og:url" content="http://example.com/2025/01/02/%E6%BF%80%E5%85%89%E5%B8%A7%E9%97%B4%E5%8C%B9%E9%85%8D/index.html">
 <meta property="og:site_name" content="Racing">
-<meta property="og:description" content="激光的帧间匹配ICP具体数学描述和求解方法请看 。这里主要添加求解方法的证明。  \begin{align} E(R,t)&amp;&#x3D;\frac{1}{N_p}\sum_{i&#x3D;1}^{N_p}||x_i-Rp_i-t||^2\\ &amp;&#x3D;\frac{1}{N_p}\sum_{i&#x3D;1}^{N_p}||x_i-Rp_i-t-u_x+Ru_p+u_x-Ru_p||^2\\ &amp;&#x3D;\frac{1}{N_p}\sum_{">
+<meta property="og:description" content="激光的帧间匹配 ICP 具体数学描述和求解方法请看 。这里主要添加求解方法的证明。 $$ \begin{align} E(R,t)&amp;&#x3D;\frac{1}{N_p}\sum_{i&#x3D;1}{N_p}||x_i-Rp_i-t||2\ &amp;&#x3D;\frac{1}{N_p}\sum_{i&#x3D;1}{N_p}||x_i-Rp_i-t-u_x+Ru_p+u_x-Ru_p||2\ &amp;&#x3D;\frac{1}{">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/AE86.jpg">
 <meta property="article:published_time" content="2025-01-02T04:19:26.000Z">
-<meta property="article:modified_time" content="2025-02-17T08:44:40.505Z">
+<meta property="article:modified_time" content="2025-02-17T08:52:01.468Z">
 <meta property="article:author" content="Hins">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/img/AE86.jpg"><link rel="shortcut icon" href="/img/R.jpg"><link rel="canonical" href="http://example.com/2025/01/02/%E6%BF%80%E5%85%89%E5%B8%A7%E9%97%B4%E5%8C%B9%E9%85%8D/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
@@ -146,7 +146,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2025-02-17 16:44:40'
+  postUpdate: '2025-02-17 16:52:01'
 }</script><link rel="stylesheet" href="/css/transpancy.css"><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
@@ -172,149 +172,250 @@
     btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
     btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
   }
-})()</script><div id="web_bg" style="background-image: url(/img/AE86.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/AE86.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Racing</span></a><a class="nav-page-title" href="/"><span class="site-name">激光的帧间匹配</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">激光的帧间匹配</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2025-01-02T04:19:26.000Z" title="发表于 2025-01-02 12:19:26">2025-01-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SLAM-%E5%AD%A6%E4%B9%A0/">SLAM 学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="激光的帧间匹配"><a href="#激光的帧间匹配" class="headerlink" title="激光的帧间匹配"></a>激光的帧间匹配</h1><h2 id="ICP"><a href="#ICP" class="headerlink" title="ICP"></a>ICP</h2><p>具体数学描述和求解方法请看 。这里主要添加求解方法的证明。</p>
-<script type="math/tex; mode=display">
-\begin{align}
-E(R,t)&=\frac{1}{N_p}\sum_{i=1}^{N_p}||x_i-Rp_i-t||^2\\
-&=\frac{1}{N_p}\sum_{i=1}^{N_p}||x_i-Rp_i-t-u_x+Ru_p+u_x-Ru_p||^2\\
-&=\frac{1}{N_p}\sum_{i=1}^{N_p}||x_i-u_x-R(p_i-u_p)+(u_x-Ru_p-t)||^2\\
-&=\frac{1}{N_p}\sum_{i=1}^{N_p}||x_i-u_x-R(p_i-u_p)||^2+||u_x-Ru_p-t||^2+2(x_i-u_x-R(p_i-u_p))^T(u_x-Ru_p-t)\\
-&=\frac{1}{N_p}\sum_{i=1}^{N_p}||x_i-u_x-R(p_i-u_p)||^2+||u_x-Ru_p-t||^2\\
-\end{align}</script><p>其中 $||x_i-u_x-R(p_i-u_p)||^2$ 只和 $R$ 有关，当已知 $R$ 时可以通过 $u_x-Ru_p-t=0$ 求解出 $t$。故转换为最小化函数：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-E(R,t)&=\frac{1}{N_p}\sum_{i=1}^{N_p}||x_i-u_x-R(p_i-u_p)||^2\\
-&=\frac{1}{N_p}\sum_{i=1}^{N_p}||x_i^{'}-Rp_i^{'}||^2\\
-&=\frac{1}{N_p}\sum_{i=1}^{N_p}{x_i^{'}}^Tx_i^{'}+{p_i^{'}}^TR^TRp_i^{'}-2{x_i^{'}}^TRp_i^{'}\\
-\end{align}</script><p>其中 ${x_i^{‘}}^Tx_i^{‘}$ 和变量无关，是常数值，而 $R$ 是正交矩阵，$R^TR=I$，${p_i^{‘}}^TR^TRp_i^{‘}={p_i^{‘}}^Tp_i^{‘}$，也是常数值，因此求 $E(R,t)$ 最小值最后可以转化为求 ${x_i^{‘}}^TRp_i^{‘}$ 的最大值。</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^{N_p}{x_i^{'}}^TRp_i^{'}=\sum_{i=1}^{N_p}Trace(Rx_i^{'}{p_i^{'}}^T)=Trace(RH)
-\\H=\sum_{i=1}^{N_p}x_i^{'}{p_i^{'}}^T</script><ul>
-<li>定理：假设矩阵 A 为正定对称矩阵，则对于任意的正交矩阵 B，都有：$Trace(A)≥Trace(BA)$。</li>
+})()</script><div id="web_bg" style="background-image: url(/img/AE86.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/AE86.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Racing</span></a><a class="nav-page-title" href="/"><span class="site-name">激光的帧间匹配</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">激光的帧间匹配</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2025-01-02T04:19:26.000Z" title="发表于 2025-01-02 12:19:26">2025-01-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SLAM-%E5%AD%A6%E4%B9%A0/">SLAM 学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>激光的帧间匹配</h1>
+<h2 id="ICP">ICP</h2>
+<p>具体数学描述和求解方法请看 。这里主要添加求解方法的证明。<br>
+$$<br>
+\begin{align}<br>
+E(R,t)&amp;=\frac{1}{N_p}\sum_{i=1}<sup>{N_p}||x_i-Rp_i-t||</sup>2\<br>
+&amp;=\frac{1}{N_p}\sum_{i=1}<sup>{N_p}||x_i-Rp_i-t-u_x+Ru_p+u_x-Ru_p||</sup>2\<br>
+&amp;=\frac{1}{N_p}\sum_{i=1}<sup>{N_p}||x_i-u_x-R(p_i-u_p)+(u_x-Ru_p-t)||</sup>2\<br>
+&amp;=\frac{1}{N_p}\sum_{i=1}<sup>{N_p}||x_i-u_x-R(p_i-u_p)||</sup>2+||u_x-Ru_p-t||<sup>2+2(x_i-u_x-R(p_i-u_p))</sup>T(u_x-Ru_p-t)\<br>
+&amp;=\frac{1}{N_p}\sum_{i=1}<sup>{N_p}||x_i-u_x-R(p_i-u_p)||</sup>2+||u_x-Ru_p-t||^2\<br>
+\end{align}<br>
+$$</p>
+<p>其中 $||x_i-u_x-R(p_i-u_p)||^2$ 只和 $R$ 有关，当已知 $R$ 时可以通过 $u_x-Ru_p-t=0$ 求解出 $t$。故转换为最小化函数：</p>
+<p>$$<br>
+\begin{align}<br>
+E(R,t)&amp;=\frac{1}{N_p}\sum_{i=1}<sup>{N_p}||x_i-u_x-R(p_i-u_p)||</sup>2\<br>
+&amp;=\frac{1}{N_p}\sum_{i=1}<sup>{N_p}||x_i</sup>{\prime}-Rp_i<sup>{\prime}||</sup>2\<br>
+&amp;=\frac{1}{N_p}\sum_{i=1}<sup>{N_p}{x_i</sup>{\prime}}<sup>Tx_i</sup>{\prime}+{p_i<sup>{\prime}}</sup>TR<sup>TRp_i</sup>{\prime}-2{x_i<sup>{\prime}}</sup>TRp_i^{\prime}\<br>
+\end{align}<br>
+$$</p>
+<p>其中 ${x_i<sup>{\prime}}</sup>Tx_i^{\prime}$ 和变量无关，是常数值，而 $R$ 是正交矩阵，$R<sup>TR=I$，${p_i</sup>{\prime}}<sup>TR</sup>TRp_i<sup>{\prime}={p_i</sup>{\prime}}<sup>Tp_i</sup>{\prime}$，也是常数值，因此求 $E(R,t)$ 最小值最后可以转化为求 ${x_i<sup>{\prime}}</sup>TRp_i^{\prime}$ 的最大值。</p>
+<p>$$<br>
+\sum_{i=1}<sup>{N_p}{x_i</sup>{\prime}}<sup>TRp_i</sup>{\prime}=\sum_{i=1}<sup>{N_p}Trace(Rx_i</sup>{\prime}{p_i<sup>{\prime}}</sup>T)=Trace(RH)<br>
+\H=\sum_{i=1}<sup>{N_p}x_i</sup>{\prime}{p_i<sup>{\prime}}</sup>T<br>
+$$</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>定理：假设矩阵 A 为正定对称矩阵，则对于任意的正交矩阵 B，都有：$Trace(A)≥Trace(BA)$。</p>
+</li>
 </ul>
-<script type="math/tex; mode=display">
-H=U\Lambda V^T\\
-X=VU^T —— 正交矩阵\\
-XH=VU^TU\Lambda V^T=V\Lambda V^T  —— 正定对称\\
-\Rightarrow Trace(XH) ≥ Trace(BXH)\\
-\Rightarrow R=X=VU^T</script><h2 id="PL-ICP"><a href="#PL-ICP" class="headerlink" title="PL-ICP"></a>PL-ICP</h2><p>ICP 算法基于点到点的距离作为误差度量，而 PL-ICP 采用点到线的距离作为误差度量。激光雷达的点云数据是对实际环境曲面的离散采样，因此点到线的距离更能反映点云与真实曲面之间的误差。</p>
-<p><img src="https://pic1.imgdb.cn/item/67b2d6b8d0e0a243d400233f.png" style="zoom: 80%;" /></p>
-<h3 id="数学描述"><a href="#数学描述" class="headerlink" title="数学描述"></a>数学描述</h3><p>目标函数：</p>
-<script type="math/tex; mode=display">
-\underset{q_{k+1}}{min} \sum_i (n_i^T [p_i \oplus q_{k+1} - \Pi \{S^{ref},p_i \oplus q_k \}])^2 \\
-q=(t,\theta)\\
-p \oplus (t,\theta) \triangleq R(\theta)p+t \\
-n_i为法向量\\
-\Pi \{S^{ref},\cdot \}表示在 S^{ref} 的投影</script><h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><ul>
-<li>把当前帧的数据根据初始位姿投影到参考帧坐标系下。</li>
-<li>对于当前帧的点 $i$，在参考帧中找到最近的两个点 $(j_1,j_2)$。</li>
-<li>计算误差，并去除误差过大的点。</li>
-<li>最小化误差函数：$\sum_i(n_i^T[R(\theta_{k+1})p_i+t_{k+1}-p_{j_1^i}])^2$</li>
+<p>$$<br>
+H=U\Lambda V^T\<br>
+X=VU^T —— 正交矩阵\<br>
+XH=VU^TU\Lambda V^T=V\Lambda V^T  —— 正定对称\<br>
+\Rightarrow Trace(XH) ≥ Trace(BXH)\<br>
+\Rightarrow R=X=VU^T<br>
+$$</p>
+<h2 id="PL-ICP">PL-ICP</h2>
+<p>ICP 算法基于点到点的距离作为误差度量，而 PL-ICP 采用点到线的距离作为误差度量。激光雷达的点云数据是对实际环境曲面的离散采样，因此点到线的距离更能反映点云与真实曲面之间的误差。</p>
+<img src="https://pic1.imgdb.cn/item/67b2d6b8d0e0a243d400233f.png" style="zoom: 80%;" />
+<h3 id="数学描述">数学描述</h3>
+<p>目标函数：<br>
+$$<br>
+\underset{q_{k+1}}{min} \sum_i (n_i^T [p_i \oplus q_{k+1} - \Pi {S^{ref},p_i \oplus q_k }])^2 \<br>
+q=(t,\theta)\<br>
+p \oplus (t,\theta) \triangleq R(\theta)p+t \<br>
+n_i为法向量\<br>
+\Pi {S^{ref},\cdot }表示在 S^{ref} 的投影<br>
+$$</p>
+<h3 id="算法流程">算法流程</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>把当前帧的数据根据初始位姿投影到参考帧坐标系下。</p>
+</li>
+<li class="lvl-2">
+<p>对于当前帧的点 $i$，在参考帧中找到最近的两个点 $(j_1,j_2)$。</p>
+</li>
+<li class="lvl-2">
+<p>计算误差，并去除误差过大的点。</p>
+</li>
+<li class="lvl-2">
+<p>最小化误差函数：$\sum_i(n_i<sup>T[R(\theta_{k+1})p_i+t_{k+1}-p_{j_1</sup>i}])^2$</p>
+</li>
 </ul>
-<h3 id="和-ICP-的区别"><a href="#和-ICP-的区别" class="headerlink" title="和 ICP 的区别"></a>和 ICP 的区别</h3><ul>
-<li>误差函数的形式不同，ICP 对点对点的距离作为误差，PL-ICP 为点到线的距离作为误差。</li>
-<li>收敛速度不同，ICP 为一阶收敛，PL-ICP 为二阶收敛。</li>
-<li>PL-ICP 的求解精度高于 ICP。</li>
-<li>PL-ICP 对初始值更敏感。</li>
+<h3 id="和-ICP-的区别">和 ICP 的区别</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>误差函数的形式不同，ICP 对点对点的距离作为误差，PL-ICP 为点到线的距离作为误差。</p>
+</li>
+<li class="lvl-2">
+<p>收敛速度不同，ICP 为一阶收敛，PL-ICP 为二阶收敛。</p>
+</li>
+<li class="lvl-2">
+<p>PL-ICP 的求解精度高于 ICP。</p>
+</li>
+<li class="lvl-2">
+<p>PL-ICP 对初始值更敏感。</p>
+</li>
 </ul>
-<h2 id="Optimization-based-Method"><a href="#Optimization-based-Method" class="headerlink" title="Optimization-based Method"></a>Optimization-based Method</h2><p><img src="https://pic1.imgdb.cn/item/67b2dbcbd0e0a243d4002524.png" style="zoom:67%;" /></p>
-<h3 id="数学描述-1"><a href="#数学描述-1" class="headerlink" title="数学描述"></a>数学描述</h3><p>给定一个目标函数，把激光的帧间匹配问题转换为求解目标函数的极值问题：</p>
-<script type="math/tex; mode=display">
-E(T)=\text{arg} \space \underset{T}{min} \sum[1-M(S_i(T))]^2\\
-T=(T_x,T_y,T_{\theta})</script><p>$S_i(T)$ 表示把激光数据用位姿 $T$ 进行转换，$M(x)$ 表示得到坐标 $x$ 的地图占用概率。</p>
-<h3 id="求解"><a href="#求解" class="headerlink" title="求解"></a>求解</h3><p><img src="https://pic1.imgdb.cn/item/67b2e585d0e0a243d4002873.png" alt=""></p>
-<h3 id="地图双线性插值"><a href="#地图双线性插值" class="headerlink" title="地图双线性插值"></a>地图双线性插值</h3><ul>
-<li>拉格朗日插值法</li>
-<li>X,Y 两个方向进行插值</li>
-<li>一维线性插值的推广</li>
+<h2 id="Optimization-based-Method">Optimization-based Method</h2>
+<img src="https://pic1.imgdb.cn/item/67b2dbcbd0e0a243d4002524.png" style="zoom:67%;" />
+<h3 id="数学描述-2">数学描述</h3>
+<p>给定一个目标函数，把激光的帧间匹配问题转换为求解目标函数的极值问题：<br>
+$$<br>
+E(T)=\text{arg} \space \underset{T}{min} \sum[1-M(S_i(T))]^2\<br>
+T=(T_x,T_y,T_{\theta})<br>
+$$<br>
+$S_i(T)$ 表示把激光数据用位姿 $T$ 进行转换，$M(x)$ 表示得到坐标 $x$ 的地图占用概率。</p>
+<h3 id="求解">求解</h3>
+<p><img src="https://pic1.imgdb.cn/item/67b2e585d0e0a243d4002873.png" alt=""></p>
+<h3 id="地图双线性插值">地图双线性插值</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>拉格朗日插值法</p>
+</li>
+<li class="lvl-2">
+<p>X,Y 两个方向进行插值</p>
+</li>
+<li class="lvl-2">
+<p>一维线性插值的推广</p>
+</li>
 </ul>
-<p><img src="https://pic1.imgdb.cn/item/67b2f653d0e0a243d40030b0.png" alt="image-20250217153219843" style="zoom:67%;" /></p>
-<h4 id="拉格朗日插值方法——一维线性插值"><a href="#拉格朗日插值方法——一维线性插值" class="headerlink" title="拉格朗日插值方法——一维线性插值"></a>拉格朗日插值方法——一维线性插值</h4><ul>
-<li>插值的定义</li>
+<img src="https://pic1.imgdb.cn/item/67b2f653d0e0a243d40030b0.png" alt="image-20250217153219843" style="zoom:67%;" />
+<h4 id="拉格朗日插值方法——一维线性插值">拉格朗日插值方法——一维线性插值</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>插值的定义</p>
+</li>
 </ul>
-<script type="math/tex; mode=display">
-设函数 \space y=f(x) \space在区间 [a,b] 上有定义，且存在已知点: \\
-a \le x_0 \le x_1 < \cdots < x_n \le b \\
-x_i处的函数值 \space y_i=f(x_i)，若存在n次多项式: \\
-L_n(x) = a_0+a_1x+a_2x^2+ \cdots + a_nx^n \\
-使得值 \space L_n(x_i)=y_i \space 成立，则称\space L_n(x) \space 为 \space f(x) \space 的插值多项式。\\
-可以证明: L_n(x) 存在且唯一</script><ul>
-<li>插值方法</li>
+<p>$$<br>
+设函数 \space y=f(x) \space在区间 [a,b] 上有定义，且存在已知点: \<br>
+a \le x_0 \le x_1 &lt; \cdots &lt; x_n \le b \<br>
+x_i处的函数值 \space y_i=f(x_i)，若存在n次多项式: \<br>
+L_n(x) = a_0+a_1x+a_2x^2+ \cdots + a_nx^n \<br>
+使得值 \space L_n(x_i)=y_i \space 成立，则称\space L_n(x) \space 为 \space f(x) \space 的插值多项式。\<br>
+可以证明: L_n(x) 存在且唯一<br>
+$$</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>插值方法</p>
+</li>
 </ul>
-<p>主要特点为把插值多项式表示成基函数的线性组合：</p>
-<script type="math/tex; mode=display">
-L_n(x)=\sum_{i=0}^n l_i(x)y_i</script><p>基函数 $l_i(x)$ 满足以下条件：</p>
+<p>主要特点为把插值多项式表示成基函数的线性组合：<br>
+$$<br>
+L_n(x)=\sum_{i=0}^n l_i(x)y_i<br>
+$$<br>
+基函数 $l_i(x)$ 满足以下条件：</p>
 <p><img src="https://pic1.imgdb.cn/item/67b2e8b4d0e0a243d40029b0.png" alt=""></p>
-<ul>
-<li>基函数构造</li>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>基函数构造</p>
+</li>
 </ul>
-<p>基函数 $l_i(x)$ 在除 $x_i$ 以外的所有插值点都为0，即 $(x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n)$ 都是 $l_i(x)$ 的解，因此可以构造函数：</p>
-<script type="math/tex; mode=display">
-l_i(x) =c(x-x_0)\cdots (x-x_{i-1})(x-x_{i+1})\cdots (x-x_n) \\
-l_i(x_i) =c(x_i-x_0)\cdots (x_i-x_{i-1})(x_i-x_{i+1})\cdots (x_i-x_n)=1\\
-\Rightarrow c=\frac{1}{c(x_i-x_0)\cdots (x_i-x_{i-1})(x_i-x_{i+1})\cdots (x_i-x_n)} \\
-l_i(x)=\prod_{k=0, k \neq i}^{n} \frac{x - x_k}{(x_i - x_k)}</script><ul>
-<li>双线性插值</li>
+<p>基函数 $l_i(x)$ 在除 $x_i$ 以外的所有插值点都为0，即 $(x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n)$ 都是 $l_i(x)$ 的解，因此可以构造函数：<br>
+$$<br>
+l_i(x) =c(x-x_0)\cdots (x-x_{i-1})(x-x_{i+1})\cdots (x-x_n) \<br>
+l_i(x_i) =c(x_i-x_0)\cdots (x_i-x_{i-1})(x_i-x_{i+1})\cdots (x_i-x_n)=1\<br>
+\Rightarrow c=\frac{1}{c(x_i-x_0)\cdots (x_i-x_{i-1})(x_i-x_{i+1})\cdots (x_i-x_n)} \<br>
+l_i(x)=\prod_{k=0, k \neq i}^{n} \frac{x - x_k}{(x_i - x_k)}<br>
+$$</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>双线性插值</p>
+</li>
 </ul>
-<p>设平面中有四个点：</p>
-<script type="math/tex; mode=display">
-Z_1=f(x_0,y_0),Z_2=f(x_1,y_0)\\
-Z_3=f(x_1,y_1),Z_4=f(x_0,y_1)</script><p>令：</p>
-<script type="math/tex; mode=display">
-u=\frac{x-x_0}{x_1-x_0}\\
-v=\frac{y-y_0}{y_1-y_0}</script><p>则对应的四个点的坐标变为：</p>
-<script type="math/tex; mode=display">
-(x_0.y_0)=(0,0)，(x_1,y_0)=(1,0) \\
-(x_1,y_1)=(1,1)，(x_0,y_1)=(0,1)</script><p>构造基函数：</p>
-<script type="math/tex; mode=display">
-l_1(u,v)=(1-u)(1-v)\\
-l_2(u,v)=u(1-v)\\
-l_3(u,v)=uv\\
-l_4(u,v)=(1-u)v</script><p>插值函数为：</p>
-<script type="math/tex; mode=display">
-L_4(u,v)=Z_1 l_1(u,v)+Z_2 l_2(u,v)+Z_3 l_3(u,v)+Z_4l_4(u,v)</script><p>把 $(u,v)$ 替换回 $(x,y)$ 可得：</p>
-<script type="math/tex; mode=display">
-L(x, y)= \frac{y - y_0}{y_1 - y_0} \left( \frac{x - x_0}{x_1 - x_0} M(P_{11}) + \frac{x_1 - x}{x_1 - x_0} M(P_{01}) \right) \\
-\quad + \frac{y_1 - y}{y_1 - y_0} \left( \frac{x - x_0}{x_1 - x_0} M(P_{10}) + \frac{x_1 - x}{x_1 - x_0} M(P_{00}) \right)</script><p>$x$ 的偏导数：</p>
-<script type="math/tex; mode=display">
-\frac{\partial L(x, y)}{\partial x} = \frac{y - y_0}{y_1 - y_0} (M(P_{11}) - M(P_{01})) + \frac{y_1 - y}{y_1 - y_0} (M(P_{10}) - M(P_{00}))</script><p>$y$ 的偏导数：</p>
-<script type="math/tex; mode=display">
-\frac{\partial L(x, y)}{\partial y} = \frac{x - x_0}{x_1 - x_0} (M(P_{11}) - M(P_{10})) + \frac{x_1 - x}{x_1 - x_0} (M(P_{01}) - M(P_{00}))</script><h2 id="Correlation-based-Method"><a href="#Correlation-based-Method" class="headerlink" title="Correlation-based Method"></a>Correlation-based Method</h2><h3 id="帧间匹配似然场"><a href="#帧间匹配似然场" class="headerlink" title="帧间匹配似然场"></a>帧间匹配似然场</h3><p>下图为似然场示意图。</p>
-<p><img src="https://pic1.imgdb.cn/item/67b2f028d0e0a243d4002df9.png" style="zoom:50%;" /></p>
-<ul>
-<li>高度非凸，存在很多的局部极值</li>
-<li>对初值非常敏感</li>
-<li>进行暴力匹配，排除初值影响</li>
-<li>通过加速策略，降低计算量</li>
-<li>计算位姿匹配方差</li>
+<p>设平面中有四个点：<br>
+$$<br>
+Z_1=f(x_0,y_0),Z_2=f(x_1,y_0)\<br>
+Z_3=f(x_1,y_1),Z_4=f(x_0,y_1)<br>
+$$<br>
+令：<br>
+$$<br>
+u=\frac{x-x_0}{x_1-x_0}\<br>
+v=\frac{y-y_0}{y_1-y_0}<br>
+$$<br>
+则对应的四个点的坐标变为：<br>
+$$<br>
+(x_0.y_0)=(0,0)，(x_1,y_0)=(1,0) \<br>
+(x_1,y_1)=(1,1)，(x_0,y_1)=(0,1)<br>
+$$<br>
+构造基函数：<br>
+$$<br>
+l_1(u,v)=(1-u)(1-v)\<br>
+l_2(u,v)=u(1-v)\<br>
+l_3(u,v)=uv\<br>
+l_4(u,v)=(1-u)v<br>
+$$<br>
+插值函数为：<br>
+$$<br>
+L_4(u,v)=Z_1 l_1(u,v)+Z_2 l_2(u,v)+Z_3 l_3(u,v)+Z_4l_4(u,v)<br>
+$$<br>
+把 $(u,v)$ 替换回 $(x,y)$ 可得：<br>
+$$<br>
+L(x, y)= \frac{y - y_0}{y_1 - y_0} \left( \frac{x - x_0}{x_1 - x_0} M(P_{11}) + \frac{x_1 - x}{x_1 - x_0} M(P_{01}) \right) \<br>
+\quad + \frac{y_1 - y}{y_1 - y_0} \left( \frac{x - x_0}{x_1 - x_0} M(P_{10}) + \frac{x_1 - x}{x_1 - x_0} M(P_{00}) \right)<br>
+$$<br>
+$x$ 的偏导数：<br>
+$$<br>
+\frac{\partial L(x, y)}{\partial x} = \frac{y - y_0}{y_1 - y_0} (M(P_{11}) - M(P_{01})) + \frac{y_1 - y}{y_1 - y_0} (M(P_{10}) - M(P_{00}))<br>
+$$<br>
+$y$ 的偏导数：<br>
+$$<br>
+\frac{\partial L(x, y)}{\partial y} = \frac{x - x_0}{x_1 - x_0} (M(P_{11}) - M(P_{10})) + \frac{x_1 - x}{x_1 - x_0} (M(P_{01}) - M(P_{00}))<br>
+$$</p>
+<h2 id="Correlation-based-Method">Correlation-based Method</h2>
+<h3 id="帧间匹配似然场">帧间匹配似然场</h3>
+<p>下图为似然场示意图。</p>
+<img src="https://pic1.imgdb.cn/item/67b2f028d0e0a243d4002df9.png" style="zoom:50%;" />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>高度非凸，存在很多的局部极值</p>
+</li>
+<li class="lvl-2">
+<p>对初值非常敏感</p>
+</li>
+<li class="lvl-2">
+<p>进行暴力匹配，排除初值影响</p>
+</li>
+<li class="lvl-2">
+<p>通过加速策略，降低计算量</p>
+</li>
+<li class="lvl-2">
+<p>计算位姿匹配方差</p>
+</li>
 </ul>
-<h3 id="算法流程-1"><a href="#算法流程-1" class="headerlink" title="算法流程"></a>算法流程</h3><ul>
-<li>构造似然场</li>
-<li>在指定的搜索空间内，进行搜索，计算每一个位姿的得分</li>
-<li>根据上一步中的位姿得分，计算本次位姿匹配的方差</li>
+<h3 id="算法流程-2">算法流程</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>构造似然场</p>
+</li>
+<li class="lvl-2">
+<p>在指定的搜索空间内，进行搜索，计算每一个位姿的得分</p>
+</li>
+<li class="lvl-2">
+<p>根据上一步中的位姿得分，计算本次位姿匹配的方差</p>
+</li>
 </ul>
-<h3 id="位姿搜索"><a href="#位姿搜索" class="headerlink" title="位姿搜索"></a>位姿搜索</h3><ul>
-<li><p>暴力搜索</p>
+<h3 id="位姿搜索">位姿搜索</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>暴力搜索</p>
 <p>三层 for 循环 $(x,y,\theta)$ 枚举每个位姿，分别计算每个位姿得分，计算量巨大，因为激光数据在每个位姿都要重新投影，投影需要计算 sin 和 cos 函数。</p>
 </li>
-<li><p>预先投影搜索</p>
+<li class="lvl-2">
+<p>预先投影搜索</p>
 <p>把暴力搜索中的三层 for 循环 $(x,y,\theta)$ 交换一下顺序，最外层对 $\theta$ 进行搜索，这样内层 $(x,y)$ 的投影变成的加法，</p>
 <p>需要计算 sin 和 cos 函数的位姿数从 $n_x,n_y,n_{\theta}$ 降为 $n_{theta}$。能极大加速算法的运行速度。</p>
 </li>
-<li><p>多分辨率搜索</p>
+<li class="lvl-2">
+<p>多分辨率搜索</p>
 <ol>
-<li>构造粗分辨率（25cm）和细分辨率（2.5cm）两个似然场</li>
-<li>首先在粗分辨率似然场上进行搜索，获取最优位姿</li>
-<li>把粗分辨率最优位姿对应的栅格进行细分辨率划分，然后再进行细分辨率搜索，再次得到最优位姿</li>
-<li>粗分辨率地图的栅格的似然值为对应的细分辨率地图对应空间的所有栅格的最大值</li>
+<li class="lvl-5">构造粗分辨率（25cm）和细分辨率（2.5cm）两个似然场</li>
+<li class="lvl-5">首先在粗分辨率似然场上进行搜索，获取最优位姿</li>
+<li class="lvl-5">把粗分辨率最优位姿对应的栅格进行细分辨率划分，然后再进行细分辨率搜索，再次得到最优位姿</li>
+<li class="lvl-5">粗分辨率地图的栅格的似然值为对应的细分辨率地图对应空间的所有栅格的最大值</li>
 </ol>
 </li>
-<li><p>分支定界算法</p>
-<p><img src="https://pic1.imgdb.cn/item/67b2f4a3d0e0a243d4002fc5.png" style="zoom:50%;" /></p>
+<li class="lvl-2">
+<p>分支定界算法</p>
+<img src="https://pic1.imgdb.cn/item/67b2f4a3d0e0a243d4002fc5.png" style="zoom:50%;" />
 </li>
 </ul>
-<p><img src="https://pic1.imgdb.cn/item/67b2f532d0e0a243d4002fed.png" style="zoom:50%;" /></p>
-</article><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/AE86.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="next-post pull-full" href="/2024/12/20/%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE%E8%BF%90%E5%8A%A8%E7%95%B8%E5%8F%98%E5%8E%BB%E9%99%A4/" title="激光雷达运动畸变去除"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">激光雷达运动畸变去除</div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/AE86.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Hins</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Hins-H"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome to my blog!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BF%80%E5%85%89%E7%9A%84%E5%B8%A7%E9%97%B4%E5%8C%B9%E9%85%8D"><span class="toc-number">1.</span> <span class="toc-text">激光的帧间匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ICP"><span class="toc-number">1.1.</span> <span class="toc-text">ICP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PL-ICP"><span class="toc-number">1.2.</span> <span class="toc-text">PL-ICP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.2.1.</span> <span class="toc-text">数学描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">算法流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%92%8C-ICP-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.3.</span> <span class="toc-text">和 ICP 的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Optimization-based-Method"><span class="toc-number">1.3.</span> <span class="toc-text">Optimization-based Method</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E6%8F%8F%E8%BF%B0-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">数学描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E8%A7%A3"><span class="toc-number">1.3.2.</span> <span class="toc-text">求解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9B%BE%E5%8F%8C%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC"><span class="toc-number">1.3.3.</span> <span class="toc-text">地图双线性插值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E6%8F%92%E5%80%BC%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E4%B8%80%E7%BB%B4%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">拉格朗日插值方法——一维线性插值</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Correlation-based-Method"><span class="toc-number">1.4.</span> <span class="toc-text">Correlation-based Method</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A7%E9%97%B4%E5%8C%B9%E9%85%8D%E4%BC%BC%E7%84%B6%E5%9C%BA"><span class="toc-number">1.4.1.</span> <span class="toc-text">帧间匹配似然场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B-1"><span class="toc-number">1.4.2.</span> <span class="toc-text">算法流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E5%A7%BF%E6%90%9C%E7%B4%A2"><span class="toc-number">1.4.3.</span> <span class="toc-text">位姿搜索</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/02/%E6%BF%80%E5%85%89%E5%B8%A7%E9%97%B4%E5%8C%B9%E9%85%8D/" title="激光的帧间匹配">激光的帧间匹配</a><time datetime="2025-01-02T04:19:26.000Z" title="发表于 2025-01-02 12:19:26">2025-01-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/20/%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE%E8%BF%90%E5%8A%A8%E7%95%B8%E5%8F%98%E5%8E%BB%E9%99%A4/" title="激光雷达运动畸变去除">激光雷达运动畸变去除</a><time datetime="2024-12-20T09:04:46.000Z" title="发表于 2024-12-20 17:04:46">2024-12-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/10/ORB-SLAM2%20%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6/" title="ORB-SLAM2 系统框架">ORB-SLAM2 系统框架</a><time datetime="2024-12-10T14:03:40.000Z" title="发表于 2024-12-10 22:03:40">2024-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/ORB-SLAM2%20%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/" title="ORB-SLAM2 前置知识">ORB-SLAM2 前置知识</a><time datetime="2024-12-09T08:11:02.000Z" title="发表于 2024-12-09 16:11:02">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/27/LOAM%20%E7%AE%97%E6%B3%95/" title="LOAM">LOAM</a><time datetime="2024-11-27T08:11:54.000Z" title="发表于 2024-11-27 16:11:54">2024-11-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+<img src="https://pic1.imgdb.cn/item/67b2f532d0e0a243d4002fed.png" style="zoom:50%;" />
+</article><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/AE86.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="next-post pull-full" href="/2024/12/20/%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE%E8%BF%90%E5%8A%A8%E7%95%B8%E5%8F%98%E5%8E%BB%E9%99%A4/" title="激光雷达运动畸变去除"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">激光雷达运动畸变去除</div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/AE86.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Hins</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Hins-H"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome to my blog!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">激光的帧间匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ICP"><span class="toc-number">1.1.</span> <span class="toc-text">ICP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PL-ICP"><span class="toc-number">1.2.</span> <span class="toc-text">PL-ICP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.2.1.</span> <span class="toc-text">数学描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">算法流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%92%8C-ICP-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.3.</span> <span class="toc-text">和 ICP 的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Optimization-based-Method"><span class="toc-number">1.3.</span> <span class="toc-text">Optimization-based Method</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E6%8F%8F%E8%BF%B0-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">数学描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E8%A7%A3"><span class="toc-number">1.3.2.</span> <span class="toc-text">求解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9B%BE%E5%8F%8C%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC"><span class="toc-number">1.3.3.</span> <span class="toc-text">地图双线性插值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E6%8F%92%E5%80%BC%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E4%B8%80%E7%BB%B4%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">拉格朗日插值方法——一维线性插值</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Correlation-based-Method"><span class="toc-number">1.4.</span> <span class="toc-text">Correlation-based Method</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A7%E9%97%B4%E5%8C%B9%E9%85%8D%E4%BC%BC%E7%84%B6%E5%9C%BA"><span class="toc-number">1.4.1.</span> <span class="toc-text">帧间匹配似然场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B-2"><span class="toc-number">1.4.2.</span> <span class="toc-text">算法流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E5%A7%BF%E6%90%9C%E7%B4%A2"><span class="toc-number">1.4.3.</span> <span class="toc-text">位姿搜索</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/02/%E6%BF%80%E5%85%89%E5%B8%A7%E9%97%B4%E5%8C%B9%E9%85%8D/" title="激光的帧间匹配">激光的帧间匹配</a><time datetime="2025-01-02T04:19:26.000Z" title="发表于 2025-01-02 12:19:26">2025-01-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/20/%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE%E8%BF%90%E5%8A%A8%E7%95%B8%E5%8F%98%E5%8E%BB%E9%99%A4/" title="激光雷达运动畸变去除">激光雷达运动畸变去除</a><time datetime="2024-12-20T09:04:46.000Z" title="发表于 2024-12-20 17:04:46">2024-12-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/10/ORB-SLAM2%20%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6/" title="ORB-SLAM2 系统框架">ORB-SLAM2 系统框架</a><time datetime="2024-12-10T14:03:40.000Z" title="发表于 2024-12-10 22:03:40">2024-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/ORB-SLAM2%20%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/" title="ORB-SLAM2 前置知识">ORB-SLAM2 前置知识</a><time datetime="2024-12-09T08:11:02.000Z" title="发表于 2024-12-09 16:11:02">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/27/LOAM%20%E7%AE%97%E6%B3%95/" title="LOAM">LOAM</a><time datetime="2024-11-27T08:11:54.000Z" title="发表于 2024-11-27 16:11:54">2024-11-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {
     if (!window.MathJax) {
       window.MathJax = {
