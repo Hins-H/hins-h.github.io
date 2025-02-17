@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/AE86.jpg">
 <meta property="article:published_time" content="2024-12-09T08:11:02.000Z">
-<meta property="article:modified_time" content="2025-02-17T12:40:30.364Z">
+<meta property="article:modified_time" content="2025-02-17T17:11:28.110Z">
 <meta property="article:author" content="Hins">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/img/AE86.jpg"><link rel="shortcut icon" href="/img/R.jpg"><link rel="canonical" href="http://example.com/2024/12/09/ORB-SLAM2%20%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
@@ -146,7 +146,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2025-02-17 20:40:30'
+  postUpdate: '2025-02-18 01:11:28'
 }</script><link rel="stylesheet" href="/css/transpancy.css"><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
@@ -226,7 +226,7 @@ $$<br>
 <p>那么式 $(5)$ 可以写成齐次坐标形式，如式 $(6)$ 所示，$T$ 也称为转移矩阵。利用式 $(6)$ ，已知点 $P$ 在两个不同坐标系下的坐标为 $P_c$ 和 $P_w$，则很容易求出两个坐标系间的转移关系 $T$。同理，知道转移矩阵也很容易实现两个不同坐标系下的坐标转换。</p>
 <p><img src="https://pic1.imgdb.cn/item/677fd266d0e0a243d4f2cd4a.png" alt="5"></p>
 <h3 id="李群、李代数">李群、李代数</h3>
-<p>旋转矩阵内的各元素取值受到内在约束，即旋转矩阵为正交且旋转矩阵行列式为1。在采用优化方法进行 SLAM 位姿估计时，这种内在约束让优化求解变得很困难。因此这里引入李群、李代数概念，通过李群-李代数的转换可以去除这种内在约束，简化优化求解过程。李群李代数具体讨论可浏览此文章：<a target="_blank" rel="noopener" href="https://hins-h.github.io/2025/12/10/%E6%9D%8E%E7%BE%A4%E3%80%81%E6%9D%8E%E4%BB%A3%E6%95%B0/">李群、李代数</a></p>
+<p>旋转矩阵内的各元素取值受到内在约束，即旋转矩阵为正交且旋转矩阵行列式为1。在采用优化方法进行 SLAM 位姿估计时，这种内在约束让优化求解变得很困难。因此这里引入李群、李代数概念，通过李群-李代数的转换可以去除这种内在约束，简化优化求解过程。</p>
 <h2 id="多视图几何">多视图几何</h2>
 <p>有了用转移矩阵 $T$ 描述相机运动的知识，可以详细讨论多视图几何模型了。按照模型的已知条件不同，可以分为 2D-2D、3D-2D、3D-3D 三种情况。</p>
 <h3 id="2D-2D-模型">2D-2D 模型</h3>
