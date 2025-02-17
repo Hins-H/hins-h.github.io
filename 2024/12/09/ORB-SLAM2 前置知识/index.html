@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/AE86.jpg">
 <meta property="article:published_time" content="2024-12-09T08:11:02.000Z">
-<meta property="article:modified_time" content="2025-02-17T17:19:43.183Z">
+<meta property="article:modified_time" content="2025-02-17T17:21:11.411Z">
 <meta property="article:author" content="Hins">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/img/AE86.jpg"><link rel="shortcut icon" href="/img/R.jpg"><link rel="canonical" href="http://example.com/2024/12/09/ORB-SLAM2%20%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
@@ -146,7 +146,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2025-02-18 01:19:43'
+  postUpdate: '2025-02-18 01:21:11'
 }</script><link rel="stylesheet" href="/css/transpancy.css"><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
@@ -357,7 +357,7 @@ $$<br>
 q_i=p_i-\bar{p}, \bar{p}=\frac{1}{n}\sum_{i=1}^np_i\<br>
 q_i<sup>{\prime}=p_i</sup>{\prime}-\bar{p^{\prime}}, \bar{p<sup>{\prime}}=\frac{1}{n}\sum_{i=1}</sup>np_i^{\prime}<br>
 \<br>
-\text{arg }\underset{R,t}{min}\sum_{i=1}^n ||p_i^{\prime}-(R\cdot p_i+t)||^2=\text{arg }\underset{R,t}{min}\sum_{i=1}^n {\big|\big|q_i^{\prime}-R\cdot q_i\big|\big|<sup>2+\big|\big|\bar{p</sup>{\prime}}-R\cdot \bar{p}-t\big|\big|^2} \tag{22}<br>
+\text{arg }\underset{R,t}{min}\sum_{i=1}^n ||p_i^{\prime}-(R\cdot p_i+t)||^2=\text{arg }\underset{R,t}{min}\sum_{i=1}^n \bigg{\big|\big|q_i^{\prime}-R\cdot q_i\big|\big|<sup>2+\big|\big|\bar{p</sup>{\prime}}-R\cdot \bar{p}-t\big|\big|^2\bigg} \tag{22}<br>
 $$<br>
 首先将第一个加法项展开化简，然后利用 SVD 就能求出 $R$ ，如式 $(23)$ 所示。<br>
 $$<br>
@@ -365,7 +365,7 @@ $$<br>
 \text{arg }\underset{R,t}{min}\sum_{i=1}^n \big( q_i^{\prime T} q_i<sup>{\prime}-2q_i</sup>{\prime T}Rq_i+q_i<sup>TR</sup>TRq_i\big)<br>
 \<br>
 \Leftrightarrow<br>
-\text{arg }\underset{R,t}{min}\sum_{i=1}<sup>n-q_i</sup>{\prime}Rq_i=\text{arg }\underset{R,t}{min}( -tr(R\sum_{i=1}<sup>nq_i</sup>{\prime T}q_i) ) \tag{23}<br>
+\text{arg }\underset{R,t}{min}\sum_{i=1}<sup>n-q_i</sup>{\prime}Rq_i=\text{arg }\underset{R,t}{min}\bigg( -tr(R\sum_{i=1}<sup>nq_i</sup>{\prime T}q_i) \bigg) \tag{23}<br>
 $$<br>
 令 $M=\sum\limits_{i=1}<sup>nq_i</sup>{\prime T}q_i$ ，利用 SVD 进行分解得到 $SVD(M)=USV^T$，从而求得 $R=UV^T$。然后将求出的 $R$ 代入第二个加法项，很容易得到 $t=p^{\prime T}-R\cdot p^{\prime}$。</p>
 <h4 id="BA-优化">BA 优化</h4>
