@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/AE86.jpg">
 <meta property="article:published_time" content="2024-12-09T08:11:02.000Z">
-<meta property="article:modified_time" content="2025-02-17T17:52:42.347Z">
+<meta property="article:modified_time" content="2025-02-18T03:42:53.912Z">
 <meta property="article:author" content="Hins">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/img/AE86.jpg"><link rel="shortcut icon" href="/img/R.jpg"><link rel="canonical" href="http://example.com/2024/12/09/ORB-SLAM2%20%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
@@ -146,7 +146,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2025-02-18 01:52:42'
+  postUpdate: '2025-02-18 11:42:53'
 }</script><link rel="stylesheet" href="/css/transpancy.css"><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
@@ -257,9 +257,9 @@ $$<br>
 \<br>
 &amp; 0 = z</em>{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^T \boldsymbol{t} \times \boldsymbol{R} \boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}<br>
 \<br>
-&amp; = \boldsymbol{p}<em>{2}^T \boldsymbol{K}^{-T} \underbrace{\boldsymbol{t}^{\wedge} \boldsymbol{R}}</em>{\boldsymbol{E}} \boldsymbol{K}^{-1} \boldsymbol{p}<em>{1}<br>
+&amp; = \boldsymbol{p}<em>{2}^T \boldsymbol{K}^{-T} \underbrace{\boldsymbol{t}^{\wedge} \boldsymbol{R} }</em>{\boldsymbol{E} } \boldsymbol{K}^{-1} \boldsymbol{p}<em>{1}<br>
 \<br>
-&amp; = \boldsymbol{p}</em>{2}^T  \underbrace{\boldsymbol{K}^{-T}\boldsymbol{E} \boldsymbol{K}^{-1}}<em>{\boldsymbol{F}} \boldsymbol{p}</em>{1}<br>
+&amp; = \boldsymbol{p}</em>{2}^T  \underbrace{\boldsymbol{K}^{-T}\boldsymbol{E} \boldsymbol{K}^{-1} }<em>{\boldsymbol{F} } \boldsymbol{p}</em>{1}<br>
 \<br>
 &amp; = \boldsymbol{p}<em>{2}^T\boldsymbol{F} \boldsymbol{p}</em>{1}<br>
 \end{align*}<br>
@@ -283,7 +283,7 @@ $$<br>
 &amp; 0 = z</em>{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} t<br>
 \end{align*}<br>
 $$<br>
-将 $p_1、p_2$ 和 $(R,t) $ 代入就可以求出 $z_1$ 了，这样就完成了对地图点 $P$ 的三角化重建了。理想情况下直接求解就可以得出 $z_1$ 了，但实际情况中 $p_1、p_2$ 的像素坐标携带测量噪声，解算出的 $(R,t) $ 也不一定完全准确，这就导致了 $0 \neq z</em>{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} t$，而是约等于0。那么构建最小二乘问题 $\text{arg } \underset{z_1}{\text{min}} || z</em>{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}_{2})^{\wedge} t ||^2$，很容易求出 $z_1$。</p>
+将 $p_1、p_2$ 和 $(R,t) $ 代入就可以求出 $z_1$ 了，这样就完成了对地图点 $P$ 的三角化重建了。理想情况下直接求解就可以得出 $z_1$ 了，但实际情况中 $p_1、p_2$ 的像素坐标携带测量噪声，解算出的 $(R,t) $ 也不一定完全准确，这就导致了 $0 \neq z</em>{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} t$，而是约等于0。那么构建最小二乘问题 $\text{arg } \underset{z_1}{\text{min} } || z</em>{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}_{2})^{\wedge} t ||^2$，很容易求出 $z_1$。</p>
 <p>（4）对地图点和相机位姿做 BA 优化</p>
 <p>理论上，通过本质矩阵和单应矩阵解出 $(R,t) $ ，再进行三角化重建地图点 $P$，模型解析就完成了。但实际情况是求解出的 $(R,t) $ 和地图点 $P$ 都存在误差，误差有测量噪声、计算误差、匹配误差等因素引入。</p>
 <p>那么，可以将解算出的地图点和相机位姿放入 BA 做优化，通过优化尽量减少误差。这里需要用到重投影误差 $e_i$，定义如式 $(12)$ 所示考虑所有地图点，通过最小化重投影误差的方式构建目标方式，描述如式 $(13)$ 所示。<br>
@@ -291,7 +291,7 @@ $$<br>
 \boldsymbol{e}_i=\boldsymbol{p}<em>2^i-\frac{1}{z_2} \boldsymbol{K} \cdot \boldsymbol{T} \cdot \boldsymbol{P}</em>{O_1}^i \tag{12}<br>
 $$</p>
 <p>$$<br>
-\boldsymbol{T},\boldsymbol{P}<em>{O_1} = \text{arg } \underset{T,P</em>{O_1}}{min} \sum_i||e_i||^2 \tag{13}<br>
+\boldsymbol{T},\boldsymbol{P}<em>{O_1} = \text{arg } \underset{T,P</em>{O_1} }{min} \sum_i||e_i||^2 \tag{13}<br>
 $$</p>
 <h3 id="3D-2D-模型">3D-2D 模型</h3>
 <p>如果已经得到一些地图点，并且当前帧图像中的特征点通过某种途径可以与地图中的已知点建立关联，根据这个模型可以求出相机位姿。这个模型中，给定的已知条件是从 3D 地图点到 2D 图像特征点的关联信息，所以称为 3D-2D 模型。比如，单目 SLAM 初始化完成后就可以得到一些已知地图点，或者双目/RGB-D 能直接给出 3D 环境观测点。这些情况下，当前帧图像对应的相机位姿解算就可以使用这个模型。</p>
@@ -309,17 +309,17 @@ $$<br>
 <p>也就是说，一对投影点可以构造出一个线性方程，那么 n 对就可以构造出 $ \boldsymbol{A}<em>{2n\times 12}\cdot \boldsymbol{m}</em>{12\times 1}=\boldsymbol{0} $ ，方程中的向量 $\boldsymbol{m}<em>{12\times 1}$ 是由投影矩阵 $Pr=K[R|t]$ 中的元素顺序排列构造，系数矩阵 $\boldsymbol{A}</em>{2n\times 12}$ 由 n 对投影点构造。理想情况下，只需求解线性方程得出 $\boldsymbol{m}$ ，然后用 $\boldsymbol{m}$ 构造出投影矩阵 $Pr$ ，分解投影矩阵就能得到内参和外参。实际情况中国，噪声和误差等因素会导致线性方程不严格等于0，那么可以构建最小二乘问题来解方程，如式 $(16) $ 所示。<br>
 $$<br>
 \begin{align*}<br>
-\boldsymbol{m} &amp;=\text{arg } \underset{\boldsymbol{m}}{min}||\boldsymbol{A}\cdot \boldsymbol{m}||^2<br>
+\boldsymbol{m} &amp;=\text{arg } \underset{\boldsymbol{m} }{min}||\boldsymbol{A}\cdot \boldsymbol{m}||^2<br>
 \<br>
-&amp;=\text{arg } \underset{\boldsymbol{m}}{min}(\boldsymbol{m}^T\cdot \boldsymbol{A}^T\cdot \boldsymbol{A} \cdot \boldsymbol{m})<br>
+&amp;=\text{arg } \underset{\boldsymbol{m} }{min}(\boldsymbol{m}^T\cdot \boldsymbol{A}^T\cdot \boldsymbol{A} \cdot \boldsymbol{m})<br>
 \<br>
 &amp; \text{令}|\boldsymbol{m}|=1,SVD(A)=\boldsymbol{U}\boldsymbol{S}\boldsymbol{V}<sup>T=\sum_{i=1}</sup>{12}s_iu_iv_i^T<br>
 \<br>
-&amp;=\text{arg } \underset{\boldsymbol{m}}{min}(\boldsymbol{m}^T\cdot \boldsymbol{V}\boldsymbol{S}\boldsymbol{U}^T\cdot \boldsymbol{U}\boldsymbol{S}\boldsymbol{V}^T \cdot \boldsymbol{m}) \tag{16}<br>
+&amp;=\text{arg } \underset{\boldsymbol{m} }{min}(\boldsymbol{m}^T\cdot \boldsymbol{V}\boldsymbol{S}\boldsymbol{U}^T\cdot \boldsymbol{U}\boldsymbol{S}\boldsymbol{V}^T \cdot \boldsymbol{m}) \tag{16}<br>
 \<br>
-&amp;=\text{arg } \underset{\boldsymbol{m}}{min}(\boldsymbol{m}^T\cdot \boldsymbol{V}\boldsymbol{S}<sup>2\boldsymbol{V}</sup>T \cdot \boldsymbol{m})<br>
+&amp;=\text{arg } \underset{\boldsymbol{m} }{min}(\boldsymbol{m}^T\cdot \boldsymbol{V}\boldsymbol{S}<sup>2\boldsymbol{V}</sup>T \cdot \boldsymbol{m})<br>
 \<br>
-&amp;=\text{arg } \underset{\boldsymbol{m}}{min}(\boldsymbol{m}^T\cdot \sum_{i=1}<sup>{12}s_i</sup>2v_iv_i^T \cdot \boldsymbol{m})<br>
+&amp;=\text{arg } \underset{\boldsymbol{m} }{min}(\boldsymbol{m}^T\cdot \sum_{i=1}<sup>{12}s_i</sup>2v_iv_i^T \cdot \boldsymbol{m})<br>
 \end{align*}<br>
 $$<br>
 系数矩阵 $A$ 通过 SVD 分解，如果取待求向量 $m$ 为正交矩阵 $V$ 的某个列向量，那么选择最小奇异值 $s_{12}$ 对应的特征向量 $v_{12}$ 为待求向量 $m$ 的取值，就可以使上式取最小值。这样 $m$ 能求出来，投影矩阵也就求出来了。那么分解投影矩阵为  $[B,b]$，并根据 $Pr$ 内部结构很容易求出内参和外参，如果内参已知，求外参就更容易了，如式 $(17)$ 所示。<br>
@@ -355,9 +355,9 @@ $$<br>
 可以将两个点云去质心后再构建最小二乘问题，如式 $(22)$ 所示。<br>
 $$<br>
 q_i=p_i-\bar{p}, \bar{p}=\frac{1}{n}\sum_{i=1}^np_i\<br>
-q_i<sup>{\prime}=p_i</sup>{\prime}-\bar{p^{\prime}}, \bar{p<sup>{\prime}}=\frac{1}{n}\sum_{i=1}</sup>np_i^{\prime}<br>
+q_i<sup>{\prime}=p_i</sup>{\prime}-\bar{p^{\prime} }, \bar{p^{\prime} }=\frac{1}{n}\sum_{i=1}<sup>np_i</sup>{\prime}<br>
 \<br>
-\text{arg }\underset{R,t}{min}\sum_{i=1}^n ||p_i^{\prime}-(R\cdot p_i+t)||^2=\text{arg }\underset{R,t}{min}\sum_{i=1}^n {||q_i^{\prime}-R\cdot q_i||<sup>2+||\bar{p</sup>{\prime}}-R\cdot \bar{p}-t||^2} \tag{22}<br>
+\text{arg }\underset{R,t}{min}\sum_{i=1}^n ||p_i^{\prime}-(R\cdot p_i+t)||^2=\text{arg }\underset{R,t}{min}\sum_{i=1}^n {||q_i^{\prime}-R\cdot q_i||<sup>2+||\bar{p</sup>{\prime} }-R\cdot \bar{p}-t||^2} \tag{22}<br>
 $$<br>
 首先将第一个加法项展开化简，然后利用 SVD 就能求出 $R$ ，如式 $(23)$ 所示。<br>
 $$<br>
