@@ -203,7 +203,7 @@ t=u_x-Ru_p</script><p>如下图所示，左边为两个点云集合，已知对�
 <p>机器人速度： $V_i=\frac{1}{\Delta t}T_{i-1}^{-1}T_i$</p>
 <p>设第 $i$ 帧的时刻表：$(t_i-n\Delta t,t_i-(n-1)\Delta t,\cdots,t_i-\Delta t,t_i)$ </p>
 <p>则第 $i$ 帧第 $j$ 个节点的位姿矩阵为：$T(t_i-(n-j)\Delta t)=T_ie^{(n-j)\Delta t(-V_i)}$</p>
-<p>可得矫正过程为：$\bar{X}^i = { e^{(n-j)\Delta t(-V_i)} x_j \mid j = 0, \cdots, n }$</p>
+<p>可得矫正过程为：$\bar{X}^i = \{ e^{(n-j)\Delta t(-V_i)} x_j \mid j = 0, \cdots, n \}$</p>
 <h4 id="VICP算法流程"><a href="#VICP算法流程" class="headerlink" title="VICP算法流程"></a>VICP算法流程</h4><p><img src="https://pic1.imgdb.cn/item/67b1b4b9d0e0a243d4ffd146.png" style="zoom:50%;" /></p>
 <h4 id="矫正效果"><a href="#矫正效果" class="headerlink" title="矫正效果"></a>矫正效果</h4><p><img src="https://pic1.imgdb.cn/item/67b1b4d0d0e0a243d4ffd159.png" style="zoom:50%;" /></p>
 <h4 id="VICP方法的缺点"><a href="#VICP方法的缺点" class="headerlink" title="VICP方法的缺点"></a>VICP方法的缺点</h4><ul>
@@ -230,7 +230,7 @@ t=u_x-Ru_p</script><p>如下图所示，左边为两个点云集合，已知对�
 <li>最晚的里程计数据的时间戳 &gt; $t_e$</li>
 </ul>
 <h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><ul>
-<li>求解当前帧激光数据中每一个激光点对应的机器人位姿，即求解 ${ t_s,t_{s+\Delta t},\cdots,t_e }$ 时刻的机器人位姿</li>
+<li>求解当前帧激光数据中每一个激光点对应的机器人位姿，即求解 $\{ t_s,t_{s+\Delta t},\cdots,t_e \}$ 时刻的机器人位姿</li>
 <li>根据求解的位姿把所有激光点转换到同一坐标系下</li>
 <li>重新封装成一帧激光数据，发布出去</li>
 </ul>
@@ -259,13 +259,13 @@ P(t)=At^2+Bt+C\\
 t_s ≤ t ≤ t_e</script><h4 id="二次曲线的近似"><a href="#二次曲线的近似" class="headerlink" title="二次曲线的近似"></a>二次曲线的近似</h4><ul>
 <li>用分段线性函数对二次曲线进行近似</li>
 <li>分段数大于3时，近似误差可以忽略不计</li>
-<li>在 $t_s$ 和 $t_e$ 时间段内，一共取 k 个位姿 ${p_s,p_{s+1},\cdots,p_{s+k-2},p_{e}}$</li>
+<li>在 $t_s$ 和 $t_e$ 时间段内，一共取 k 个位姿 $\{p_s,p_{s+1},\cdots,p_{s+k-2},p_{e}\}$</li>
 <li>位姿通过线性插值获取，在这 k 个位姿之间，进行线性插值：</li>
 </ul>
 <script type="math/tex; mode=display">
 设 p_s 和 p_{s+1}之间有n个位姿\{p_s,p_{s1},\cdots,p_{s(n-2)},p_{s+1}\}，则：
 p_{si}=\text{LinearInterp}(p_l,p_k,\frac{si-s}{\Delta t})</script><h4 id="坐标系统-激光数据发布"><a href="#坐标系统-激光数据发布" class="headerlink" title="坐标系统 - 激光数据发布"></a>坐标系统 - 激光数据发布</h4><ul>
-<li>一帧激光数据 n 个激光点，每个激光点对应的位姿 ${p_1,p_2,\cdots,p_n}$ 通过上面的方法插值得到</li>
+<li>一帧激光数据 n 个激光点，每个激光点对应的位姿 $\{p_1,p_2,\cdots,p_n\}$ 通过上面的方法插值得到</li>
 <li>$x_i$ 为转化之前的坐标，$x_i^{\prime}$ 为转化之后的坐标，则：</li>
 </ul>
 <script type="math/tex; mode=display">
