@@ -1,0 +1,393 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>LOAM | Racing</title><meta name="author" content="Hins"><meta name="copyright" content="Hins"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="LOAM(Lidar Odometry And Mapping) 框架    激光的帧率为 1Hz   匀速运动假设   激光里程计模块   激光建图模块   Feature-based 匹配方法   激光里程计模块 特征点提取模块   计算曲率：      曲率项最大为 Edge Point，最小为 Planar Point。   每一个水平激光帧，分为四个区域，每个区域最多有2个edge po">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LOAM">
+<meta property="og:url" content="http://example.com/2025/01/04/LOAM/index.html">
+<meta property="og:site_name" content="Racing">
+<meta property="og:description" content="LOAM(Lidar Odometry And Mapping) 框架    激光的帧率为 1Hz   匀速运动假设   激光里程计模块   激光建图模块   Feature-based 匹配方法   激光里程计模块 特征点提取模块   计算曲率：      曲率项最大为 Edge Point，最小为 Planar Point。   每一个水平激光帧，分为四个区域，每个区域最多有2个edge po">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/AE86.jpg">
+<meta property="article:published_time" content="2025-01-04T04:06:24.000Z">
+<meta property="article:modified_time" content="2025-02-18T10:20:19.931Z">
+<meta property="article:author" content="Hins">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/AE86.jpg"><link rel="shortcut icon" href="/img/R.jpg"><link rel="canonical" href="http://example.com/2025/01/04/LOAM/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LOAM',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-02-18 18:20:19'
+}</script><link rel="stylesheet" href="/css/transpancy.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="body"><span><span></span><span></span><span></span><span></span></span><div class="base"><span></span><div class="face"></div></div></div><div class="longfazers"><span></span><span></span><span></span><span></span></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = 'auto'
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(/img/AE86.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/AE86.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Racing</span></a><a class="nav-page-title" href="/"><span class="site-name">LOAM</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">LOAM</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2025-01-04T04:06:24.000Z" title="发表于 2025-01-04 12:06:24">2025-01-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SLAM-%E5%AD%A6%E4%B9%A0/">SLAM 学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>LOAM(Lidar Odometry And Mapping)</h1>
+<h2 id="框架">框架</h2>
+<img src="https://pic1.imgdb.cn/item/67b43d10d0e0a243d40075b2.png" style="zoom:67%;" />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>激光的帧率为 1Hz</p>
+</li>
+<li class="lvl-2">
+<p>匀速运动假设</p>
+</li>
+<li class="lvl-2">
+<p>激光里程计模块</p>
+</li>
+<li class="lvl-2">
+<p>激光建图模块</p>
+</li>
+<li class="lvl-2">
+<p>Feature-based 匹配方法</p>
+</li>
+</ul>
+<h2 id="激光里程计模块">激光里程计模块</h2>
+<h3 id="特征点提取模块">特征点提取模块</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>计算曲率：</p>
+</li>
+</ul>
+<p><img src="https://pic1.imgdb.cn/item/67b43debd0e0a243d4007668.png" alt=""></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>曲率项最大为 Edge Point，最小为 Planar Point。</p>
+</li>
+<li class="lvl-2">
+<p>每一个水平激光帧，分为四个区域，每个区域最多有2个edge point和4个planar point。</p>
+</li>
+<li class="lvl-2">
+<p>去除不稳定特征点：</p>
+<ul class="lvl-2">
+<li class="lvl-4">该点不能与雷达扫描束过于平行，这样也会出现问题</li>
+<li class="lvl-4">该点的周围的点尽量不要被再被取到，这样可以使整体的特征点分布更加的平均</li>
+</ul>
+</li>
+</ul>
+<img src="https://pic1.imgdb.cn/item/67b443c0d0e0a243d40078cd.png" style="zoom:67%;" />
+<h3 id="特征点匹配">特征点匹配</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>前一帧的完整数据(scans)为 $\bar{P}_{k-1}$ ，当前数据(scan)为 $P_k$ 。每帧数据都由多个 scan 组成。</p>
+</li>
+</ul>
+<img src="https://pic1.imgdb.cn/item/67b44537d0e0a243d4007a2f.png" style="zoom:67%;" />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>当前数据 $P_k$ 中的 edge point 和 planar point：</p>
+</li>
+</ul>
+<img src="https://pic1.imgdb.cn/item/67b44546d0e0a243d4007a56.png" style="zoom: 50%;" />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Edge Point 的目标函数（点到线的距离）：</p>
+</li>
+</ul>
+<p><img src="https://pic1.imgdb.cn/item/67b45153d0e0a243d4007e96.png" alt=""></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Planar Point 的目标函数（点到面的距离）：</p>
+</li>
+</ul>
+<p><img src="https://pic1.imgdb.cn/item/67b4519ad0e0a243d4007ea5.png" alt=""></p>
+<h3 id="运动估计">运动估计</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>认为在整个 sweep 期间（一个扫描周期），机器人在匀速运动。令 $T_k^L(t)$ 表示 $t$ 时刻相对于 $t_k$ 时刻的机器人位姿，则对于当前帧的第 $i$ 个激光点，设其对应时间为 $t_{(k,i)}$ ，则对应的位姿为：(其实就是一个线性插值)</p>
+</li>
+</ul>
+<p><img src="https://pic1.imgdb.cn/item/67b452b3d0e0a243d4007f04.png" alt=""></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>所有点都投影到同一时刻 $t_k$：</p>
+</li>
+</ul>
+<img src="https://pic1.imgdb.cn/item/67b4536ed0e0a243d4007f3b.png" style="zoom:67%;" />
+<p><img src="https://pic1.imgdb.cn/item/67b453a4d0e0a243d4007f40.png" alt=""></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>构造目标函数：</p>
+</li>
+</ul>
+<p><img src="https://pic1.imgdb.cn/item/67b45497d0e0a243d4007f6e.png" alt=""></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>非线性优化求解（LM求解）：</p>
+</li>
+</ul>
+<p><img src="https://pic1.imgdb.cn/item/67b454b5d0e0a243d4007f75.png" alt=""></p>
+<h3 id="里程计模块总结">里程计模块总结</h3>
+<img src="https://pic1.imgdb.cn/item/67b454ead0e0a243d4007f78.png" style="zoom: 80%;" />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>特征点检测</p>
+</li>
+<li class="lvl-2">
+<p>寻找匹配点</p>
+</li>
+<li class="lvl-2">
+<p>构建非线性方程组</p>
+</li>
+<li class="lvl-2">
+<p>求解非线性方程组</p>
+</li>
+<li class="lvl-2">
+<p>如果到了当前帧的末尾，则投影到当前帧的时刻，进行下一帧的求解</p>
+</li>
+</ul>
+<h2 id="激光建图模块">激光建图模块</h2>
+<p>Lidar Odometry 的输出跟地图进行匹配:</p>
+<img src="https://pic1.imgdb.cn/item/67b4565bd0e0a243d4007fb6.png" style="zoom:67%;" />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>第 $k$ 帧之前的地图点云在全局坐标系下的投影为 $Q_{k-1}$ ；</p>
+</li>
+<li class="lvl-2">
+<p>第 $k$  帧的起始时的姿态变换信息 $T_{k-1}^W$ 。</p>
+</li>
+<li class="lvl-2">
+<p>利用Odometry的输出 $T_k^L$ ，将  $T_{k-1}^W$  从 $k$ 时刻的起始推演到 $k+1$ 时刻的起始，得到姿态矩阵 $T_k^W$ 。</p>
+</li>
+<li class="lvl-2">
+<p>通过 $T_k^W$ ，将第 $k$ 帧和之前的地图点云投影到全局坐标系下，记为 $\bar{Q}_k$ 。</p>
+</li>
+</ul>
+<p>需要做的就是，已知 $Q_{k-1},\bar{Q}_k$ ，和不精确的 $T_k^W$ ，优化求解 $T_k^W$ 。和 LO 部分一样，已知两个点云求精准的姿态变换。不过这里是 map-to-map 算法，使用的 $\bar{Q}<em>k$ 是10帧 Odometry 输出的数据，$Q</em>{k-1}$ 是之前的地图数据。</p>
+<p>如果使用全部的地图数据，计算效率太低，这里使用边长为 10cm 的 cubic 代替全局地图，然后提取 cubic 中的所有特征点进行匹配（直线匹配和平面匹配）。最后按照 LO 模块的估计方式进行运动估计即可。</p>
+<h3 id="直线匹配">直线匹配</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>对于 Edge Point，cubic 中的所有 Edge Point 会按照直线进行分布，根据这些特征点求解出直线的方程。</p>
+</li>
+<li class="lvl-2">
+<p>根据 cubic 中的 Edge Point，计算位姿协方差矩阵。</p>
+</li>
+<li class="lvl-2">
+<p>对协方差矩阵进行特征值分解。</p>
+</li>
+<li class="lvl-2">
+<p>最大特征值对应的特征向量即为直线的方向向量。</p>
+</li>
+<li class="lvl-2">
+<p>该直线通过所有Edge Point的几何中心。</p>
+</li>
+<li class="lvl-2">
+<p>知道方向向量和经过的点，就可以求解出直线方程了。</p>
+</li>
+</ul>
+<h3 id="平面匹配">平面匹配</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>对于Planar Point，cubic中的所有Planar Point会按照平面进行分布。根据这些特征点求解出平面的方程。</p>
+</li>
+<li class="lvl-2">
+<p>根据 cubic 中的 Planar Point，计算位姿协方差矩阵。</p>
+</li>
+<li class="lvl-2">
+<p>对协方差矩阵进行特征值分解。</p>
+</li>
+<li class="lvl-2">
+<p>最小特征值对应的特征向量，即为平面的法向量。</p>
+</li>
+<li class="lvl-2">
+<p>该平面通过所有 Planar point 的几何中心。</p>
+</li>
+<li class="lvl-2">
+<p>知道法向量和经过的点，就可以求解出平面方程了。</p>
+</li>
+</ul>
+</article><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/AE86.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="next-post pull-full" href="/2025/01/02/%E6%BF%80%E5%85%89%E5%B8%A7%E9%97%B4%E5%8C%B9%E9%85%8D/" title="激光的帧间匹配"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">激光的帧间匹配</div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/AE86.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Hins</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Hins-H"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome to my blog!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">LOAM(Lidar Odometry And Mapping)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6"><span class="toc-number">1.1.</span> <span class="toc-text">框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BF%80%E5%85%89%E9%87%8C%E7%A8%8B%E8%AE%A1%E6%A8%A1%E5%9D%97"><span class="toc-number">1.2.</span> <span class="toc-text">激光里程计模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E7%82%B9%E6%8F%90%E5%8F%96%E6%A8%A1%E5%9D%97"><span class="toc-number">1.2.1.</span> <span class="toc-text">特征点提取模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E7%82%B9%E5%8C%B9%E9%85%8D"><span class="toc-number">1.2.2.</span> <span class="toc-text">特征点匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E5%8A%A8%E4%BC%B0%E8%AE%A1"><span class="toc-number">1.2.3.</span> <span class="toc-text">运动估计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8C%E7%A8%8B%E8%AE%A1%E6%A8%A1%E5%9D%97%E6%80%BB%E7%BB%93"><span class="toc-number">1.2.4.</span> <span class="toc-text">里程计模块总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BF%80%E5%85%89%E5%BB%BA%E5%9B%BE%E6%A8%A1%E5%9D%97"><span class="toc-number">1.3.</span> <span class="toc-text">激光建图模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E7%BA%BF%E5%8C%B9%E9%85%8D"><span class="toc-number">1.3.1.</span> <span class="toc-text">直线匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E9%9D%A2%E5%8C%B9%E9%85%8D"><span class="toc-number">1.3.2.</span> <span class="toc-text">平面匹配</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/04/LOAM/" title="LOAM">LOAM</a><time datetime="2025-01-04T04:06:24.000Z" title="发表于 2025-01-04 12:06:24">2025-01-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/02/%E6%BF%80%E5%85%89%E5%B8%A7%E9%97%B4%E5%8C%B9%E9%85%8D/" title="激光的帧间匹配">激光的帧间匹配</a><time datetime="2025-01-02T04:19:26.000Z" title="发表于 2025-01-02 12:19:26">2025-01-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/20/%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE%E8%BF%90%E5%8A%A8%E7%95%B8%E5%8F%98%E5%8E%BB%E9%99%A4/" title="激光雷达运动畸变去除">激光雷达运动畸变去除</a><time datetime="2024-12-20T09:04:46.000Z" title="发表于 2024-12-20 17:04:46">2024-12-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/10/ORB-SLAM2%20%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6/" title="ORB-SLAM2 系统框架">ORB-SLAM2 系统框架</a><time datetime="2024-12-10T14:03:40.000Z" title="发表于 2024-12-10 22:03:40">2024-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/ORB-SLAM2%20%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/" title="ORB-SLAM2 前置知识">ORB-SLAM2 前置知识</a><time datetime="2024-12-09T08:11:02.000Z" title="发表于 2024-12-09 16:11:02">2024-12-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+      
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
