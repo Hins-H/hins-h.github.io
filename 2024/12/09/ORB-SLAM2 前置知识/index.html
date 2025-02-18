@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/AE86.jpg">
 <meta property="article:published_time" content="2024-12-09T08:11:02.000Z">
-<meta property="article:modified_time" content="2025-02-18T03:57:16.145Z">
+<meta property="article:modified_time" content="2025-02-18T04:13:44.829Z">
 <meta property="article:author" content="Hins">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/img/AE86.jpg"><link rel="shortcut icon" href="/img/R.jpg"><link rel="canonical" href="http://example.com/2024/12/09/ORB-SLAM2%20%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
@@ -146,7 +146,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2025-02-18 11:57:16'
+  postUpdate: '2025-02-18 12:13:44'
 }</script><link rel="stylesheet" href="/css/transpancy.css"><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
@@ -249,7 +249,7 @@ $$<br>
 <p>当被观测的环境点都在同一个平面上，那么相应图像中的匹配点对就满足单应关系。这其实就是对极约束的一种特殊情况。单应关系由 $\boldsymbol{p}_2=\boldsymbol{H} \cdot \boldsymbol{p}_1$ 描述，$\boldsymbol{H}$ 就是单应矩阵。解算过程与本质矩阵一样。</p>
 <p>（3）三角化重建地图点</p>
 <p>所谓三角化，就是观测点 $P$ 和两个相机位置 $O_1、O_2$ 构成的三角形，在已知边 $O_1O_2$ 、底角 $\angle PO_1O_2$、$\angle PO_2O_1$ 时，利用三角形关系就可以求解出环境点 $P$ 的深度。联立式 $(7)\sim(9)$ 并做适当推导，就得到了关于点 $P$ 的深度 $z_1$ 的方程，推导过程如式 $(11)$ 所示。</p>
-<p><img src="C:/Users/34061/AppData/Roaming/Typora/typora-user-images/image-20250218115538242.png" alt="image-20250218115538242"></p>
+<p><img src="https://pic1.imgdb.cn/item/67b408f2d0e0a243d400671d.png" alt="image-20250218115538242"></p>
 <p>将 $p_1、p_2$ 和 $(R,t) $ 代入就可以求出 $z_1$ 了，这样就完成了对地图点 $P$ 的三角化重建了。理想情况下直接求解就可以得出 $z_1$ 了，但实际情况中 $p_1、p_2$ 的像素坐标携带测量噪声，解算出的 $(R,t) $ 也不一定完全准确，这就导致了 $0 \neq z_{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} t$，而是约等于0。那么构建最小二乘问题 $\text{arg } \underset{z_1}{\text{min} } || z</em>{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}_{2})^{\wedge} t ||^2$，很容易求出 $z_1$。</p>
 <p>（4）对地图点和相机位姿做 BA 优化</p>
 <p>理论上，通过本质矩阵和单应矩阵解出 $(R,t) $ ，再进行三角化重建地图点 $P$，模型解析就完成了。但实际情况是求解出的 $(R,t) $ 和地图点 $P$ 都存在误差，误差有测量噪声、计算误差、匹配误差等因素引入。</p>
