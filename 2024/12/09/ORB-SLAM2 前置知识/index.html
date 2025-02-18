@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/AE86.jpg">
 <meta property="article:published_time" content="2024-12-09T08:11:02.000Z">
-<meta property="article:modified_time" content="2025-02-18T03:42:53.912Z">
+<meta property="article:modified_time" content="2025-02-18T03:57:16.145Z">
 <meta property="article:author" content="Hins">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/img/AE86.jpg"><link rel="shortcut icon" href="/img/R.jpg"><link rel="canonical" href="http://example.com/2024/12/09/ORB-SLAM2%20%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
@@ -146,7 +146,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2025-02-18 11:42:53'
+  postUpdate: '2025-02-18 11:57:16'
 }</script><link rel="stylesheet" href="/css/transpancy.css"><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
@@ -205,14 +205,9 @@
 <p><img src="https://pic1.imgdb.cn/item/677fbefdd0e0a243d4f2c9ad.png" alt="1"></p>
 <p>用 9 个量的旋转矩阵表示三维空间的旋转虽然避免了奇异性，但具有很大冗余性。三维旋转式一个三维流形，用 4 个量表示就能避免奇异性，这就引出了四元数。</p>
 <h3 id="四元数">四元数</h3>
-<p>下面讨论的是 Hamilton 四元数，定义如式 $(3)$ 所示。<br>
-$$<br>
-\begin{align*}<br>
-\boldsymbol{q} &amp;= q_0+q_1\cdot i+q_2\cdot j+q_3\cdot k \<br>
-&amp;= [q_0,(q_1,q_2,q_3)]^T = [q_0,q_1,q_2,q_3]^T \tag{3}<br>
-\end{align*}<br>
-$$<br>
-其中，$i<sup>2=j</sup>2=k^2=-1,ij=k,ji=-k,jk=i,kj=-i,ki=j,ik=-j$ 。</p>
+<p>下面讨论的是 Hamilton 四元数，定义如式 $(3)$ 所示。</p>
+<p><img src="https://pic1.imgdb.cn/item/67b40475d0e0a243d4006588.png" alt=""></p>
+<p>其中，$i<sup>2=j</sup>2=k^2=-1,ij=k,ji=-k,jk=i,kj=-i,ki=j,ik=-j$ 。</p>
 <p>模长为 1 的四元数都是单位四元数，实际应用上一般使用的四元数都是指单位四元数。利用式 $(4)$ 和 $(1)、(2)$ 可以得到对应的四元数。</p>
 <p><img src="https://pic1.imgdb.cn/item/677fcd40d0e0a243d4f2cc6f.png" alt="2"></p>
 <p>这样就可以得到欧拉角、旋转矩阵、四元数的相互转换方法。三者的比较可以参考下表。</p>
@@ -244,26 +239,8 @@ $$</p>
 $$<br>
 P_{O_2} = R \cdot P_{O_1} + t \tag{9}<br>
 $$<br>
-联立式 $(7)\sim(9)$ ，推导过程如式 $(10)$ 所示。由于 $z_1$ 和 $z_2$ 是无约束的，推导过程中可以直接消掉。<br>
-$$<br>
-\begin{align*}<br>
-&amp; z_{2} \boldsymbol{K}^{-1} \boldsymbol{p}<em>{2} = \boldsymbol{R} \cdot (z</em>{1} \boldsymbol{K}^{-1} \boldsymbol{p}<em>{1}) + \boldsymbol{t}<br>
-\<br>
-&amp; \Updownarrow \text{左叉乘} \boldsymbol{t},\boldsymbol{t} \times \boldsymbol{t}=0<br>
-\<br>
-&amp; \boldsymbol{t} \times z</em>{2} \boldsymbol{K}^{-1} \boldsymbol{p}<em>{2} = \boldsymbol{t} \times \boldsymbol{R} \cdot (z</em>{1} \boldsymbol{K}^{-1} \boldsymbol{p}<em>{1})<br>
-\<br>
-&amp; \Updownarrow \text{左乘} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{2})^T,  (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^T \cdot (\boldsymbol{t} \times z</em>{2} \boldsymbol{K}^{-1} \boldsymbol{p}<em>{2}) = 0 \tag{10}<br>
-\<br>
-&amp; 0 = z</em>{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^T \boldsymbol{t} \times \boldsymbol{R} \boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}<br>
-\<br>
-&amp; = \boldsymbol{p}<em>{2}^T \boldsymbol{K}^{-T} \underbrace{\boldsymbol{t}^{\wedge} \boldsymbol{R} }</em>{\boldsymbol{E} } \boldsymbol{K}^{-1} \boldsymbol{p}<em>{1}<br>
-\<br>
-&amp; = \boldsymbol{p}</em>{2}^T  \underbrace{\boldsymbol{K}^{-T}\boldsymbol{E} \boldsymbol{K}^{-1} }<em>{\boldsymbol{F} } \boldsymbol{p}</em>{1}<br>
-\<br>
-&amp; = \boldsymbol{p}<em>{2}^T\boldsymbol{F} \boldsymbol{p}</em>{1}<br>
-\end{align*}<br>
-$$</p>
+联立式 $(7)\sim(9)$ ，推导过程如式 $(10)$ 所示。由于 $z_1$ 和 $z_2$ 是无约束的，推导过程中可以直接消掉。</p>
+<p><img src="https://pic1.imgdb.cn/item/67b4049fd0e0a243d4006598.png" alt=""></p>
 <p>（1）本质矩阵 $\boldsymbol{E}$ 和基础矩阵 $\boldsymbol{F}$</p>
 <p>上面情况的对极几何关系可以用公式 $0= \boldsymbol{p}<em>{2}^T \boldsymbol{K}^{-T}\boldsymbol{E} \boldsymbol{K}^{-1} \boldsymbol{p}</em>{1} = \boldsymbol{p}<em>{2}^T\boldsymbol{F} \boldsymbol{p}</em>{1}$ 描述，这个公式也叫对极约束。式中定义本质矩阵 $\boldsymbol{E}=\boldsymbol{t}^{\wedge} \boldsymbol{R}$ ，基础矩阵 $\boldsymbol{F}=\boldsymbol{K}^{-T}\boldsymbol{E} \boldsymbol{K}^{-1}$ 。由于本质矩阵和基础矩阵只相差相机内参，所以两者在研究中其实是等价的，实际应用中通常使用更简洁的本质矩阵。</p>
 <p>也就是图像中每个匹配点对都可以代入对极约束公式中构建出一个方程，如果有多对匹配点，就可以得到一个方程组，通过解方程组就可以求出本质矩阵。有研究表明，只需要 8 对匹配点就可以很好地解出本质矩阵（8 点法）。求出本质矩阵后，通过奇异值分解（SVD）方法，容易解算出相机位姿运动的 $\boldsymbol{R}$ 和 $\boldsymbol{t}$ 。整个过程如下图所示。</p>
@@ -271,19 +248,9 @@ $$</p>
 <p>（2）单应矩阵 $\boldsymbol{H}$</p>
 <p>当被观测的环境点都在同一个平面上，那么相应图像中的匹配点对就满足单应关系。这其实就是对极约束的一种特殊情况。单应关系由 $\boldsymbol{p}_2=\boldsymbol{H} \cdot \boldsymbol{p}_1$ 描述，$\boldsymbol{H}$ 就是单应矩阵。解算过程与本质矩阵一样。</p>
 <p>（3）三角化重建地图点</p>
-<p>所谓三角化，就是观测点 $P$ 和两个相机位置 $O_1、O_2$ 构成的三角形，在已知边 $O_1O_2$ 、底角 $\angle PO_1O_2$、$\angle PO_2O_1$ 时，利用三角形关系就可以求解出环境点 $P$ 的深度。联立式 $(7)\sim(9)$ 并做适当推导，就得到了关于点 $P$ 的深度 $z_1$ 的方程，推导过程如式 $(11)$ 所示。<br>
-$$<br>
-\begin{align*}<br>
-&amp; z_{2} \boldsymbol{K}^{-1} \boldsymbol{p}<em>{2} = \boldsymbol{R} \cdot (z</em>{1} \boldsymbol{K}^{-1} \boldsymbol{p}<em>{1}) + \boldsymbol{t}<br>
-\<br>
-&amp; \Updownarrow \text{左叉乘} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{2}),(\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2}) \times (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{2})=0 \tag{11}<br>
-\<br>
-&amp; 0 = z_{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2}) \times \boldsymbol{R} \cdot (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2}) \times t<br>
-\<br>
-&amp; 0 = z</em>{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} t<br>
-\end{align*}<br>
-$$<br>
-将 $p_1、p_2$ 和 $(R,t) $ 代入就可以求出 $z_1$ 了，这样就完成了对地图点 $P$ 的三角化重建了。理想情况下直接求解就可以得出 $z_1$ 了，但实际情况中 $p_1、p_2$ 的像素坐标携带测量噪声，解算出的 $(R,t) $ 也不一定完全准确，这就导致了 $0 \neq z</em>{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} t$，而是约等于0。那么构建最小二乘问题 $\text{arg } \underset{z_1}{\text{min} } || z</em>{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}_{2})^{\wedge} t ||^2$，很容易求出 $z_1$。</p>
+<p>所谓三角化，就是观测点 $P$ 和两个相机位置 $O_1、O_2$ 构成的三角形，在已知边 $O_1O_2$ 、底角 $\angle PO_1O_2$、$\angle PO_2O_1$ 时，利用三角形关系就可以求解出环境点 $P$ 的深度。联立式 $(7)\sim(9)$ 并做适当推导，就得到了关于点 $P$ 的深度 $z_1$ 的方程，推导过程如式 $(11)$ 所示。</p>
+<p><img src="C:/Users/34061/AppData/Roaming/Typora/typora-user-images/image-20250218115538242.png" alt="image-20250218115538242"></p>
+<p>将 $p_1、p_2$ 和 $(R,t) $ 代入就可以求出 $z_1$ 了，这样就完成了对地图点 $P$ 的三角化重建了。理想情况下直接求解就可以得出 $z_1$ 了，但实际情况中 $p_1、p_2$ 的像素坐标携带测量噪声，解算出的 $(R,t) $ 也不一定完全准确，这就导致了 $0 \neq z_{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} t$，而是约等于0。那么构建最小二乘问题 $\text{arg } \underset{z_1}{\text{min} } || z</em>{1} (\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2})^{\wedge} \boldsymbol{R} (\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}) + (\boldsymbol{K}^{-1} \boldsymbol{p}_{2})^{\wedge} t ||^2$，很容易求出 $z_1$。</p>
 <p>（4）对地图点和相机位姿做 BA 优化</p>
 <p>理论上，通过本质矩阵和单应矩阵解出 $(R,t) $ ，再进行三角化重建地图点 $P$，模型解析就完成了。但实际情况是求解出的 $(R,t) $ 和地图点 $P$ 都存在误差，误差有测量噪声、计算误差、匹配误差等因素引入。</p>
 <p>那么，可以将解算出的地图点和相机位姿放入 BA 做优化，通过优化尽量减少误差。这里需要用到重投影误差 $e_i$，定义如式 $(12)$ 所示考虑所有地图点，通过最小化重投影误差的方式构建目标方式，描述如式 $(13)$ 所示。<br>
@@ -306,23 +273,9 @@ z_ip_i=K[R|t]P_i \tag{14}<br>
 $$<br>
 可以分情况来求解上面式子，一种情况是在相机内参 $K$ 未知时，DLT算法可以同时将相机内参 $K$ 和外参 $[R|t]$ 都求出来，也就是这个算法实现了相机内参自标定过程；另一种情况是 $K$ 已知，只求 $[R|t]$ ，下面讨论算法具体步骤。先将式 $(14)$ 展开成方程组，如式 $(15)$ 所示。</p>
 <p><img src="https://pic1.imgdb.cn/item/67812797d0e0a243d4f31fbc.png" alt="1"></p>
-<p>也就是说，一对投影点可以构造出一个线性方程，那么 n 对就可以构造出 $ \boldsymbol{A}<em>{2n\times 12}\cdot \boldsymbol{m}</em>{12\times 1}=\boldsymbol{0} $ ，方程中的向量 $\boldsymbol{m}<em>{12\times 1}$ 是由投影矩阵 $Pr=K[R|t]$ 中的元素顺序排列构造，系数矩阵 $\boldsymbol{A}</em>{2n\times 12}$ 由 n 对投影点构造。理想情况下，只需求解线性方程得出 $\boldsymbol{m}$ ，然后用 $\boldsymbol{m}$ 构造出投影矩阵 $Pr$ ，分解投影矩阵就能得到内参和外参。实际情况中国，噪声和误差等因素会导致线性方程不严格等于0，那么可以构建最小二乘问题来解方程，如式 $(16) $ 所示。<br>
-$$<br>
-\begin{align*}<br>
-\boldsymbol{m} &amp;=\text{arg } \underset{\boldsymbol{m} }{min}||\boldsymbol{A}\cdot \boldsymbol{m}||^2<br>
-\<br>
-&amp;=\text{arg } \underset{\boldsymbol{m} }{min}(\boldsymbol{m}^T\cdot \boldsymbol{A}^T\cdot \boldsymbol{A} \cdot \boldsymbol{m})<br>
-\<br>
-&amp; \text{令}|\boldsymbol{m}|=1,SVD(A)=\boldsymbol{U}\boldsymbol{S}\boldsymbol{V}<sup>T=\sum_{i=1}</sup>{12}s_iu_iv_i^T<br>
-\<br>
-&amp;=\text{arg } \underset{\boldsymbol{m} }{min}(\boldsymbol{m}^T\cdot \boldsymbol{V}\boldsymbol{S}\boldsymbol{U}^T\cdot \boldsymbol{U}\boldsymbol{S}\boldsymbol{V}^T \cdot \boldsymbol{m}) \tag{16}<br>
-\<br>
-&amp;=\text{arg } \underset{\boldsymbol{m} }{min}(\boldsymbol{m}^T\cdot \boldsymbol{V}\boldsymbol{S}<sup>2\boldsymbol{V}</sup>T \cdot \boldsymbol{m})<br>
-\<br>
-&amp;=\text{arg } \underset{\boldsymbol{m} }{min}(\boldsymbol{m}^T\cdot \sum_{i=1}<sup>{12}s_i</sup>2v_iv_i^T \cdot \boldsymbol{m})<br>
-\end{align*}<br>
-$$<br>
-系数矩阵 $A$ 通过 SVD 分解，如果取待求向量 $m$ 为正交矩阵 $V$ 的某个列向量，那么选择最小奇异值 $s_{12}$ 对应的特征向量 $v_{12}$ 为待求向量 $m$ 的取值，就可以使上式取最小值。这样 $m$ 能求出来，投影矩阵也就求出来了。那么分解投影矩阵为  $[B,b]$，并根据 $Pr$ 内部结构很容易求出内参和外参，如果内参已知，求外参就更容易了，如式 $(17)$ 所示。<br>
+<p>也就是说，一对投影点可以构造出一个线性方程，那么 n 对就可以构造出 $ \boldsymbol{A}<em>{2n\times 12}\cdot \boldsymbol{m}</em>{12\times 1}=\boldsymbol{0} $ ，方程中的向量 $\boldsymbol{m}<em>{12\times 1}$ 是由投影矩阵 $Pr=K[R|t]$ 中的元素顺序排列构造，系数矩阵 $\boldsymbol{A}</em>{2n\times 12}$ 由 n 对投影点构造。理想情况下，只需求解线性方程得出 $\boldsymbol{m}$ ，然后用 $\boldsymbol{m}$ 构造出投影矩阵 $Pr$ ，分解投影矩阵就能得到内参和外参。实际情况中国，噪声和误差等因素会导致线性方程不严格等于0，那么可以构建最小二乘问题来解方程，如式 $(16) $ 所示。</p>
+<p><img src="https://pic1.imgdb.cn/item/67b404d6d0e0a243d40065b5.png" alt=""></p>
+<p>系数矩阵 $A$ 通过 SVD 分解，如果取待求向量 $m$ 为正交矩阵 $V$ 的某个列向量，那么选择最小奇异值 $s_{12}$ 对应的特征向量 $v_{12}$ 为待求向量 $m$ 的取值，就可以使上式取最小值。这样 $m$ 能求出来，投影矩阵也就求出来了。那么分解投影矩阵为  $[B,b]$，并根据 $Pr$ 内部结构很容易求出内参和外参，如果内参已知，求外参就更容易了，如式 $(17)$ 所示。<br>
 $$<br>
 Pr=K[R|t]=KR[I|-t]=[KR|-KRt]=[B,b] \tag{17}<br>
 $$</p>
@@ -352,22 +305,11 @@ $$</p>
 $$<br>
 \text{arg }\underset{R,t}{min}\sum_{i=1}^n ||p_i^{\prime}-(R\cdot p_i+t)||^2 \tag{21}<br>
 $$<br>
-可以将两个点云去质心后再构建最小二乘问题，如式 $(22)$ 所示。<br>
-$$<br>
-q_i=p_i-\bar{p}, \bar{p}=\frac{1}{n}\sum_{i=1}^np_i\<br>
-q_i<sup>{\prime}=p_i</sup>{\prime}-\bar{p^{\prime} }, \bar{p^{\prime} }=\frac{1}{n}\sum_{i=1}<sup>np_i</sup>{\prime}<br>
-\<br>
-\text{arg }\underset{R,t}{min}\sum_{i=1}^n ||p_i^{\prime}-(R\cdot p_i+t)||^2=\text{arg }\underset{R,t}{min}\sum_{i=1}^n {||q_i^{\prime}-R\cdot q_i||<sup>2+||\bar{p</sup>{\prime} }-R\cdot \bar{p}-t||^2} \tag{22}<br>
-$$<br>
-首先将第一个加法项展开化简，然后利用 SVD 就能求出 $R$ ，如式 $(23)$ 所示。<br>
-$$<br>
-\text{arg }\underset{R,t}{min}\sum_{i=1}^n ||q_i^{\prime}-R\cdot q_i||^2=<br>
-\text{arg }\underset{R,t}{min}\sum_{i=1}^n ( q_i^{\prime T} q_i<sup>{\prime}-2q_i</sup>{\prime T}Rq_i+q_i<sup>TR</sup>TRq_i)<br>
-\<br>
-\Leftrightarrow<br>
-\text{arg }\underset{R,t}{min}\sum_{i=1}<sup>n-q_i</sup>{\prime}Rq_i=\text{arg }\underset{R,t}{min}( -tr(R\sum_{i=1}<sup>nq_i</sup>{\prime T}q_i) ) \tag{23}<br>
-$$<br>
-令 $M=\sum\limits_{i=1}<sup>nq_i</sup>{\prime T}q_i$ ，利用 SVD 进行分解得到 $SVD(M)=USV^T$，从而求得 $R=UV^T$。然后将求出的 $R$ 代入第二个加法项，很容易得到 $t=p^{\prime T}-R\cdot p^{\prime}$。</p>
+可以将两个点云去质心后再构建最小二乘问题，如式 $(22)$ 所示。</p>
+<p><img src="https://pic1.imgdb.cn/item/67b404f4d0e0a243d40065bc.png" alt=""></p>
+<p>首先将第一个加法项展开化简，然后利用 SVD 就能求出 $R$ ，如式 $(23)$ 所示。</p>
+<p><img src="https://pic1.imgdb.cn/item/67b4050cd0e0a243d40065c5.png" alt=""></p>
+<p>令 $M=\sum\limits_{i=1}<sup>nq_i</sup>{\prime T}q_i$ ，利用 SVD 进行分解得到 $SVD(M)=USV^T$，从而求得 $R=UV^T$。然后将求出的 $R$ 代入第二个加法项，很容易得到 $t=p^{\prime T}-R\cdot p^{\prime}$。</p>
 <h4 id="BA-优化">BA 优化</h4>
 <p>另一种求解方法就是对式 $(21)$ 问题直接进行 BA 优化求解。BA 优化中，优化变量一般写成变换矩阵 $T$ 的形式，优化过程既可以对位姿 $T$ 进行优化，也可以同时对点云 $P$ 进行优化，如式 $(24)、(25)$  所示。<br>
 $$<br>

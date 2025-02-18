@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>激光的帧间匹配 | Racing</title><meta name="author" content="Hins"><meta name="copyright" content="Hins"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="激光的帧间匹配 ICP 具体数学描述和求解方法请看 。这里主要添加求解方法的证明。 $$ \begin{align} E(R,t)&amp;&#x3D;\frac{1}{N_p} \sum_{i&#x3D;1}{N_p}||x_i-Rp_i-t||2\ &amp;&#x3D;\frac{1}{N_p} \sum_{i&#x3D;1}{N_p}||x_i-Rp_i-t-u_x+Ru_p+u_x-Ru_p||2\ &amp;&#x3D;\frac{1">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>激光的帧间匹配 | Racing</title><meta name="author" content="Hins"><meta name="copyright" content="Hins"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="激光的帧间匹配 ICP 具体数学描述和求解方法请看 。这里主要添加求解方法的证明。  其中 $||x_i-u_x-R(p_i-u_p)||^2$ 只和 $R$ 有关，当已知 $R$ 时可以通过 $u_x-Ru_p-t&#x3D;0$ 求解出 $t$。故转换为最小化函数：  其中 ${x_i^{\prime} }Tx_i{\prime}$ 和变量无关，是常数值，而 $R$ 是正交矩阵，$RTR&#x3D;I$，${p_">
 <meta property="og:type" content="article">
 <meta property="og:title" content="激光的帧间匹配">
 <meta property="og:url" content="http://example.com/2025/01/02/%E6%BF%80%E5%85%89%E5%B8%A7%E9%97%B4%E5%8C%B9%E9%85%8D/index.html">
 <meta property="og:site_name" content="Racing">
-<meta property="og:description" content="激光的帧间匹配 ICP 具体数学描述和求解方法请看 。这里主要添加求解方法的证明。 $$ \begin{align} E(R,t)&amp;&#x3D;\frac{1}{N_p} \sum_{i&#x3D;1}{N_p}||x_i-Rp_i-t||2\ &amp;&#x3D;\frac{1}{N_p} \sum_{i&#x3D;1}{N_p}||x_i-Rp_i-t-u_x+Ru_p+u_x-Ru_p||2\ &amp;&#x3D;\frac{1">
+<meta property="og:description" content="激光的帧间匹配 ICP 具体数学描述和求解方法请看 。这里主要添加求解方法的证明。  其中 $||x_i-u_x-R(p_i-u_p)||^2$ 只和 $R$ 有关，当已知 $R$ 时可以通过 $u_x-Ru_p-t&#x3D;0$ 求解出 $t$。故转换为最小化函数：  其中 ${x_i^{\prime} }Tx_i{\prime}$ 和变量无关，是常数值，而 $R$ 是正交矩阵，$RTR&#x3D;I$，${p_">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/AE86.jpg">
 <meta property="article:published_time" content="2025-01-02T04:19:26.000Z">
-<meta property="article:modified_time" content="2025-02-18T03:46:31.679Z">
+<meta property="article:modified_time" content="2025-02-18T04:05:20.832Z">
 <meta property="article:author" content="Hins">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/img/AE86.jpg"><link rel="shortcut icon" href="/img/R.jpg"><link rel="canonical" href="http://example.com/2025/01/02/%E6%BF%80%E5%85%89%E5%B8%A7%E9%97%B4%E5%8C%B9%E9%85%8D/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
@@ -146,7 +146,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2025-02-18 11:46:31'
+  postUpdate: '2025-02-18 12:05:20'
 }</script><link rel="stylesheet" href="/css/transpancy.css"><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
@@ -174,54 +174,24 @@
   }
 })()</script><div id="web_bg" style="background-image: url(/img/AE86.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/AE86.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Racing</span></a><a class="nav-page-title" href="/"><span class="site-name">激光的帧间匹配</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">激光的帧间匹配</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2025-01-02T04:19:26.000Z" title="发表于 2025-01-02 12:19:26">2025-01-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SLAM-%E5%AD%A6%E4%B9%A0/">SLAM 学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>激光的帧间匹配</h1>
 <h2 id="ICP">ICP</h2>
-<p>具体数学描述和求解方法请看 。这里主要添加求解方法的证明。<br>
-$$<br>
-\begin{align}<br>
-E(R,t)&amp;=\frac{1}{N_p} \sum_{i=1}<sup>{N_p}||x_i-Rp_i-t||</sup>2\<br>
-&amp;=\frac{1}{N_p} \sum_{i=1}<sup>{N_p}||x_i-Rp_i-t-u_x+Ru_p+u_x-Ru_p||</sup>2\<br>
-&amp;=\frac{1}{N_p} \sum_{i=1}<sup>{N_p}||x_i-u_x-R(p_i-u_p)+(u_x-Ru_p-t)||</sup>2\<br>
-&amp;=\frac{1}{N_p} \sum_{i=1}<sup>{N_p}||x_i-u_x-R(p_i-u_p)||</sup>2+||u_x-Ru_p-t||^2+\<br>
-&amp;\quad \quad 2(x_i-u_x-R(p_i-u_p))^T(u_x-Ru_p-t)\<br>
-&amp;=\frac{1}{N_p} \sum_{i=1}<sup>{N_p}||x_i-u_x-R(p_i-u_p)||</sup>2+||u_x-Ru_p-t||^2\<br>
-\end{align}<br>
-$$</p>
+<p>具体数学描述和求解方法请看 。这里主要添加求解方法的证明。</p>
+<p><img src="https://pic1.imgdb.cn/item/67b405cfd0e0a243d4006614.png" alt=""></p>
 <p>其中 $||x_i-u_x-R(p_i-u_p)||^2$ 只和 $R$ 有关，当已知 $R$ 时可以通过 $u_x-Ru_p-t=0$ 求解出 $t$。故转换为最小化函数：</p>
-<p>$$<br>
-\begin{align}<br>
-E(R,t)&amp;=\frac{1}{N_p} \sum_{i=1}<sup>{N_p}||x_i-u_x-R(p_i-u_p)||</sup>2\<br>
-&amp;=\frac{1}{N_p} \sum_{i=1}<sup>{N_p}||x_i</sup>{\prime}-Rp_i<sup>{\prime}||</sup>2\<br>
-&amp;=\frac{1}{N_p} \sum_{i=1}<sup>{N_p}{x_i</sup>{\prime} }<sup>Tx_i</sup>{\prime}+{p_i^{\prime} }<sup>TR</sup>TRp_i<sup>{\prime}-2{x_i</sup>{\prime} }<sup>TRp_i</sup>{\prime} \<br>
-\end{align}<br>
-$$</p>
+<p><img src="https://pic1.imgdb.cn/item/67b405e6d0e0a243d400661e.png" alt=""></p>
 <p>其中 ${x_i^{\prime} }<sup>Tx_i</sup>{\prime}$ 和变量无关，是常数值，而 $R$ 是正交矩阵，$R<sup>TR=I$，${p_i</sup>{\prime} }<sup>TR</sup>TRp_i<sup>{\prime}={p_i</sup>{\prime} }<sup>Tp_i</sup>{\prime}$，也是常数值，因此求 $E(R,t)$ 最小值最后可以转化为求 ${x_i^{\prime} }<sup>TRp_i</sup>{\prime}$ 的最大值。</p>
-<p>$$<br>
-\sum_{i=1}<sup>{N_p}{x_i</sup>{\prime} }<sup>TRp_i</sup>{\prime}=\sum_{i=1}<sup>{N_p}Trace(Rx_i</sup>{\prime}{p_i^{\prime} }^T)=Trace(RH)<br>
-\H=\sum_{i=1}<sup>{N_p}x_i</sup>{\prime}{p_i^{\prime} }^T<br>
-$$</p>
+<p><img src="https://pic1.imgdb.cn/item/67b405fdd0e0a243d4006628.png" alt=""></p>
 <ul class="lvl-0">
 <li class="lvl-2">
 <p>定理：假设矩阵 A 为正定对称矩阵，则对于任意的正交矩阵 B，都有：$Trace(A)≥Trace(BA)$。</p>
 </li>
 </ul>
-<p>$$<br>
-H=U\Lambda V^T\<br>
-X=VU^T —— 正交矩阵\<br>
-XH=VU^TU\Lambda V^T=V\Lambda V^T  —— 正定对称\<br>
-\Rightarrow Trace(XH) ≥ Trace(BXH)\<br>
-\Rightarrow R=X=VU^T<br>
-$$</p>
+<p><img src="https://pic1.imgdb.cn/item/67b40613d0e0a243d4006629.png" alt=""></p>
 <h2 id="PL-ICP">PL-ICP</h2>
 <p>ICP 算法基于点到点的距离作为误差度量，而 PL-ICP 采用点到线的距离作为误差度量。激光雷达的点云数据是对实际环境曲面的离散采样，因此点到线的距离更能反映点云与真实曲面之间的误差。</p>
 <img src="https://pic1.imgdb.cn/item/67b2d6b8d0e0a243d400233f.png" style="zoom: 80%;" />
 <h3 id="数学描述">数学描述</h3>
-<p>目标函数：<br>
-$$<br>
-\underset{q_{k+1} }{min} \sum_i (n_i^T [p_i \oplus q_{k+1} - \Pi {S^{ref},p_i \oplus q_k }])^2 \<br>
-q=(t,\theta)\<br>
-p \oplus (t,\theta) \triangleq R(\theta)p+t \<br>
-n_i为法向量\<br>
-\Pi {S^{ref},\cdot }表示在 S^{ref} 的投影<br>
-$$</p>
+<p>目标函数：</p>
+<p><img src="https://pic1.imgdb.cn/item/67b4062dd0e0a243d4006635.png" alt=""></p>
 <h3 id="算法流程">算法流程</h3>
 <ul class="lvl-0">
 <li class="lvl-2">
@@ -255,12 +225,9 @@ $$</p>
 <h2 id="Optimization-based-Method">Optimization-based Method</h2>
 <img src="https://pic1.imgdb.cn/item/67b2dbcbd0e0a243d4002524.png" style="zoom:67%;" />
 <h3 id="数学描述-2">数学描述</h3>
-<p>给定一个目标函数，把激光的帧间匹配问题转换为求解目标函数的极值问题：<br>
-$$<br>
-E(T)=\text{arg} \space \underset{T}{min} \sum[1-M(S_i(T))]^2\<br>
-T=(T_x,T_y,T_{\theta})<br>
-$$<br>
-$S_i(T)$ 表示把激光数据用位姿 $T$ 进行转换，$M(x)$ 表示得到坐标 $x$ 的地图占用概率。</p>
+<p>给定一个目标函数，把激光的帧间匹配问题转换为求解目标函数的极值问题：</p>
+<p><img src="https://pic1.imgdb.cn/item/67b40646d0e0a243d400663c.png" alt=""></p>
+<p>$S_i(T)$ 表示把激光数据用位姿 $T$ 进行转换，$M(x)$ 表示得到坐标 $x$ 的地图占用概率。</p>
 <h3 id="求解">求解</h3>
 <p><img src="https://pic1.imgdb.cn/item/67b2e585d0e0a243d4002873.png" alt=""></p>
 <h3 id="地图双线性插值">地图双线性插值</h3>
@@ -282,14 +249,7 @@ $S_i(T)$ 表示把激光数据用位姿 $T$ 进行转换，$M(x)$ 表示得到�
 <p>插值的定义</p>
 </li>
 </ul>
-<p>$$<br>
-设函数 \space y=f(x) \space在区间 [a,b] 上有定义，且存在已知点: \<br>
-a \le x_0 \le x_1 &lt; \cdots &lt; x_n \le b \<br>
-x_i处的函数值 \space y_i=f(x_i)，若存在n次多项式: \<br>
-L_n(x) = a_0+a_1x+a_2x^2+ \cdots + a_nx^n \<br>
-使得值 \space L_n(x_i)=y_i \space 成立，则称\space L_n(x) \space 为 \space f(x) \space 的插值多项式。\<br>
-可以证明: L_n(x) 存在且唯一<br>
-$$</p>
+<p><img src="https://pic1.imgdb.cn/item/67b4065ed0e0a243d4006643.png" alt=""></p>
 <ul class="lvl-0">
 <li class="lvl-2">
 <p>插值方法</p>
@@ -306,50 +266,28 @@ $$<br>
 <p>基函数构造</p>
 </li>
 </ul>
-<p>基函数 $l_i(x)$ 在除 $x_i$ 以外的所有插值点都为0，即 $(x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n)$ 都是 $l_i(x)$ 的解，因此可以构造函数：<br>
-$$<br>
-l_i(x) =c(x-x_0)\cdots (x-x_{i-1})(x-x_{i+1})\cdots (x-x_n) \<br>
-l_i(x_i) =c(x_i-x_0)\cdots (x_i-x_{i-1})(x_i-x_{i+1})\cdots (x_i-x_n)=1\<br>
-\Rightarrow c=\frac{1}{c(x_i-x_0)\cdots (x_i-x_{i-1})(x_i-x_{i+1})\cdots (x_i-x_n)} \<br>
-l_i(x)=\prod_{k=0, k \neq i}^{n} \frac{x - x_k}{(x_i - x_k)}<br>
-$$</p>
+<p>基函数 $l_i(x)$ 在除 $x_i$ 以外的所有插值点都为0，即 $(x_0,\cdots,x_{i-1},x_{i+1},\cdots,x_n)$ 都是 $l_i(x)$ 的解，因此可以构造函数：</p>
+<p><img src="https://pic1.imgdb.cn/item/67b4068fd0e0a243d4006672.png" alt=""></p>
 <ul class="lvl-0">
 <li class="lvl-2">
 <p>双线性插值</p>
 </li>
 </ul>
-<p>设平面中有四个点：<br>
-$$<br>
-Z_1=f(x_0,y_0),Z_2=f(x_1,y_0)\<br>
-Z_3=f(x_1,y_1),Z_4=f(x_0,y_1)<br>
-$$<br>
-令：<br>
-$$<br>
-u=\frac{x-x_0}{x_1-x_0} \<br>
-v=\frac{y-y_0}{y_1-y_0}<br>
-$$<br>
-则对应的四个点的坐标变为：<br>
-$$<br>
-(x_0.y_0)=(0,0)，(x_1,y_0)=(1,0) \<br>
-(x_1,y_1)=(1,1)，(x_0,y_1)=(0,1)<br>
-$$<br>
-构造基函数：<br>
-$$<br>
-l_1(u,v)=(1-u)(1-v)\<br>
-l_2(u,v)=u(1-v)\<br>
-l_3(u,v)=uv\<br>
-l_4(u,v)=(1-u)v<br>
-$$<br>
-插值函数为：<br>
+<p>设平面中有四个点：</p>
+<p><img src="https://pic1.imgdb.cn/item/67b406a8d0e0a243d400667b.png" alt=""></p>
+<p>令：</p>
+<p><img src="https://pic1.imgdb.cn/item/67b406bbd0e0a243d4006689.png" alt=""></p>
+<p>则对应的四个点的坐标变为：</p>
+<p><img src="https://pic1.imgdb.cn/item/67b406ced0e0a243d4006698.png" alt=""></p>
+<p>构造基函数：</p>
+<p><img src="https://pic1.imgdb.cn/item/67b406e0d0e0a243d400669e.png" alt=""></p>
+<p>插值函数为：<br>
 $$<br>
 L_4(u,v)=Z_1 l_1(u,v)+Z_2 l_2(u,v)+Z_3 l_3(u,v)+Z_4l_4(u,v)<br>
 $$<br>
-把 $(u,v)$ 替换回 $(x,y)$ 可得：<br>
-$$<br>
-L(x, y)= \frac{y - y_0}{y_1 - y_0} \left( \frac{x - x_0}{x_1 - x_0} M(P_{11}) + \frac{x_1 - x}{x_1 - x_0} M(P_{01}) \right) \<br>
-\quad + \frac{y_1 - y}{y_1 - y_0} \left( \frac{x - x_0}{x_1 - x_0} M(P_{10}) + \frac{x_1 - x}{x_1 - x_0} M(P_{00}) \right)<br>
-$$<br>
-$x$ 的偏导数：<br>
+把 $(u,v)$ 替换回 $(x,y)$ 可得：</p>
+<p><img src="https://pic1.imgdb.cn/item/67b406f7d0e0a243d40066a5.png" alt=""></p>
+<p>$x$ 的偏导数：<br>
 $$<br>
 \frac{\partial L(x, y)}{\partial x} = \frac{y - y_0}{y_1 - y_0} (M(P_{11}) - M(P_{01})) + \frac{y_1 - y}{y_1 - y_0} (M(P_{10}) - M(P_{00}))<br>
 $$<br>
